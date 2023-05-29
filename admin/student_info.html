@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          * {
+            box-sizing: border-box;
+            margin: 0px;
+        }
+
+        html {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+
+        [class*="col-"] {
+            float: left;
+
+        }
+
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+
+        /*for desktop*/
+        @media only screen and (min-width: 768px) {
+            .col-1 {
+                width: 8.33%;
+            }
+
+            .col-2 {
+                width: 16.66%;
+            }
+
+            .col-3 {
+                width: 25%;
+            }
+
+            .col-4 {
+                width: 33.33%;
+            }
+
+            .col-5 {
+                width: 41.66%;
+            }
+
+            .col-6 {
+                width: 50%;
+            }
+
+            .col-7 {
+                width: 58.33%;
+            }
+
+            .col-8 {
+                width: 66.66%;
+            }
+
+            .col-9 {
+                width: 75%;
+            }
+
+            .col-10 {
+                width: 83.33%;
+            }
+
+            .col-11 {
+                width: 91.66%;
+            }
+
+            .col-12 {
+                width: 100%;
+            }
+        }
+
+         /* The popup form - hidden by default */
+         .container {
+            left: 200px;
+            width: 60%;
+            height: fit-content;
+            margin: 8% auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        /* Add styles to the form container */
+        .container form {
+            width: 100%;
+            padding: 10px;
+            background-color: white;
+            position: absolute;
+            border: groove;
+            top: 40px;
+            left: 40px;
+            
+        }
+
+        /* Full-width input fields */
+        form input[type=text],
+        form input[type=password] {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0 12px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* When the inputs get focus, do something */
+        form input[type=text]:focus,
+        form input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Set a style for the submit/login button */
+        form button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+            background-color: red;
+        }
+
+        /* Add some hover effects to buttons */
+        .container .btn:hover,
+        .open-button:hover {
+            opacity: 1;
+        }
+
+        .form1 {
+            padding: 10px;
+            line-height: 30px;
+        }
+
+        
+
+        
+        .highs{
+            padding: 5px;
+        }
+        .profilepicture{
+            width:100px;
+            height:60px;
+            border: double;
+
+        }
+       
+        .step-row{
+            width: 100%;
+            height: 40px;
+            left: 40px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 -1px 5px -1px;
+        }
+        .step-col{
+            width: 25%;
+            text-align: center;
+            position: relative;
+        }
+        #progress{
+            position: absolute;
+            height: 100%;
+            width: 25%;
+            background-color: green;
+        }
+        #progress::after{
+            content:'';
+            height: 0;
+            width: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            position: absolute;
+            right: -20px;
+            top: 0;
+            border-left: 20px solid green;
+        }
+       #form2{
+           left: 850px;
+       }
+    </style>
+</head>
+<body>
+    <div class="col-12 container">
+        <form action="" id="form1" enctype="multipart/form-data" id="form1">
+            <h1>File Information</h1>
+            <div class="col-4 form1">
+                
+                <label for="std_id"><b>Student ID</b></label>
+                <input type="text" name="std_id" required>
+
+                <label for="admno"><b>Admission No</b></label>
+                <input type="text" name="admno" required>
+
+                <label for="admdate"><b>Admission Date</b></label>
+                <input type="date" name="admdate" required> <br>
+                <h2>School Information</h2>
+                <label for="primarysch"><b>Primary School name</b></label>
+                <input type="text" placeholder="primary school name" name="primarysch" required>
+                <input type="text" name="hyear" placeholder="start year" required style="width: 40%;"> <strong>to </strong> <input type="text" name="hyear1" placeholder="graduation year" required style="width: 40%;"><br>
+
+
+                <label for="primarysch"><b>HighSchool name</b></label>
+                <input type="text" placeholder="Highschool name" name="highsch" required>
+                <input type="text" name="hyear" placeholder="start year" required style="width: 40%;"> <strong>to </strong> <input type="text" name="hyear1" placeholder="graduation year" required style="width: 40%;"><br>
+
+
+                <label for=""><b>Registration status</b></label> <br>
+                <input type="radio" name="regstat" value="Active" required  >Active <br>
+                <input type=" radio" name="regstat" value="Deferred" required> Deferred <br>
+
+                <h3 style="margin-bottom:10px;">Reference(if applicable)</h3>
+                <label for="rname"><b>NAME</b></label>
+                <input type="text" name="rname" required>
+                <label for="rcontact"><b>Contact NO</b></label>
+                <input type="number" name="rcontact" required>
+
+            </div>
+
+            <div class="col-4 form1">
+                <label for="stdname"><b>Student Name</b></label>
+                <input type="text" name="stdname" required>
+                <div class="dir" style="display:flex;">
+                    <div class="right" style="width:40%;">
+                        <label for="gender"><b>Gender</b> </label>
+                        <select name="gender" style="font-family: inherit;">
+                            <option value="male">Male</option>
+                            <option value="female">female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="left" style="width:50%; float:left;">
+                        <label for="dob"><b>Date of birth</b></label> <br>
+                        <input type="date" name="dob" required>
+                    </div>
+                </div>
+                <label for="address"><b>Address</b></label>
+                <input type="text" name="address" required>
+                <label for="p_address"><b>Permanent Address</b></label>
+                <input type="text" name="p_address" required>
+                <label for="nationality"><b>Nationality</b></label><br>
+                <select name="nation">
+                    <option value="kenyan">Kenyan</option>
+                    <option value="uganda">Uganda</option>
+                </select> <br>
+                <label for="p_contact"><b>Contact</b></label><br>
+                <input type="number" name="p_contact"><br>
+                <label for="email"><b>Email</b></label><br>
+                <input type="email" name="email">
+                <label for="religion"><b>Religion</b></label><br>
+                <select name="religion">
+                    <option value="christian">Christian</option>
+                    <option value="muslim">Muslim</option>
+                </select><br>
+                <label for="b_group"><b>Blood Group</b></label>
+                <select name="b_group">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="O">O</option>
+                </select><br>
+                <div class="dir" style="display:flex;">
+                    <div class="right" style="width:50%;">
+                        <label for="height"><b>Height</b>(inches) </label> <br>
+                        <input type="number" name="height" style="width: 50%;">
+                    </div>
+                    <div class="left" style="width:50%; float:left;">
+                        <label for="weight"><b>Weight</b>(kg)</label> <br>
+                        <input type="number" name="weight" style="width: 50%;" required>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-4 form1">
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+                <div class="profilepicture">
+                
+                </div>
+                <input type="file" name="profilepic">
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+            <div class="btn">
+                <button id="next1" type="button" onclick="ocd();">Next</button>
+            </div>
+            
+        </form>
+        <form action=""  id="form2">
+       
+            <div class="col-12 form1">
+            <h1>Academic details/Last attended school</h1>
+                <label for="hschool"><b>HIGH SCHOOL NAME</b></label>
+                <input type="text" name="hschool" required>
+                <div class="col-4 highs">
+                <label for="hclass"><b>CLASS NAME</b></label>
+                <input type="text" name="hclass" required>
+                </div>
+                <div class="col-4 highs">
+                <label for="hclass"><b>PASSING YEAR</b></label>
+                <input type="text" name="hclass" required>
+                </div>
+                <div class="col-4 highs">
+                <label for="hclass"><b>Result</b></label>
+                <input type="text" name="hclass" required>
+                </div>
+                <div class="btn"><button type="button" id="back1" onclick="back();" >Back</button></div>
+                <div class="btn"><button type="button" id="next2" onclick="next11()">Next</button></div>
+                
+
+            </div>
+        </form>
+        <div class="step-row">
+            <div id="progress"></div>
+            <div class="step-col"><small>step 1</small> </div>
+            <div class="step-col"><small>step 2</small> </div>
+            <div class="step-col"><small>step 3</small> </div>
+            <div class="step-col"><small>step 3</small> </div>
+        </div>
+    </div>
+    <script>
+    var form1=document.getElementById("form1");
+    var form2=document.getElementById("form2")
+
+    function ocd(){
+        form1.style.left="-850px";
+        form2.style.left="40px";
+    }
+    </script>
+</body>
+</html>

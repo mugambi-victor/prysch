@@ -1,0 +1,64 @@
+[17-May-2023 07:12:37 Europe/Berlin] PHP Warning:  Undefined array key "session" in C:\xampp\htdocs\prysch\student\transcript.php on line 42
+[17-May-2023 07:12:37 Europe/Berlin] PHP Warning:  Undefined array key "semester" in C:\xampp\htdocs\prysch\student\transcript.php on line 44
+[17-May-2023 07:12:37 Europe/Berlin] PHP Warning:  Undefined array key "sname" in C:\xampp\htdocs\prysch\student\transcript.php on line 45
+[17-May-2023 07:12:37 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_num_rows(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:47
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(47): mysqli_num_rows(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 47
+  
+[17-May-2023 07:12:38 Europe/Berlin] PHP Warning:  Undefined array key "session" in C:\xampp\htdocs\prysch\student\transcript.php on line 42
+[17-May-2023 07:12:38 Europe/Berlin] PHP Warning:  Undefined array key "semester" in C:\xampp\htdocs\prysch\student\transcript.php on line 44
+[17-May-2023 07:12:38 Europe/Berlin] PHP Warning:  Undefined array key "sname" in C:\xampp\htdocs\prysch\student\transcript.php on line 45
+[17-May-2023 07:12:38 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_num_rows(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:47
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(47): mysqli_num_rows(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 47
+[17-May-2023 07:29:13 Europe/Berlin] PHP Warning:  Undefined array key "session" in C:\xampp\htdocs\prysch\student\transcript.php on line 42
+[17-May-2023 07:29:13 Europe/Berlin] PHP Warning:  Undefined array key "semester" in C:\xampp\htdocs\prysch\student\transcript.php on line 44
+[17-May-2023 07:29:13 Europe/Berlin] PHP Warning:  Undefined array key "sname" in C:\xampp\htdocs\prysch\student\transcript.php on line 45
+[17-May-2023 07:29:13 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_num_rows(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:47
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(47): mysqli_num_rows(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 47
+[17-May-2023 07:41:59 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_num_rows(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:47
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(47): mysqli_num_rows(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 47
+[17-May-2023 07:44:09 Europe/Berlin] PHP Warning:  Undefined variable $semester in C:\xampp\htdocs\prysch\student\transcript.php on line 81
+[17-May-2023 07:44:09 Europe/Berlin] PHP Warning:  Undefined variable $session in C:\xampp\htdocs\prysch\student\transcript.php on line 81
+[17-May-2023 07:44:09 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_assoc(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:82
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(82): mysqli_fetch_assoc(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 82
+[17-May-2023 07:45:43 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_assoc(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:82
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(82): mysqli_fetch_assoc(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 82
+[17-May-2023 07:59:23 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_assoc(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:86
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(86): mysqli_fetch_assoc(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 86
+[17-May-2023 07:59:24 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_assoc(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:86
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(86): mysqli_fetch_assoc(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 86
+[17-May-2023 08:00:41 Europe/Berlin] PHP Warning:  Undefined array key "term" in C:\xampp\htdocs\prysch\student\transcript.php on line 89
+[17-May-2023 08:00:41 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_assoc(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:92
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(92): mysqli_fetch_assoc(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 92
+[17-May-2023 08:01:22 Europe/Berlin] PHP Warning:  Undefined array key "term" in C:\xampp\htdocs\prysch\student\transcript.php on line 89
+[17-May-2023 08:01:22 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_assoc(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\prysch\student\transcript.php:92
+Stack trace:
+#0 C:\xampp\htdocs\prysch\student\transcript.php(92): mysqli_fetch_assoc(false)
+#1 {main}
+  thrown in C:\xampp\htdocs\prysch\student\transcript.php on line 92
