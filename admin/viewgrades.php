@@ -44,7 +44,7 @@ $sstudent_name = "";
         <div class="container m-1 p-2  pt-5">
             <div class="row">
                 <div class="col-md">
-                    <form action="" method="post">
+                    <form action="viewgrades1" method="post">
                         <label for="session" class="form-label">Academic Year</label>
                         <select class="form-select" name="session" id="session-list" required>
                             <option value="">Select academic year</option>
@@ -98,44 +98,7 @@ $sstudent_name = "";
     
 
 
-        <div class="col-md table-responsive-lg" style="margin-top:50px;">
-            <table class=" table col-sm-12">
-                <tr>
-                    <th>Student Name</th>
-                    <th>Registration Number</th>
-                    <th>Class</th>
-                    <th>Exam Name</th>
-                </tr>
-
-                <?php 
-      if(isset($_REQUEST['submit'])){
-        $year=$_REQUEST['session'];
-        $class=$_REQUEST['classs'];
-        $exam=$_REQUEST['exam'];
-        $select=mysqli_query($conn, "select distinct regno,student_name from marks where exam=$exam");
-        $exx=mysqli_query($conn, "select *from exam where exam_id=$exam");
-        while($retr=mysqli_fetch_assoc($exx)){
-            $examname=$retr['exam_name'];
-        }
-        $exx=mysqli_query($conn, "select *from class where class_id=$class");
-        while($crtr=mysqli_fetch_assoc($exx)){
-            $classname=$crtr['class_name'];
-            $cid=$crtr['class_id'];
-        }
-
-        while($row=mysqli_fetch_assoc($select)){
-            $rno=$row['regno'];
-            echo $exam;
-           echo "<tr><td><form method='post' action='results.php'><label>" . $row['student_name'] . "</label></td><td><input  style='border:0;' name='rno' type='text' readonly value=" . $row['regno'] . "></td><td><input  style='border:0;' name='classs' type='text' readonly hidden value=" .$cid. ">" . $classname . "</td><td><input  style='border:0;' hidden name='exam' value=".$exam." type='text' readonly >".$examname ."</td><td><input type='submit' class='btn btn-info'  value='View Results' name='profile'></form></a></td></tr>"; 
-           }?>
-
-
-            </table>
-        </div>
-    </div>
-    </div>
-    <?php }
-    ?>
+        
     </div>
 
     </div>

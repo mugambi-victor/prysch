@@ -36,14 +36,49 @@ if(!isset($_SESSION["email"]))
      
 <?php
 if(isset($_REQUEST["profile"])){
-    ?>
-    <table class="table text-uppercase mt-5 table-striped col-sm-8">
-        <tr>
-            <th>Subject Name</th><th>Mark</th><th>Grade</th>
-        </tr><?php
     $exam=$_REQUEST["exam"];
     $rno=$_REQUEST["rno"];
     $classs=$_REQUEST["classs"];
+    ?>
+    <table class="table text-uppercase mt-2 table-striped table-bordered col-sm caption-top">
+    <caption>
+                    <?php 
+                    //student name
+                    $studentdata=mysqli_query($conn,"select *from student where regno='$rno'");
+                    $res=mysqli_fetch_assoc($studentdata);
+                    $student=$res['s_name'];
+                    //examname
+                    $examdata=mysqli_query($conn,"select *from exam where exam_id=$exam");
+                    $examr=mysqli_fetch_assoc($examdata);
+                    $examm=$examr['exam_name']; 
+                    
+                    //term info
+                    $query = mysqli_query($conn, "select distinct marks_id,student_name,regno,student_id,subject_id,term_id,exam,marks,comment from marks where exam='$exam' and regno='$rno'");
+                    $termq=mysqli_fetch_assoc($query);
+                    $term=$termq['term_id'];
+
+                    $termn=mysqli_query($conn,"select *from term where term_id=$term");
+                    $res2=mysqli_fetch_assoc($termn);
+                    $termname=$res2['term_name']; 
+                    //year
+                    $yrdata=mysqli_query($conn,"select *from academic_year where id='$res2[year]'");
+                    $yr=mysqli_fetch_assoc($yrdata);
+                    $yrname=$yr['sname']; 
+
+                    ?>
+                    <p>Editing marks for:</p>
+                   
+                    <p>
+                    Student Name: <?php echo $student;?> <br>
+                    Student Regno: <?php echo $rno;?><br>
+                    Year: <?php echo $yrname;?><br>
+                    Term: <?php echo $termname;?><br>
+                    Exam Name: <?php echo $examm;?> </p>
+                </caption>
+        <tr>
+            <th>Subject Name</th><th>Mark</th><th>Grade</th>
+        </tr><?php
+    
     $query=mysqli_query($conn, "select distinct marks_id,student_name,regno,student_id,subject_id,exam,marks,comment from marks where exam='$exam' and regno='$rno'");
     while($result=mysqli_fetch_assoc($query)) {
 

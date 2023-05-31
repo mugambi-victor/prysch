@@ -34,7 +34,7 @@ session_start();?>
     </style>
 </head>
 
-<body style="background-image:url('images/library-books.jpg'); background-size:cover; ">
+<body style="background-image:url('classroom.jpg'); background-size:cover; ">
 <nav class="navbar navbar-expand-lg navbar-light " style="background:#051094;">
         <div class="container-fluid">
         <img src="images/rh.jfif" class="pe-2" height="80" alt="CoolBrand"/>
@@ -64,23 +64,23 @@ session_start();?>
 
     <div class="container" >
     <div class="mt-4 p-5 text-white rounded" style="background:#051094">
-  <center><h1>Student Information Management System</h1></center>
+  <center><h1>Primary School Student Information Management System</h1></center>
   
 </div>
    <div class="container mt-5">
    <div class="row">
         <div class="col-md">
-        <a class="nav-link text-white btn btn-outline-primary" aria-current="page" href="admin/admin_login">Admin</a>
+        <a class="nav-link text-white btn btn-primary" aria-current="page" href="admin/admin_login">Admin</a>
         </div>
         <div class="col-md">
-        <a class="nav-link  text-white btn btn-outline-primary" aria-current="page" href="Accounts/accounts_login">Accounts</a>
+        <a class="nav-link  text-white btn btn-primary" aria-current="page" href="Accounts/accounts_login">Accounts</a>
         </div>
         <div class="col-md">
 
-        <a class="nav-link  text-white btn btn-outline-primary" href="student/s_login" tabindex="-1" aria-disabled="true">student</a>
+        <a class="nav-link  text-white btn btn-primary" href="student/s_login" tabindex="-1" aria-disabled="true">student</a>
         </div>
         <div class="col-md">
-        <a class="nav-link  text-white btn btn-outline-primary " href="parent/parent_login">Parent</a>
+        <a class="nav-link  text-white btn btn-primary " href="parent/parent_login">Parent</a>
         </div>
     </div>
    </div>

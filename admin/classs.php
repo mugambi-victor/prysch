@@ -57,13 +57,22 @@ $option = "";
   
     $checks=mysqli_query($conn, "select * from academic_year where sname='$yname'");
     if(mysqli_num_rows($checks)>0){
-        echo "sorry session already exists";
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+                  <strong>Sorry!</strong>Academic year already exists.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div><?php
     }else{
        
         $res = mysqli_query($conn, "insert into academic_year values('0', '$yname')");
 
         if ($res) {
-            echo "Data inserted successfully";
+            ?>
+            <div class="alert alert-success alert-dismissible fade show">
+                      <strong>Success!</strong>Data inserted successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div><?php
+           
             $term1="January-March";
             $term2="May-July";
             $term3="September-November";
@@ -82,7 +91,11 @@ $option = "";
 
  //exams 
                 if($tquery1&&$tquery2&&$tquery3){
-                    echo "Term created successfully";
+                 
+                    ?><div class="alert alert-success alert-dismissible fade show">
+                          <strong>success!</strong>Term created successfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div><?php
                     $exam1="Opener Exam";
                     $exam2="MidTerm Exam";
                     $exam3="EndTerm Exam";
@@ -129,20 +142,45 @@ $option = "";
              $e2query3=mysqli_query($conn,"insert into exam values(0,'$exam3',$id3)");
             }
             if($exquery1&&$exquery2&&$exquery3&&$equery1&&$equery2&&$equery3&&$e2query1&&$e2query2&&$e2query3){
-                echo"exams created successfully!!";
+              
+                ?>
+                <div class="alert alert-success alert-dismissible fade show">
+                          <strong>Success!</strong>Exams created successfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div><?php
                         }
                 }
                 else{
-                    echo"Sorry! an error occured while creating terms";
+                    ?>
+                    <div class="alert alert-danger alert-dismissible fade show">
+                              <strong>Sorry!</strong>an error occurred while creating terms.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div><?php
+                    
+                    ?><div class="alert alert-danger alert-dismissible fade show">
+                          <strong>Sorry!</strong> an error occurred while creating terms
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div><?php
                 }
             }
             else{
-                echo"an error occurred contact adminn";
+                ?>
+                <div class="alert alert-danger alert-dismissible fade show">
+                          <strong>An error occurred contact admin</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div><?php
+              
             }
 
 
         } else {
-            echo "error inserting data to the database";
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show">
+                          <strong>Error inserting data to the database</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <?php
+           
         }
     }
    }
@@ -151,7 +189,11 @@ elseif (isset($_REQUEST['create_class'])) {
     $classname = mysqli_real_escape_string($conn,$_REQUEST['cname'] );
   $checkclasss=mysqli_query($conn,"select *from class where class_name='$classname'");
   if(mysqli_num_rows($checkclasss)>0){
-   echo "sorry that class already exists!";
+   
+   ?><div class="alert alert-danger alert-dismissible fade show">
+                          <strong>Sorry!</strong> that class already exists.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div><?php
   }
   else{
 

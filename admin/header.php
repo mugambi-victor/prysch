@@ -17,10 +17,10 @@
 </style>
 <nav class="navbar navbar-expand-md m navbar-light " id="myHeader">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <img src="../images/logo.png" height="80" alt="Logo"/>
+            <a class="navbar-brand" href="admin_dashboard">
+                <img src="../images/rh.jfif" height="80" alt="Logo"/>
                
-            </a><p class="schoolname text-wrap text-white fw-bold" >NTUGI JUJA HILLSIDE ACADEMY</p>
+            </a><p class="schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

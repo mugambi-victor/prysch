@@ -48,7 +48,41 @@ if (!isset($_SESSION["email"]))
 
         ?>
         <div class="container">
-            <table class="table text-capitalize table-bordered mt-5 table-striped col-sm-8">
+            <table class="table text-capitalize table-bordered mt-3 table-striped col-sm caption-top">
+                <caption>
+                    <?php 
+                    //student name
+                    $studentdata=mysqli_query($conn,"select *from student where regno='$rno'");
+                    $res=mysqli_fetch_assoc($studentdata);
+                    $student=$res['s_name'];
+                    //examname
+                    $examdata=mysqli_query($conn,"select *from exam where exam_id=$exam");
+                    $examr=mysqli_fetch_assoc($examdata);
+                    $examm=$examr['exam_name']; 
+                    
+                    //term info
+                    $query = mysqli_query($conn, "select distinct marks_id,student_name,regno,student_id,subject_id,term_id,exam,marks,comment from marks where exam='$exam' and regno='$rno'");
+                    $termq=mysqli_fetch_assoc($query);
+                    $term=$termq['term_id'];
+
+                    $termn=mysqli_query($conn,"select *from term where term_id=$term");
+                    $res2=mysqli_fetch_assoc($termn);
+                    $termname=$res2['term_name']; 
+                    //year
+                    $yrdata=mysqli_query($conn,"select *from academic_year where id='$res2[year]'");
+                    $yr=mysqli_fetch_assoc($yrdata);
+                    $yrname=$yr['sname']; 
+
+                    ?>
+                    <p>Editing marks for:</p>
+                   
+                    <p>
+                    Student Name: <?php echo $student;?> <br>
+                    Student Regno: <?php echo $rno;?><br>
+                    Year: <?php echo $yrname;?><br>
+                    Term: <?php echo $termname;?><br>
+                    Exam Name: <?php echo $examm;?> </p>
+                </caption>
                 <tr>
                     <th>Subject Name</th>
                     <th>Mark</th>
@@ -57,7 +91,7 @@ if (!isset($_SESSION["email"]))
 
 
                 <?php
-                $query = mysqli_query($conn, "select distinct marks_id,student_name,regno,student_id,unit_id,exam,marks,comment from marks where exam='$exam' and regno='$rno'");
+                $query = mysqli_query($conn, "select distinct marks_id,student_name,regno,student_id,subject_id,exam,marks,comment from marks where exam='$exam' and regno='$rno'");
                 while ($result = mysqli_fetch_assoc($query)) {
 
                     $grade = "";
@@ -90,14 +124,14 @@ if (!isset($_SESSION["email"]))
                             <td style="width:50%;">
 
                                 <?php
-                                $rr = $result['unit_id'];
+                                $rr = $result['subject_id'];
 
-                                $qy = mysqli_query($conn, "select *from unit where id=$rr");
+                                $qy = mysqli_query($conn, "select *from subject where id=$rr");
                                 while ($row = mysqli_fetch_assoc($qy)) {
                                     ?>
 
                                     <?php
-                                    echo $row['unit_name'];
+                                    echo $row['subject_name'];
                                 } ?>
                             </td>
                             <td style=" width:50%; ">
@@ -105,11 +139,11 @@ if (!isset($_SESSION["email"]))
                                     <input type="text" name="mark" value="<?php echo $result['marks']; ?>">
                                     <input type="text" name="rno" value="<?php echo $rno; ?>" hidden>
                                     <input type="text" name="exam" value="<?php echo $exam; ?>" hidden>
-                                    <input type="text" name="unit_id" value="<?php echo $rr; ?>" hidden>
+                                    <input type="text" name="subject_id" value="<?php echo $rr; ?>" hidden>
 
                             </td>
                             <td>
-                                <input type="submit" name="updatemark" value="update" class="btn btn-primary">
+                                <input type="submit" name="updatemark" value="Update" class="btn btn-primary">
                                 </form>
                             </td>
 
@@ -162,21 +196,17 @@ if (!isset($_SESSION["email"]))
         $mark = $_REQUEST['mark'];
         $rno = $_REQUEST['rno'];
         $exam = $_REQUEST['exam'];
-        $unit_id = $_REQUEST['unit_id'];
-        $pp = "pass";
-        if ($_REQUEST['mark'] < 50) {
-            $pp = "sup";
-
-        }
+        $subject_id = $_REQUEST['subject_id'];
+        
 
 
 
-        $updatemark = mysqli_query($conn, "update marks set marks=$_REQUEST[mark], pass='$pp' where regno='$_REQUEST[rno]' and exam=$_REQUEST[exam] and unit_id=$_REQUEST[unit_id]");
+        $updatemark = mysqli_query($conn, "update marks set marks=$_REQUEST[mark] where regno='$_REQUEST[rno]' and exam=$_REQUEST[exam] and subject_id=$_REQUEST[subject_id]");
 
-        //get unitname to include in logs
-        $getunitname = mysqli_query($conn, "select *from unit where id=$unit_id");
-        $resunit = mysqli_fetch_assoc($getunitname);
-        $unitname = $resunit['unit_name'];
+        //get subjectname to include in logs
+        $getsubjectname = mysqli_query($conn, "select *from subject where id=$subject_id");
+        $ressubject = mysqli_fetch_assoc($getsubjectname);
+        $subjectname = $ressubject['subject_name'];
 
         if (!$updatemark) {
             echo "an error occured when updating marks";
@@ -197,7 +227,7 @@ if (!isset($_SESSION["email"]))
             $getstudentname = mysqli_query($conn, "select *from student where regno='$rno'");
             $resss = mysqli_fetch_assoc($getstudentname);
             $sname2 = $resss['s_name'];
-            $updateresult = mysqli_query($conn, "update results set result_percentage =$sum,comment='$pp' where regno='$rno' and exam_id=$exam");
+            $updateresult = mysqli_query($conn, "update results set sum =$sum where regno='$rno' and exam_id=$exam");
 
             if ($updateresult) {
 
@@ -207,7 +237,7 @@ if (!isset($_SESSION["email"]))
 
                 $b = date('d-m-Y');
                 $c = date("h:i:sa", $a);
-                $sendlog = mysqli_query($conn, "insert into operation_logs values(0,'$_SESSION[email]','edit','$rno','marks.$unitname','$c','$b')");
+                $sendlog = mysqli_query($conn, "insert into operation_logs values(0,'$_SESSION[email]','edit','$rno','marks.$subjectname','$c','$b')");
                 if (!isset($sendlog)) {
                     echo "a problem sending logs!! contact admin";
                 }
@@ -226,7 +256,7 @@ if (!isset($_SESSION["email"]))
                             <th>Grade</th>
                         </tr>
                         <?php
-                        $query = mysqli_query($conn, "select distinct marks_id,student_name,regno,student_id,unit_id,exam,marks,comment from marks where exam='$exam' and regno='$rno'");
+                        $query = mysqli_query($conn, "select distinct marks_id,student_name,regno,student_id,subject_id,exam,marks,comment from marks where exam='$exam' and regno='$rno'");
                         while ($result = mysqli_fetch_assoc($query)) {
 
                             $grade = "";
@@ -258,11 +288,11 @@ if (!isset($_SESSION["email"]))
                                 <tr>
                                     <td style="width:50%;">
                                         <?php
-                                        $rr = $result['unit_id'];
+                                        $rr = $result['subject_id'];
 
-                                        $qy = mysqli_query($conn, "select *from unit where id=$rr");
+                                        $qy = mysqli_query($conn, "select *from subject where id=$rr");
                                         while ($row = mysqli_fetch_assoc($qy)) {
-                                            echo $row['unit_name'];
+                                            echo $row['subject_name'];
                                         } ?>
                                     </td>
                                     <td style=" width:50%; ">
@@ -327,24 +357,12 @@ if (!isset($_SESSION["email"]))
                         <form action="editstudentmarks.php" class="col-4" method="post">
                             <input type="text" name="rno" value="<?php echo $rno; ?>" hidden>
                             <input type="text" name="exam" value="<?php echo $exam; ?>" hidden>
-                            <input type="text" name="semester" value="<?php echo $semester; ?>" hidden>
+                      
                             <input type="submit" class="btn btn-primary" name="edit" value="Edit marks">
 
                         </form>
 
-                        <?php
-                        $getexam = mysqli_query($conn, "select *from exam where exam_id=$exam");
-                        $examdata = mysqli_fetch_assoc($getexam);
-                        $semesters = $examdata['semester_id'];
-                        $academic_term = $examdata['academic_term'];
-                        $course = $examdata['course_id'];
-                        ?>
-                        <form action="viewgrades1.php" class="col text-end" method="post">
-                            <input type="text" name="semester" value="<?php echo $semesters; ?>" hidden>
-                            <input type="text" name="term" value="<?php echo $academic_term; ?>" hidden>
-                            <input type="text" name="course_name" value="<?php echo $course; ?>" hidden>
-                            <input type="submit" class="btn btn-danger" name="submit" value="Go Back">
-                        </form>
+                       
                     </div>
                 </div>
 

@@ -98,40 +98,48 @@ if (isset($_REQUEST["submit2"])) {
         $sum = $sum + $textbox;
         
        
-        $check=mysqli_query($conn,"select *from marks where subject_id=$subject  and student_id=$student and exam=$exam_id");
-        $ans=mysqli_fetch_assoc($check);
-        if($ans){
-            echo'<script> alert("sorry results for this student have already been added")</script>';
+        $check=mysqli_query($conn,"select *from marks where subject_id=$subject and student_id=$student and exam=$exam_id");
+      
+        if(mysqli_num_rows($check)>0){
+            die('<div class="alert alert-danger alert-dismissible fade show">
+            <strong>Sorry!!</strong>Student marks have already been added.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>');
+         
         }
         else{
             $crud = mysqli_query($conn, "insert into marks values('0','$sname2','$reg',$student,$subject,$term,$exam_id,$mark,'$comment')");
             if (!$crud) {
-                echo $mark . $subject;
+                echo $mark . $unit;
                 echo $student;
-            }
-            else {?>
-                <!-- Success Alert -->
-<div class="alert alert-success alert-dismissible fade show">
+                echo ("<div class='alert alert-danger alert-dismissible fade show'>
+<strong>Error!!</strong> an error occurred when submitting marks to the database.
+<button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+</div>");
+            } else {
+
+
+                echo ("<div class='alert alert-success alert-dismissible fade show'>
 <strong>Success!</strong> Data sent successfully.
-<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-</div><?php
-                
-                # code...
-                $results = mysqli_query($conn, "insert into results values('','$sname2','$reg',$term,$exam_id,$s_class,$student,$sum)");
-                if (!$results) {
-                    echo $sum;
-                }
+<button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+</div>");
             }
             $i++;
-            if($i>0){
-        
-                $mean=$sum/$i;
-                echo'<script> alert('.$mean.')</script>';
-               }
+
         }
-       
+
     }
-   
+    # code...
+
+    $resultss = mysqli_query($conn, "insert into results values('0','$sname2','$reg',$exam_id,$term,$s_class,$student,$sum,'$comment')");
+    if (!$resultss) {
+        echo ("an error occured while inserting data to the database") . mysqli_connect_error();
+    }
+
+    if ($i > 0) {
+
+        $mean = $sum / $i;
+    }
 }
 ?>
 </div>
