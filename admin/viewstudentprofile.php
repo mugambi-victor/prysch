@@ -18,6 +18,9 @@ if(!isset($_SESSION["email"]))
     
     
     <style>
+      .navbar{
+        z-index: 10;
+      }
         .gradient-custom {
 /* fallback for old browsers */
 background: #f6d365;
@@ -28,7 +31,12 @@ background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgb
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
 }
-
+.mm{
+        margin-top:10rem;
+    }
+    .mrow{
+        padding-left:6rem;
+    }
     </style>
 </head>
 <body>
@@ -48,8 +56,8 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             
     ?>
     
-    <div class="container col-md ">
-    <section class="vh-100"  style="background-color: #f4f5f7; ">
+    <div class="container mm col-md ">
+    <section class="vh-100 mrow"  style="background-color: #f4f5f7; ">
   
   <div class="row  d-flex justify-content-center align-items-center h-100 ">
     <div class="col col-lg-10 mb-4 mb-lg-0">

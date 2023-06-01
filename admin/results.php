@@ -20,6 +20,12 @@ if(!isset($_SESSION["email"]))
         a:hover{
             background-color: slateblue;
         }
+        .mm{
+        margin-top:11rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
     </style>
     
 </head>
@@ -32,15 +38,15 @@ if(!isset($_SESSION["email"]))
 
    ?>
 
-    <div class="container" >
-     
+    <div class="container mm " >
+     <div class="row mrow">
 <?php
 if(isset($_REQUEST["profile"])){
     $exam=$_REQUEST["exam"];
     $rno=$_REQUEST["rno"];
     $classs=$_REQUEST["classs"];
     ?>
-    <table class="table text-uppercase mt-2 table-striped table-bordered col-sm caption-top">
+    <table class=" table text-uppercase mt-2 table-striped table-bordered col-sm caption-top">
     <caption>
                     <?php 
                     //student name
@@ -169,7 +175,7 @@ if($query!==null){
         $grade="E";
     }
    
-    echo "\nAverage Score: <b>".$mean."</b><br>GRADE:<b> ".$grade."</b> <br><br>"; 
+    echo "<b>Average Score: <b>".$mean."</b><br>GRADE:<b> ".$grade."</b> <br><br>"; 
  
    
 }
@@ -195,7 +201,8 @@ elseif(isset($_REQUEST['results'])){
     }
     }
 ?>
-
+</div>
+</div>
 
 </body>
 </html>

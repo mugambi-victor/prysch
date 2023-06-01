@@ -23,6 +23,13 @@ $options=""; ?>
     a:hover {
         background-color: #8432DF;
     }
+
+    .mm{
+        margin-top:11rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
     </style>
 </head>
 
@@ -35,10 +42,11 @@ $options=""; ?>
 
    ?>
 
-        <div class="container m-5" style="margin-top:">
+        <div class="container mm">
+            <div class="row mrow">
             <form action="" method="post">
-                <div class="row">
-                    <div class="col-md">
+                <div class="row ">
+                    <div class="col-md ">
                         <input type="text" name="searchbox" placeholder="search registration no..." class="form-control"
                             required>
                     </div>
@@ -49,6 +57,8 @@ $options=""; ?>
 
 
             </form>
+            </div>
+            
         </div>
 
         <?php
@@ -82,8 +92,8 @@ $options=""; ?>
 
 
 
-            <div class="container mt-3">
-                <div class="row">
+            <div class="container">
+                <div class="row mrow">
 
                     <form action="" method="post" id="myform">
                         <p class="display-6 fw-bold">Search by class</p>

@@ -27,6 +27,12 @@ $sstudent_name = "";
     .nav a:hover {
         background-color: #8432DF;
     }
+    .mm{
+        margin-top:11rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
     </style>
 
 </head>
@@ -41,8 +47,8 @@ $sstudent_name = "";
    ?>
 
 
-        <div class="container m-1 p-2  pt-5">
-            <div class="row">
+        <div class="container  mm">
+            <div class="row mrow">
                 <div class="col-md">
                     <form action="viewgrades1" method="post">
                         <label for="session" class="form-label">Academic Year</label>
@@ -68,7 +74,7 @@ $sstudent_name = "";
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row mrow">
                 <div class="col">
                     <label for="exam" class="form-label">Exam</label>
                     <select class="form-select" name="exam" id="exam-list" required>

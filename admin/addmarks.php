@@ -27,6 +27,12 @@ if (!isset($_SESSION["email"])) {
         body{
             background:whitesmoke;
         }
+        .mm{
+        margin-top:11rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
     </style>
 </head>
 
@@ -40,8 +46,8 @@ if (!isset($_SESSION["email"])) {
 
    ?>
 
-    <div class="container col-md  ">
-        <div class="col-md">
+    <div class="container mm col-md  ">
+        <div class="mrow col-md">
             <?php
 
 if(isset($_POST["submit"])){

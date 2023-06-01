@@ -27,6 +27,12 @@ $options1="";
          .nav a:hover{
             background-color:slateblue;
         }
+        .mm{
+        margin-top:11rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
     </style>
     
 </head>
@@ -41,10 +47,10 @@ $options1="";
    ?>
 
 
-    <div class="container mt-5 mx-3">
+    <div class="container mm mx-3">
      
 
-        <div class="row ">
+        <div class="mrow ">
             <div class="col-md">
                <form action="class_grades.php" method="post">
                 <label for="session" class="form-label">Academic Year</label>

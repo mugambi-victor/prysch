@@ -34,13 +34,19 @@ $option = "";
     a:hover {
         background: slateblue;
     }
+    .mm{
+        margin-top:10rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
     </style>
 
 </head>
 
 <body>
     <?php include('header.php');?>
-    <div class="container-fluid col-sm  d-flex">
+    <div class="container-fluid  col-sm  d-flex">
         <?php 
 
   include('sidebar.php');
@@ -48,8 +54,8 @@ $option = "";
    ?>
 
 
-        <div class="container mt-5 m-1">
-            <div class="row">
+        <div class="container mm">
+            <div class="row mrow">
 
                 <?php
  if (isset($_POST['year'])) {
@@ -260,8 +266,8 @@ elseif (isset($_REQUEST['submit1'])) {
               }
             }
 }?>
-                <div class="container" style="border:0; margin-top:40px;">
-                    <div class="row">
+                <div class="container ">
+                    <div class="row ">
                         <form class="needs-validation" style=" margin:auto; " action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
             ?>" method="post">
 

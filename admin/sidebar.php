@@ -8,6 +8,11 @@
     .bb{
         height: 5%;
     }
+    .col-md-2{
+        margin-top:9rem;
+    
+        position:fixed;
+    }
 </style>
 
 

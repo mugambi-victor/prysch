@@ -25,6 +25,12 @@ if (!isset($_SESSION["email"])) {
     .nav a:hover {
         background-color: slateblue;
     }
+    .mm{
+        margin-top:11rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
     </style>
 </head>
 
@@ -39,7 +45,7 @@ if (!isset($_SESSION["email"])) {
    ?>
 
 
-        <div class="container col-md">
+        <div class="container mm col-md">
             <?php
 if (isset($_POST["submit"])) {
             $student_classname = mysqli_real_escape_string($conn,$_POST['classs']);
@@ -53,14 +59,25 @@ if (isset($_POST["submit"])) {
                 
                 
                 ?>
-            <div class="row">
+            <div class="row mrow">
                 <div class="col">
                     <form action="addmarks.php" method="post">
                         <input type="text" hidden value="<?php echo $res['id']; ?>" name="student">
                         <input type="text" hidden value="<?php echo $res['class']; ?>" name="class">
                         <input type="text" hidden value="<?php echo $term; ?>" name="term">
                         <input type="text" hidden value="<?php echo $exam; ?>" name="exam">
-                        <table class="table table-responsive-sm table-info">
+                        <table class="table table-responsive-sm table-bordered table-striped">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Regno
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
                             <tr>
 
                                 <td><input type="text" class="form-control text-capitalize" style="borders:0;" name="s_name" readonly

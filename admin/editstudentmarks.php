@@ -25,7 +25,12 @@ if (!isset($_SESSION["email"]))
     a:hover{
             background-color: slateblue;
         }
-
+        .mm{
+        margin-top:11rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
 </style>
 </head>
 
@@ -47,7 +52,10 @@ if (!isset($_SESSION["email"]))
 
 
         ?>
-        <div class="container">
+        <div class="container mm ">
+            <div class="row mrow">
+
+            
             <table class="table text-capitalize table-bordered mt-3 table-striped col-sm caption-top">
                 <caption>
                     <?php 
@@ -180,7 +188,7 @@ if (!isset($_SESSION["email"]))
                 }
 
 
-                echo "\n<span class='text-uppercase'>the mean is: </span>" . $mean;
+                echo "<span class='text-uppercase'>mean: $mean </span>" 
                 ?>
 
 
@@ -189,8 +197,8 @@ if (!isset($_SESSION["email"]))
 
     }
    ?>
-             <div class="container col-md">
-                   
+             <div class="container mm col-md">
+                   <div class="row mrow">
                    <?php
                 if (isset($_REQUEST['updatemark'])) {
         $mark = $_REQUEST['mark'];
@@ -399,7 +407,8 @@ if (!isset($_SESSION["email"]))
     ?>
 
 
-
+</div>
+</div>
 
 </body>
 

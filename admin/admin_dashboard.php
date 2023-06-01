@@ -40,6 +40,12 @@ if (!isset($_SESSION["email"])) {
 
 
         }
+        .mm{
+            margin-top:10rem;
+        }
+        .mrow{
+            padding-left:10rem;
+        }
 
         /* style="background:#051094;;" */
     </style>
@@ -53,10 +59,10 @@ if (!isset($_SESSION["email"])) {
 
    ?>
 
-        <div class="container ms-1  col-md">
+        <div class="container ms-1 mm col-md">
        
-            <p class="display-6"><i class="bi-house-fill"></i>Dashboard</p>
-            <div class="row mt-4">
+            <p class="display-6 mrow"><i class="bi-house-fill"></i>Dashboard</p>
+            <div class="row mrow">
                 <div class="col-md students">
                     <?php
                     $query = mysqli_query($conn, "select *from student");

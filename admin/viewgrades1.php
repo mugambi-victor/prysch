@@ -25,7 +25,12 @@ if (!isset($_SESSION["email"])) {
             background-color: slateblue;
         }
 
-        
+        .mm{
+        margin-top:11rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
     </style>
 </head>
 <body>
@@ -37,7 +42,7 @@ if (!isset($_SESSION["email"])) {
 
    ?>
 
-<div class="col-md col-sm " >
+<div class="col-md col-sm mm mrow" >
           
 
                 <?php 

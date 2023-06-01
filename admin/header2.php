@@ -14,6 +14,11 @@
         width:4rem;
         font-family:monospace;
     }
+    .navbar{
+        position:fixed;
+        width:100%;
+    }
+    
 </style>
 <nav class="navbar navbar-expand-md m navbar-light " >
         <div class="container-fluid">

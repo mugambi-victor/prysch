@@ -23,6 +23,12 @@ if(!isset($_SESSION["account_login"]))
      a:hover{
             background-color: slateblue;
         }
+        .mm{
+            margin-top:11rem;
+        }
+        .mrow{
+            padding-left:10rem
+        }
 </style>
    
 </head>
@@ -36,7 +42,8 @@ if(!isset($_SESSION["account_login"]))
 
    ?>
 
-  <div class="container col-md">
+  <div class="container mm col-md">
+    <div class="row mrow">
   <?php 
 if(isset($_REQUEST["add"]))
 	{	
@@ -78,13 +85,13 @@ else{
      <label for="uploadfile" class="form-label">Image</label> 
   <input type="file" class="form-control"  name="uploadfile" 
                    value="" />
-			<center><input type="submit" class="btn  mt-2 col-md-2 btn-secondary" value="Post" name="add" style="font-size:large;"/></center>
+			<center><input type="submit" class="btn  mt-1 btn-secondary" value="Post" name="add" style="font-size:large;"/></center>
 		
 
 </form>
     </div>
 
-</div>
+</div></div>
     
 </body>
 </html>

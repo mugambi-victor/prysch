@@ -85,6 +85,12 @@ $optionr = "";
     #myHeader{
       color: blue;
     }
+    .mm{
+        margin-top:10rem;
+    }
+    .mrow{
+        padding-left:10rem;
+    }
   </style>
 </head>
 
@@ -96,9 +102,9 @@ $optionr = "";
   include('sidebar.php');
 
    ?>
-  <div class="container col-md">
+  <div class="container  mm col-md">
     
-    <div class="div m-2">
+    <div class="div ">
     <?php
         if (isset($_REQUEST['submit'])) {
             $sname = $_REQUEST['s_name'];
@@ -168,7 +174,7 @@ $optionr = "";
         </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row mrow">
     <form class="row g-3" enctype="multipart/form-data" method="post">
   <div class="col-md-6">
     <label for="s_name" class="form-label">Student Name</label>

@@ -18,7 +18,7 @@
                 </li>
                 <hr class="text-white m-0">
                 <li class="  nav-item ">
-                    <a href="select_department" class="text-uppercase text-white nav-link"> <i class="bi-person-plus"></i>
+                    <a href="setfee" class="text-uppercase text-white nav-link"> <i class="bi-person-plus"></i>
                         set term fees</a>
                 </li>
                 <hr class="text-white m-0">

@@ -37,41 +37,35 @@ if (!isset($a)) {
 
     include('sidebar.php');
     ?>
-    <div class="container col-sm ">
+    <div class="container">
+        <p class="display-6"><i class="bi-house-fill"></i>AccountsDashboard</p>
         <div class="row">
-
-            <div class="ms-1  col-sm">
-
-                <p class="display-6"><i class="bi-house-fill"></i>AccountsDashboard</p>
-                <div class="row mt-4">
-                    <div class="col-md col-sm students">
-                        <?php
+            <div class="col-md col-sm students">
+                <?php
                         $query = mysqli_query($conn, "select *from student");
                         $result = mysqli_num_rows($query);
 
                         ?>
-                        <div class="m-1 row d-flex text-center p-0 bg-secondary">
-                            <div class="col-sm p">
-                                <p class="text fw-bold display-3">
-                                    <?php echo $result; ?>
-                                </p>
-                                <p>Students</p>
+                <div class="m-1 row d-flex text-center p-0 bg-secondary">
+                    <div class="col-sm col-md p">
+                        <p class="text fw-bold display-3">
+                            <?php echo $result; ?>
+                        </p>
+                        <p>Students</p>
 
-                            </div>
-                            <div class=" col-sm a">
-                                <img src="../image/student-icon1.jpg" class="card-img" alt="...">
-                            </div>
-
-
-
-
-                        </div>
                     </div>
+                    <div class=" col-sm col-md a">
+                        <img src="../image/student-icon1.jpg" class="card-img" alt="...">
+                    </div>
+
+
+
+
                 </div>
             </div>
-            <div class="col-md">
-<div class="div mt-5">
-                <?php 
+            <div class="col-md col-sm">
+                <div class="div ">
+                    <?php 
     //invoices
     $getstudents=mysqli_query($conn,"select max(term_id) as t from student");
     $sum=0;
@@ -111,53 +105,43 @@ if (!isset($a)) {
     $y=mysqli_fetch_assoc($getyr);
     $currentyr= $y['sname'];
     ?>
-                </p>
+                    </p>
 
-                <div class="col-md">
-                    <canvas id="myChart" style="width:100%;"></canvas>
+                    <div class="col-md">
+                        <canvas id="myChart" style="width:100%;"></canvas>
 
-                    <script>
-                    var xValues = ["Invoices", "Payments"];
-                    var yValues = ['<?php echo $sum ?>', '<?php echo $sum1 ?>', 5000];
-                    var barColors = ["red", "green", "blue"];
+                        <script>
+                        var xValues = ["Invoices", "Payments"];
+                        var yValues = ['<?php echo $sum ?>', '<?php echo $sum1 ?>', 5000];
+                        var barColors = ["red", "green", "blue"];
 
-                    new Chart("myChart", {
-                        type: "bar",
-                        data: {
-                            labels: xValues,
-                            datasets: [{
-                                backgroundColor: barColors,
-                                data: yValues
-                            }]
-                        },
-                        options: {
-                            legend: {
-                                display: false
+                        new Chart("myChart", {
+                            type: "bar",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
                             },
-                            title: {
-                                display: true,
-                                text: "Invoices vs Payments summary for <?php echo $currentyr ?> ( <?php echo $currentterm ?>  )"
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: "Invoices vs Payments summary for <?php echo $currentyr ?> ( <?php echo $currentterm ?>  )"
+                                }
                             }
-                        }
-                    });
-                    </script>
-                    <?php }} ?>
+                        });
+                        </script>
+                        <?php }} ?>
+                    </div>
                 </div>
-
-
-
-
-
-
-
-
             </div>
-        </div>
-
-    </div>
 
 
-    </div>
+
 
 </body>
 
