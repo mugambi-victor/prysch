@@ -1,4 +1,5 @@
-<?php include('connection.php');
+<?php 
+include_once('connection.php');
 session_start();
 $a=$_SESSION["email"];
 if (!isset($_SESSION["email"])) {
@@ -22,6 +23,9 @@ if (!isset($_SESSION["email"])) {
     <style>
         .nav a:hover {
             background-color:slateblue;
+        }
+        body{
+            background:whitesmoke;
         }
     </style>
 </head>
@@ -48,6 +52,44 @@ if(isset($_POST["submit"])){
     $term=mysqli_real_escape_string($conn,$_POST['term']);
     $sname=mysqli_real_escape_string($conn,$_POST['s_name']);
     $sql = mysqli_query($conn, "select distinct id,class,subject_name from subject where class='$student_classname'");
+    ?>
+    <table class="table table-bordered table-striped text-capitalize caption-top" >
+   <caption>
+   <?php 
+                    //student name
+                    $studentdata=mysqli_query($conn,"select *from student where regno='$rno'");
+                    $res=mysqli_fetch_assoc($studentdata);
+                    $student=$res['s_name'];
+                    //examname
+                    $examdata=mysqli_query($conn,"select *from exam where exam_id=$exam");
+                    $examr=mysqli_fetch_assoc($examdata);
+                    $examm=$examr['exam_name']; 
+                    
+                    //term info
+                   
+
+                    $termn=mysqli_query($conn,"select *from term where term_id=$term");
+                    $res2=mysqli_fetch_assoc($termn);
+                    $termname=$res2['term_name']; 
+                    //year
+                    $yrdata=mysqli_query($conn,"select *from academic_year where id='$res2[year]'");
+                    $yr=mysqli_fetch_assoc($yrdata);
+                    $yrname=$yr['sname']; 
+
+                    ?>
+                   <p>
+                   Student Name: <?php echo $student;?> <br>
+                   Student Regno: <?php echo $rno;?><br>
+                   Year: <?php echo $yrname;?><br>
+                   Term: <?php echo $termname;?><br>
+                   Exam Name: <?php echo $examm;?> </p>
+   </caption>
+        <tr>
+            <th>Subject Name</th>
+            <th>Mark</th>
+        </tr>
+
+        <?php
     while ($res = mysqli_fetch_assoc($sql)) { ?>
     <div class="col-md mt-4">
     <form id="subjectss" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
@@ -60,17 +102,18 @@ if(isset($_POST["submit"])){
             <input type="text" hidden value="<?php echo $sname; ?>" name="sname">
             <input type="text" hidden value="<?php echo $res['id']; ?>" name="sub_id[]">
 
-            <table class="table table-primary " >
+            
                 <tr>
                     <td> <input type="text" class="form-control text-center"  value="<?php echo $res['subject_name']; ?>" name="subname[]" id="subject_name" readonly></td>
                     <td> <input  type="number" class="form-control mark" name="marks[]" id="marks" placeholder="Enter Mark Here" required></td>
                 </tr>
-            </table>
+           
         <?php
     }
 
         ?>
-        <textarea class="form-control" name="comment" placeholder="enter comment here" row="4"></textarea> <br>
+         </table>
+        <textarea class="form-control" name="comment" placeholder="Enter comment here" row="4"></textarea> <br>
          <center><input type="submit" name="submit2" id="sub_btn" class="btn btn-primary" value="submit"></center>
         </form>
         </div>
@@ -123,23 +166,172 @@ if (isset($_REQUEST["submit2"])) {
 <strong>Success!</strong> Data sent successfully.
 <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
 </div>");
+
             }
             $i++;
 
         }
 
     }
-    # code...
-
+    
+// submitting result
     $resultss = mysqli_query($conn, "insert into results values('0','$sname2','$reg',$exam_id,$term,$s_class,$student,$sum,'$comment')");
     if (!$resultss) {
-        echo ("an error occured while inserting data to the database") . mysqli_connect_error();
+        die ("an error occured while inserting data to the database");
     }
 
     if ($i > 0) {
 
         $mean = $sum / $i;
     }
+    //promoting a student to the next term
+    //first get max exam_id that beleongs to students' current term(exams belong to a term).
+    $getmaxexam=mysqli_query($conn,"select max(exam_id) as m from exam where term_id=$term");
+    $ree=mysqli_fetch_assoc($getmaxexam);
+    // max term
+    $getyear=mysqli_query($conn,"select *from term where term_id=$term");
+    $ree2=mysqli_fetch_assoc($getyear);
+    $yrid=$ree2['year'];
+    $getmaxterm=mysqli_query($conn,"select max(term_id) as t from term where year=$yrid");
+    $ree1=mysqli_fetch_assoc($getmaxterm);
+    $mxt=$ree1['t'];
+
+    if($exam_id==$ree['m']&&$term!=$mxt){
+       
+        $newterm=$term+1;
+        $getfees=mysqli_query($conn,"select *from termfees where term=$newterm");
+        if(mysqli_num_rows($getfees)>0){
+            $resp=mysqli_fetch_assoc($getfees);
+        //get student data
+        $getstudentdata=mysqli_query($conn,"select *from student where regno='$reg'");
+        $res_student=mysqli_fetch_assoc($getstudentdata);
+        
+        $newfees=$res_student['total']+$resp['amount'];
+        $update_data=mysqli_query($conn,"update student set term_id=$newterm,total=$newfees where regno='$reg'");
+        if($update_data){?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+           Student promoted to the next term successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+       <?php }
+        else{ ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Sorry!!</strong> An error occurred while updating term. Contact admin.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+            <?php
+        }
+        }
+        else{
+            $update_data=mysqli_query($conn,"update student set term_id=$newterm where regno='$reg'");
+        if($update_data){ ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+           Student promoted to the next term successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+            <?php
+        }
+        else{
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Sorry!!</strong> An error occurred while updating term. Contact admin.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+            <?php
+            
+        }
+        }
+
+        
+    }
+    //Auto promoting a student to the next class
+    //first we check if the student belongs to the max term of an academic year and that they have been graded fort the max exam of that term.
+    //get year using term
+     //get student data
+     $getstudentdata=mysqli_query($conn,"select *from student where regno='$reg'");
+     $res_student=mysqli_fetch_assoc($getstudentdata);
+    
+    $getyear=mysqli_query($conn,"select *from term where term_id=$term");
+    $ree2=mysqli_fetch_assoc($getyear);
+    $yrid=$ree2['year'];
+    //term
+    $getmaxterm=mysqli_query($conn,"select max(term_id) as t from term where year=$yrid");
+    $ree1=mysqli_fetch_assoc($getmaxterm);
+    if($term==$ree1['t']){
+        //check if student is graded for max exam in term
+    $getmaxexam=mysqli_query($conn,"select max(exam_id) as m from exam where term_id=$term");
+    $ree=mysqli_fetch_assoc($getmaxexam);
+    if($exam_id==$ree['m']){
+
+    $newyear=$yrid+1;
+    $getnewterm=mysqli_query($conn,"select MIN(term_id) as term_id from term where year=$newyear");
+    $term=mysqli_fetch_assoc($getnewterm);
+    $tid=$term['term_id'];
+
+    $newfee=mysqli_query($conn,"select *from termfees where term=$tid");
+    if(mysqli_num_rows($newfee)>0){
+        $rest=mysqli_fetch_assoc($newfee);
+        $newfees=$rest['amount']+$res['total'];
+
+        $newclass=$res_student['class']+1;
+        
+    $updatequery=mysqli_query($conn,"update student set term_id=$tid,session_id=$newyear,total=$newfees, class=$newclass where regno='$reg'");
+    if($updatequery){
+        ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!!</strong>Student has been promoted successfully to the next class!
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+    <?php
+    }else{
+       
+        ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Sorry!!</strong> a problem has occured while updating student term. Please contact admin.
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+    <?php
+    }
+
+
+    }
+    else{
+        $rest=mysqli_fetch_assoc($newfee);
+       
+
+        $newclass=$res_student['class']+1;
+        
+    $updatequery=mysqli_query($conn,"update student set term_id=$tid,session_id=$newyear, class=$newclass where regno='$reg'");
+    if($updatequery){
+        ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!!</strong>Student has been promoted successfully to the next class!
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+    <?php
+    }else{
+        echo "a problem occurred while updating student";
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Sorry!!</strong> a problem has occured while promoting student to the next class. Please contact Admin
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+        <?php
+    }
+
+    }
+   
+    }}
+
+    
+
 }
 ?>
 </div>

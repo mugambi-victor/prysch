@@ -96,7 +96,8 @@ if(mysqli_num_rows($getstudent)>0){
     <div class="col-sm p-2 ">
         <?php
     $term=$result['term_id'];
-    $getterm = mysqli_query($conn, "select *from termfees where term =$term ");
+    $getterm = mysqli_query($conn, "select *from term where term_id =$term ");
+    if(mysqli_num_rows($getterm)>0){}
     $restt = mysqli_fetch_assoc($getterm);
 $year=$restt['year'];
  $getyr = mysqli_query($conn, "select *from academic_year where id =$year ");
@@ -133,28 +134,31 @@ $year=$restt['year'];
         <form action="transcript.php" method="POST">
             <!-- dropdown for session/academic year -->
             <label for="class" class="form-label">Class</label>
-            <select name="class" id="" class="form-select">
+            <select name="class" id="c-list" class="form-select">
             <option value="">select class</option>
             <?php
-            $query=mysqli_query($conn,"select distinct class_id from results where regno='$s'");
+            $query=mysqli_query($conn,"select distinct student_class from results where regno='$s'");
             while($r=mysqli_fetch_assoc($query)){
-                $getclassname=mysqli_query($conn,"select *from class where class_id='$r[class_id]'");
+                $getclassname=mysqli_query($conn,"select *from class where class_id='$r[student_class]'");
+               
+
+                
                 $rs=mysqli_fetch_assoc($getclassname);
                 ?>
                
 
-                <option value="<?php echo $r['class_id']; ?>"><?php echo $rs['class_name']; ?></option>
+                <option value="<?php echo $r['student_class']; ?>"><?php echo $rs['class_name']; ?></option>
                 <?php
-            }
+                }
             ?>
             </select>
 
 
             <label for="term" class="form-label">Term</label>
-            <select name="term" id="term-list" class="form-select">
+            <select name="ter" id="term-lis" class="form-select">
             <option value="">select term</option>
             <?php
-            $query=mysqli_query($conn,"select distinct term_id from results where regno='$s'");
+            $query=mysqli_query($conn,"select distinct term_id from results where regno='$s' and student_class='$r[student_class]' ");
             while($r=mysqli_fetch_assoc($query)){
                 $gettermname=mysqli_query($conn,"select *from term where term_id='$r[term_id]'");
                 $rs=mysqli_fetch_assoc($gettermname);
@@ -166,6 +170,12 @@ $year=$restt['year'];
             }
             ?>
             </select>
+
+            <label for="t-list" class="form-label">Exam</label>
+            <select name="term" id="t-list" class="form-select">
+                <option value="">select term</option>
+            </select>
+
             <label for="exam" class="form-label">Exam</label>
             <select name="exam" id="exam-list" class="form-select">
                 <option value="">select exam</option>
@@ -184,7 +194,7 @@ $year=$restt['year'];
                 function PrintPage() {
                     window.print();
                 }
-                $('#term-list').on('change', function () {
+                $('#t-list').on('change', function () {
         var term_id = this.value;
         $.ajax({
             type: "POST",
@@ -192,6 +202,17 @@ $year=$restt['year'];
             data: 'term_id=' + term_id,
             success: function (result) {
                 $("#exam-list").html(result);
+            }
+        });
+    });
+    $('#c-list').on('change', function () {
+        var c_id = this.value;
+        $.ajax({
+            type: "POST",
+            url: "get_ts.php",
+            data: 'c_id=' + c_id,
+            success: function (result) {
+                $("#t-list").html(result);
             }
         });
     });

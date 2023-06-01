@@ -13,15 +13,15 @@ if(!isset($_SESSION["email"]))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-   
-     <link rel="shortcut icon" href="ol.png" >
-    <title>ViewProfile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Document</title>
     <style>
         body {
-   
+    background: #0fa295;
 }
 
 .form-control:focus {
@@ -67,14 +67,28 @@ if(!isset($_SESSION["email"]))
     </style>
 </head>
 <body>
-<?php include('header.php');?>
-<div class="container-fluid col-sm  d-flex">
-<?php 
-
-  include('sidebar.php');
-
-   ?>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="images/mylogo.png" height="80"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                   
+                    
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="admin_dashboard.php"><i class='far fa-times-circle' style='font-size:48px;color:inherit'></i></a>
+                    </li>
+                  
+                </ul>
+            </div>
+        </div>
+    </nav> 
 <?php
 if(isset($_REQUEST["save"])){
     $uname=$_REQUEST["uname"];
@@ -116,7 +130,6 @@ while($result=mysqli_fetch_assoc($sql)){
                 </div>
 
                 <div class="mt-5 text-center"><button class="btn btn-primary " name="save" type="submit">Save Profile</button></div>
-                <div class="mt-5 text-center"><button class="btn btn-primary " name="create"><a href="createadmin.php" class="text-white text-decoration-none">Create New Admin</a></button></div>
             </div>
         </div>
         </div>
@@ -127,6 +140,6 @@ while($result=mysqli_fetch_assoc($sql)){
 
 </div></form>
 <?php } ?>
-<script src="jquery.js"></script>
+
 </body>
 </html>

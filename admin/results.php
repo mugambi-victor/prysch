@@ -66,7 +66,7 @@ if(isset($_REQUEST["profile"])){
                     $yrname=$yr['sname']; 
 
                     ?>
-                    <p>Editing marks for:</p>
+                    <p>Viewing marks for:</p>
                    
                     <p>
                     Student Name: <?php echo $student;?> <br>

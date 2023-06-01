@@ -25,7 +25,7 @@ include('connection.php'); ?>
     
 }
 .container{
-    padding-top: 8em;
+    padding-top: 6em;
 }
 
     </style>
@@ -64,6 +64,8 @@ include('connection.php'); ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 mt-2">
+            
+                <div class="container" >
           
                 <?php 
                 $sql=mysqli_query($conn,"select *from post order by id desc");
@@ -71,13 +73,16 @@ include('connection.php'); ?>
                 while($r_res=mysqli_fetch_assoc($sql))
                 {
                    if($r_res['id']%2==0){
+
+                    echo'<div class="col-sm-12 mt-2  content container" >';
+                    echo'<div class="row">';
                 echo'<div class="col-sm images" >';
                     
-                     echo "<img class='img-fluid img' style='height:28rem;' src=' image/".$r_res['img']. " ' >"; 
+                     echo "<img class='img-fluid' style='height:28em;' src=' image/".$r_res['img']. " ' >"; 
                    echo'  </div>';
-                    echo '<div class="col-sm details">';
+                    echo '<div class="col-sm details align-items-center">';
                     echo'<center><h2 class="text-capitalize" style="color:blue;">'.substr($r_res['title'],0,100).'</h2><hr style="color:blue;"></center><br>';
-                         echo'<p class="text-justify-center">'.substr($r_res['details'],0,100).'</p><br>';
+                         echo'<p class="text-justify-center ">'.substr($r_res['details'],0,100).'</p><br>';
                          
                          $getadmin=mysqli_query($conn,"select *from admin where email='$r_res[created_by]'");
                          $res=mysqli_fetch_assoc($getadmin);
@@ -118,7 +123,7 @@ include('connection.php'); ?>
                        echo'</div>';
                        
                        echo'<div class="col-sm images" >';
-                       echo "<img class='img-fluid'  style='height:28rem;'   src=' image/".$r_res['img']. " ' >"; 
+                       echo "<img class='img-fluid'  style='height:28em;'   src=' image/".$r_res['img']. " ' >"; 
                      echo'  </div>';
                      echo'</div>';
                      echo'</div>';
