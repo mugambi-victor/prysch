@@ -12,7 +12,18 @@ if(!isset($a)){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../admin/ol.png" >
-    <title>Document</title>
+    <title>InvoicesClassView</title>
+    <style>
+        
+    .mm {
+        padding-top: 10rem;
+    }
+
+    .mrow {
+        padding-left: 10rem;
+        transition: 1s;
+    }
+    </style>
 </head>
 <body>
     <?php include('header.php'); ?>
@@ -21,7 +32,8 @@ if(!isset($a)){
   
               
             
-                 <div class="container col-md">
+                 <div class="container mm col-md">
+<div class="mrow">
 
                  <?php
                  
@@ -244,5 +256,26 @@ if(!isset($a)){
 </div>
 </div>
 <?php } ?>
+<script>
+         const sideBar = document.querySelector('.sidebar');
+const toggler = document.querySelector('.toggler');
+const mrow= document.querySelector('.mrow');
+const container= document.querySelector('.container');
+  
+  toggler.addEventListener('click', function() {
+   
+    if (sideBar.style.marginLeft== '-250px')
+    {
+        sideBar.style.marginLeft= '0';
+        mrow.style.paddingLeft= '10rem';
+    }
+    else 
+    {
+        
+        sideBar.style.marginLeft= '-250px';
+        mrow.style.paddingLeft= '2rem';
+    }
+  });
+</script>
 </body>
 </html>

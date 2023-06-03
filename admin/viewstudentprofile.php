@@ -32,19 +32,21 @@ background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgb
 background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
 }
 .mm{
-        margin-top:10rem;
+        padding-top:10rem;
     }
     .mrow{
-        padding-left:6rem;
+       padding-left:10rem;   
+       transition: 1s;
     }
     </style>
 </head>
 <body>
-<?php include('header.php');?>
+<?php include('header.php');
+include('sidebar.php');?>
 <div class="container-fluid col-sm  d-flex">
 <?php 
 
-  include('sidebar.php');
+  
 
    
     if(isset($_REQUEST['profile'])){
@@ -165,5 +167,8 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 </section>
 </div>
 <?php }} ?>
+<script src="sidebar.js">
+
+</script>
 </body>
 </html>

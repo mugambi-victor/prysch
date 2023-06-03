@@ -154,22 +154,6 @@ $year=$restt['year'];
             </select>
 
 
-            <label for="term" class="form-label">Term</label>
-            <select name="ter" id="term-lis" class="form-select">
-            <option value="">select term</option>
-            <?php
-            $query=mysqli_query($conn,"select distinct term_id from results where regno='$s' and student_class='$r[student_class]' ");
-            while($r=mysqli_fetch_assoc($query)){
-                $gettermname=mysqli_query($conn,"select *from term where term_id='$r[term_id]'");
-                $rs=mysqli_fetch_assoc($gettermname);
-                ?>
-               
-
-                <option value="<?php echo $r['term_id']; ?>"><?php echo $rs['term_name']; ?></option>
-                <?php
-            }
-            ?>
-            </select>
 
             <label for="t-list" class="form-label">Exam</label>
             <select name="term" id="t-list" class="form-select">

@@ -22,8 +22,10 @@
 </style>
 <nav class="navbar navbar-expand-md m navbar-light " >
         <div class="container-fluid">
-        <a class="navbar-brand" href="admin_dashboard">
-                <img src="../images/rh.jfif" height="80" alt="Logo"/>
+        <div class="mmm">
+            <img src="../images/rh.jfif" class="pe-2" height="80" alt="CoolBrand"/> <br>
+            <button class="toggler btn mt-2 btn-danger" ><i class="bi-list"></i></button>
+            </div>
                
             </a><p class="schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

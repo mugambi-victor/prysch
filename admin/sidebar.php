@@ -1,22 +1,26 @@
-<link rel="stylesheet" href="sidebar.css">
+<!-- <link rel="stylesheet" href="sidebar.css"> -->
 <style>
    
-    ul.nav{
-        background:#051094; 
-       
-    }
-    .bb{
-        height: 5%;
-    }
-    .col-md-2{
-        margin-top:9rem;
+   ul.nav {
+    background: #051094;
+    height: 100%;
     
-        position:fixed;
-    }
+}
+li{
+   width:100%;
+}
+
+.col-md-2 {
+    margin-top:9rem;
+
+    position: fixed;
+    transition: 1s;
+}
+
 </style>
 
 
-        <div class="col-md-2 " id="collapseExample">
+        <div class="col-md-2 sidebar " id="collapseExample">
 
             <ul class="nav navbar-light vh-100 flex-column " id="" >
 
@@ -94,6 +98,4 @@
             </ul>
 
         </div>
-        <a class="btn btn-secondary bb mt-2"  data-bs-toggle="collapse" href="#" >
-<i class="bi-list"></i>
-</a>
+      

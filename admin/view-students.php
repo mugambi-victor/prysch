@@ -24,26 +24,25 @@ $options=""; ?>
         background-color: #8432DF;
     }
 
-    .mm{
-        margin-top:11rem;
+    .mm {
+        padding-top: 10rem;
     }
-    .mrow{
-        padding-left:10rem;
+
+    .mrow {
+    padding-left:10rem;
+        transition: 1s;
     }
     </style>
 </head>
 
 <body>
-    <?php include('header.php');?>
-    <div class="container-fluid col-sm  d-flex">
-        <?php 
+    <?php include('header.php');
+     include('sidebar.php');
+    ?>
+<div class="container-fluid mm ">
+    <div class="container col-sm   d-flex">
 
-  include('sidebar.php');
-
-   ?>
-
-        <div class="container mm">
-            <div class="row mrow">
+        <div class="row mrow ">
             <form action="" method="post">
                 <div class="row ">
                     <div class="col-md ">
@@ -57,23 +56,21 @@ $options=""; ?>
 
 
             </form>
-            </div>
-            
-        </div>
+        
 
-        <?php
+    <?php
     if(isset($_REQUEST['search'])){
         $regno=$_REQUEST['searchbox'];
 
 ?>
-        <table class=" col-sm-12">
-            <tr>
-                <th>Student Name</th>
-                <th>Registration Number</th>
-                <th>Parent's email</th>
-                <th>Parent's No.</th>
-            </tr>
-            <?php
+    <table class=" col-sm-12">
+        <tr>
+            <th>Student Name</th>
+            <th>Registration Number</th>
+            <th>Parent's email</th>
+            <th>Parent's No.</th>
+        </tr>
+        <?php
 
         $sql1=mysqli_query($conn, "select * from student where regno='$regno'");
         if(mysqli_num_rows($sql1)>0){
@@ -92,17 +89,14 @@ $options=""; ?>
 
 
 
-            <div class="container">
-                <div class="row mrow">
-
-                    <form action="" method="post" id="myform">
-                        <p class="display-6 fw-bold">Search by class</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="" class="form-label">Academic year</label>
-                                <select class="form-select" name="session" id="session-list" required>
-                                    <option selected>select academic year</option>
-                                    <?php
+        <form action="" method="post" id="myform">
+            <p class="display-6 fw-bold">Search by class</p>
+            <div class="row">
+                <div class="col-md">
+                    <label for="" class="form-label">Academic year</label>
+                    <select class="form-select" name="session" id="session-list" required>
+                        <option selected>select academic year</option>
+                        <?php
   $optionss="";
   $a_result = mysqli_query($conn, "select* from academic_year");
             if (mysqli_num_rows($a_result) > 0) {
@@ -115,21 +109,21 @@ $options=""; ?>
             }
            echo $optionss;
             ?>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="term_name" class="form-label">Term</label>
-                                <select class="form-select" name="term_name" id="term-list" required>
-                                    <option value=''>Select Term</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="" class="form-label">Class</label>
-                                <select class="form-select" name="class" id="class-list" required>
-                                    <option selected>select Class</option>
-                                    <?php
+                    </select>
+                </div>
+                <div class="col-md">
+                    <label for="term_name" class="form-label">Term</label>
+                    <select class="form-select" name="term_name" id="term-list" required>
+                        <option value=''>Select Term</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <label for="" class="form-label">Class</label>
+                    <select class="form-select" name="class" id="class-list" required>
+                        <option selected>select Class</option>
+                        <?php
   $d_result = mysqli_query($conn, "select* from class");
             if (mysqli_num_rows($d_result) > 0) {
                 // output data of each row
@@ -141,26 +135,25 @@ $options=""; ?>
             }
            echo $options;
             ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="submit" value="submit" name="submit" id="formsubmit"
-                                class="btn btn-primary mt-1">
-                        </div>
+                    </select>
                 </div>
-
-
-                </form>
             </div>
-            <div class="row">
-                <div class=" table-responsive-lg">
+            <div class="col-md-6">
+                <input type="submit" value="submit" name="submit" id="formsubmit" class="btn btn-primary mt-1">
+            </div>
+            </div>
 
-                    <?php 
+
+        </form>
+        
+        
+            
+<div class="row">
+                <?php 
               if(isset($_REQUEST["submit"])){
             ?>
 
-                    <?php
+                <?php
                   $year=mysqli_real_escape_string($conn,$_REQUEST["session"]);
                   $term=mysqli_real_escape_string($conn,$_REQUEST["term_name"]);
                  
@@ -168,14 +161,14 @@ $options=""; ?>
               
                   ?>
 
-                    <table class=" col-sm-12">
-                        <tr>
-                            <th>Student Name</th>
-                            <th>Registration Number</th>
-                            <th>Parent's email</th>
-                            <th>Parent's No.</th>
-                        </tr>
-                        <?php
+                <table class=" table">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Registration Number</th>
+                        <th>Parent's email</th>
+                        <th>Parent's No.</th>
+                    </tr>
+                    <?php
                   $sql=mysqli_query($conn,"select *from student where term_id=$term and class=$class");
                   if(mysqli_num_rows($sql)>0){
                   while($row=mysqli_fetch_assoc($sql)){
@@ -185,33 +178,33 @@ $options=""; ?>
                         echo "no records found here";
                     }?>
 
-                    </table>
-                </div>
+                </table>
             </div>
-    </div>
+        </div>
+        </div>
 
 
 
-    </div>
-    </div>
-    <?php }
+        </div>
+        </div>
+        <?php }
    
     ?>
-
-    <script src="../jquery.js"></script>
-    <script>
-    $('#session-list').on('change', function() {
-        var session_id = this.value;
-        $.ajax({
-            type: "POST",
-            url: "getclasses.php",
-            data: 'session_id=' + session_id,
-            success: function(result) {
-                $("#term-list").html(result);
-            }
+        <script src="sidebar.js"></script>
+        <script src="../jquery.js"></script>
+        <script>
+        $('#session-list').on('change', function() {
+            var session_id = this.value;
+            $.ajax({
+                type: "POST",
+                url: "getclasses.php",
+                data: 'session_id=' + session_id,
+                success: function(result) {
+                    $("#term-list").html(result);
+                }
+            });
         });
-    });
-    </script>
+        </script>
 
 </body>
 

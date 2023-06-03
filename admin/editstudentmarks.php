@@ -17,7 +17,7 @@ if (!isset($_SESSION["email"]))
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
      <link rel="shortcut icon" href="ol.png" >
     <title>StudentResults</title>
 
@@ -26,25 +26,23 @@ if (!isset($_SESSION["email"]))
             background-color: slateblue;
         }
         .mm{
-        margin-top:11rem;
+        padding-top:11rem;
     }
     .mrow{
-        padding-left:10rem;
+       padding-left:10rem;   
+       transition: 1s;
     }
 </style>
 </head>
 
 <body>
-<?php include('header.php');?>
-<div class="container-fluid col-sm  d-flex">
-<?php 
-
+<?php include('header.php');
   include('sidebar.php');
 
    ?>
 
 
-
+<div class="container-fluid col-sm  d-flex">
     <?php
     if (isset($_REQUEST['edit'])) {
         $rno = $_REQUEST['rno'];
@@ -409,7 +407,9 @@ if (!isset($_SESSION["email"]))
 
 </div>
 </div>
+<script src="sidebar.js">
 
+</script>
 </body>
 
 </html>

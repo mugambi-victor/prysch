@@ -20,61 +20,28 @@ if(!isset($_SESSION["email"]))
      <link rel="shortcut icon" href="ol.png" >
     <title>ViewProfile</title>
     <style>
-        body {
-   
-}
-
-.form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
-}
-
-.profile-button {
-    background: rgb(99, 39, 120);
-    box-shadow: none;
-    border: none
-}
-
-.profile-button:hover {
-    background: #682773
-}
-
-.profile-button:focus {
-    background: #682773;
-    box-shadow: none
-}
-
-.profile-button:active {
-    background: #682773;
-    box-shadow: none
-}
-
-.back:hover {
-    color: #682773;
-    cursor: pointer
-}
-
-.labels {
-    font-size: 11px
-}
-
-.add-experience:hover {
-    background: #BA68C8;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
-}
+       .mm{
+        padding-top:11rem;
+    }
+    .mrow{
+       padding-left:10rem;   
+       transition: 1s;
+    }
     </style>
 </head>
 <body>
 <?php include('header.php');?>
-<div class="container-fluid col-sm  d-flex">
+
 <?php 
 
   include('sidebar.php');
 
    ?>
+<div class="container-fluid col-sm  d-flex">
+<div class="container rounded bg-white mm mb-5">
+    <div class="col-md mrow">
 
+    
 <?php
 if(isset($_REQUEST["save"])){
     $uname=$_REQUEST["uname"];
@@ -97,7 +64,7 @@ $sql=mysqli_query($conn, "select *from admin where email='$s'");
 while($result=mysqli_fetch_assoc($sql)){
 ?>
 
-<div class="container rounded bg-white mt-5 mb-5">
+
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
             ?>" method="post">
            
@@ -128,5 +95,6 @@ while($result=mysqli_fetch_assoc($sql)){
 </div></form>
 <?php } ?>
 <script src="jquery.js"></script>
+<script src="sidebar.js"></script>
 </body>
 </html>

@@ -21,6 +21,15 @@ $options=""; ?>
         a:hover{
             background-color: #8432DF;
         }
+        
+    .mm {
+        padding-top: 10rem;
+    }
+
+    .mrow {
+        padding-left: 10rem;
+        transition: 1s;
+    }
        
     </style>
 </head>
@@ -28,7 +37,9 @@ $options=""; ?>
 <?php include("header.php"); 
 include('sidebar.php')?>
 
-    <div class="container col-sm m-5">
+    <div class="container col-sm mm">
+       <div class="mrow">
+      
        
 <?php
                  
@@ -81,15 +92,16 @@ include('sidebar.php')?>
                 }
                 
                  ?>
-    <form action="" method="post">
+    <form action="" method="post" class="mt-2">
     <div class="row">
     <div class="col-sm">
-                <input type="text" name="searchbox" placeholder="search registration no..." class="form-control" required></div>
-                <div class="col-sm m-0">
-                <input type="submit" name="search" class="btn btn-primary" value="Search">
-                </div>
+        <label for="" class="form-label">Search registration Number</label>
+                <input type="text" name="searchbox" placeholder="search registration no..." class="form-control" required> 
+                
+                <input type="submit" name="search" class="btn btn-primary mt-2" value="Search">
+              
          
-             
+                </div>
             
         </form>
     </div>
@@ -129,22 +141,28 @@ while($rts=mysqli_fetch_assoc($getpayments)){
         $getterm=mysqli_query($conn,"select *from term where term_id='$rts[term]'");
         $term=mysqli_fetch_assoc($getterm);
         $termname=$term['term_name'];
+        $tid=$term['term_id'];
         $yrid=$term['year'];
         $getyear=mysqli_query($conn,"select *from academic_year where id=$yrid");
         $year=mysqli_fetch_assoc($getyear);
         $yrname=$year['sname'];
         echo $yrname." - ".$termname; ?></td>
       
-        <td> <a href="#myModal<?php echo $res['id'] ?>" class="btn btn-sm btn-primary"
+        <td> <a href="#myModal<?php echo $rts['trans_id'] ?>" class="btn btn-sm btn-primary"
                             data-bs-toggle="modal">Payment Info</a>
 
                         <!-- Modal HTML -->
-                        <div id="myModal<?php echo $res['id'] ?>" class="modal fade">
+                        <div id="myModal<?php echo $rts['trans_id']  ?>" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title ">
-                                          Payment Details
+                                          Payment Details <?php  $rts['trans_id'];
+                                          $getp=mysqli_query($conn,"select *from payments where trans_id='$rts[trans_id]'");
+                                          $resp=mysqli_fetch_assoc($getp);
+                                          $t=$resp['term'];
+                                          echo $t;
+                                          ?>
                                         </h5>
                                         <button type="button" title="close" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
@@ -173,7 +191,7 @@ while($rts=mysqli_fetch_assoc($getpayments)){
                                                 class="form-control">
                                                 <label for="total_fee" class="form-label">Fee Amount</label>
                                             <input type="text" name="total_fee" aria-label="total_fee" value="<?php
-                                            $getfee=mysqli_query($conn,"select *from termfees where term='$rts[term]'");
+                                            $getfee=mysqli_query($conn,"select *from termfees where term=$t");
                                             $rest=mysqli_fetch_assoc($getfee);
                                             echo $rest['amount']; ?>" readonly
                                                 class="form-control">
@@ -312,6 +330,25 @@ while($rts=mysqli_fetch_assoc($getpayments)){
             }
         });
     });
+    const sideBar = document.querySelector('.sidebar');
+const toggler = document.querySelector('.toggler');
+const mrow= document.querySelector('.mrow');
+const container= document.querySelector('.container');
+  
+  toggler.addEventListener('click', function() {
+   
+    if (sideBar.style.marginLeft== '-250px')
+    {
+        sideBar.style.marginLeft= '0';
+        mrow.style.paddingLeft= '10rem';
+    }
+    else 
+    {
+        
+        sideBar.style.marginLeft= '-250px';
+        mrow.style.paddingLeft= '2rem';
+    }
+  });
     </script>
 
 </body>

@@ -70,7 +70,7 @@ if(isset($_REQUEST['login']))
 $a =mysqli_real_escape_string($conn,$_REQUEST['email']);
 $b = mysqli_real_escape_string($conn,$_REQUEST['pass']);
 
-$res = mysqli_query($conn,"select* from admin where email='$a' and passwords='$b' ");
+$res = mysqli_query($conn,"select* from admin where email='$a' and passwords='$b' and user_type=0 ");
 $result=mysqli_fetch_assoc($res);
 if($result)
 {

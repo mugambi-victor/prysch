@@ -28,27 +28,27 @@ $sstudent_name = "";
         background-color: #8432DF;
     }
     .mm{
-        margin-top:11rem;
+        padding-top:10rem;
     }
     .mrow{
-        padding-left:10rem;
+       padding-left:10rem;   
+       transition: 1s;
     }
     </style>
 
 </head>
 
 <body>
-    <?php include('header.php');?>
-    <div class="container-fluid col-sm  d-flex">
-        <?php 
+    <?php 
+    include('header.php');
 
   include('sidebar.php');
 
    ?>
 
-
+<div class="container-fluid col-sm  d-flex">
         <div class="container  mm">
-            <div class="row mrow">
+            <div class="row mrow d-block">
                 <div class="col-md">
                     <form action="viewgrades1" method="post">
                         <label for="session" class="form-label">Academic Year</label>
@@ -73,8 +73,8 @@ $sstudent_name = "";
                     </select>
                 </div>
 
-            </div>
-            <div class="row mrow">
+            
+            <div class="col-md col-sm ">
                 <div class="col">
                     <label for="exam" class="form-label">Exam</label>
                     <select class="form-select" name="exam" id="exam-list" required>
@@ -109,6 +109,7 @@ $sstudent_name = "";
 
     </div>
 </body>
+<script src="sidebar.js"></script>
 <script src="jquery.js"></script>
 <script>
 $('#session-list').on('change', function() {

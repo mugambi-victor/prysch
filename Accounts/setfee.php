@@ -16,6 +16,16 @@ if(!isset($a)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../admin/ol.png">
     <title>Accounts|Departments</title>
+    <style>
+   .mm{
+        padding-top:10rem;
+    }
+
+    .mrow {
+        padding-left: 10rem;
+        transition: 1s;
+    }
+    </style>
 </head>
 
 <body>
@@ -24,9 +34,10 @@ if(!isset($a)){
 include('header.php');
 include('sidebar.php');
 ?>
-    <div class="container col-sm">
-
-        <?php
+    <div class="container mm col-sm">
+        <div class="row mrow">
+    
+            <?php
         //set fees
 if(isset($_REQUEST['set'])){
     $year=$_REQUEST['year'];
@@ -39,7 +50,7 @@ if(isset($_REQUEST['set'])){
     $filename = $_FILES["uploads"]["name"];
 
     $check=mysqli_query($conn,"select *from termfees where term=$term and class=$class");
-    if(mysqli_num_rows($check)<1){
+    if(mysqli_num_rows($check)==0){
         $senddata=mysqli_query($conn, "insert into termfees values (0,$year,$term,$class,'$filename',$total)");
 
         //update student fee 
@@ -64,24 +75,32 @@ if(isset($_REQUEST['set'])){
         
 
         if($senddata && move_uploaded_file($_FILES['uploads']['tmp_name'],$arget)){ ?>
-        <!-- Success Alert -->
-        <div class="alert alert-success alert-dismissible fade show">
+           
+            <!-- Success Alert -->
+            <div class='alert alert-success alert-dismissible fade show'>
             <strong>Success!</strong> Data inserted to the database.
-            <button type="button" class="btn-success" data-bs-dismiss="alert"></button>
-        </div><?php
+    <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+</div><?php
             
           }
           else{?>
-        <!-- Error Alert -->
-        <div class="alert alert-danger alert-dismissible fade show">
-            <strong>Error!</strong> A problem has been occurred while submitting your data.
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-        <?php
+            <!-- Error Alert -->
+            <div class="alert alert-danger alert-dismissible fade show">
+                <strong>Error!</strong> A problem has been occurred while submitting your data.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <?php
           }
     }
     else{
-        echo"sorry! fees already added, unless you update fee";
+        
+        ?>
+           
+            <!-- Success Alert -->
+            <div class='alert alert-info alert-dismissible fade show'>
+            <strong>Info!</strong> fees already added, unless you update fee;
+    <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+</div><?php
     }
 }
 //update fees
@@ -99,20 +118,22 @@ elseif(isset($_REQUEST['update'])){
     if(mysqli_num_rows($check)>0){
         $senddata=mysqli_query($conn, "update termfees set fee_structure='$filename', amount=$total");
         if($senddata && move_uploaded_file($_FILES['uploads']['tmp_name'],$arget)){ ?>
-        <!-- Success Alert -->
-        <div class="alert alert-success alert-dismissible fade show">
-            <strong>Success!</strong> Data updated successfully!.
-            <button type="button" class="btn-success" data-bs-dismiss="alert"></button>
-        </div><?php
+            <!-- Success Alert -->
+            <div class='alert alert-success alert-dismissible fade show'>
+            <strong>Success!</strong> Data inserted to the database.
+    <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+</div>
+            
+            <?php
             
           }
           else{?>
-        <!-- Error Alert -->
-        <div class="alert alert-danger alert-dismissible fade show">
-            <strong>Error!</strong> A problem has been occurred while submitting your data.
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-        <?php
+            <!-- Error Alert -->
+            <div class="alert alert-danger alert-dismissible fade show">
+                <strong>Error!</strong> A problem has been occurred while submitting your data.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <?php
           }
 }
 else{
@@ -120,141 +141,149 @@ else{
 }}
 
 ?>
-        <div class="row">
-            <div class="col-md">
-            <p class="lead mt-2 text-center">Set Term Fees</p>
-                <?php
+            <div class="row">
+                <div class="col-md">
+                    <p class="lead mt-2 text-center">Set Term Fees</p>
+                    <?php
 $select=mysqli_query($conn,"select *from academic_year");
 ?>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <label for="year" class="form-label">Academic year</label>
-                    <select name="year" class="form-select" id="session-list">
-                        <option value="">select academic year</option>
-                        <?php
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <label for="year" class="form-label">Academic year</label>
+                        <select name="year" class="form-select" id="session-list">
+                            <option value="">select academic year</option>
+                            <?php
         while($rs=mysqli_fetch_assoc($select)){
             ?>
-                        <option value="<?php echo $rs['id']; ?>"><?php echo $rs['sname']; ?></option>
-                        <?php
+                            <option value="<?php echo $rs['id']; ?>"><?php echo $rs['sname']; ?></option>
+                            <?php
         }
         ?>
-                    </select>
+                        </select>
 
-                    <label for="term" class="form-label">Term</label>
-                    <select name="term" id="term-list" class="form-select">
-                        <option value="">select Term</option>
-                    </select>
+                        <label for="term" class="form-label">Term</label>
+                        <select name="term" id="term-list" class="form-select">
+                            <option value="">select Term</option>
+                        </select>
 
-                    <label for="class" class="form-label">Class</label>
-                    <select name="class" id="class-list" class="form-select">
-                        <option value="">select class</option>
-                        
-                        <?php
+                        <label for="class" class="form-label">Class</label>
+                        <select name="class" id="class-list" class="form-select">
+                            <option value="">select class</option>
+
+                            <?php
             $query=mysqli_query($conn,"select *from class ");
             while($r=mysqli_fetch_assoc($query)){
                 
                 ?>
-                        <option value="<?php echo $r['class_id']; ?>"><?php echo $r['class_name']; ?></option>
-                        <?php
+                            <option value="<?php echo $r['class_id']; ?>"><?php echo $r['class_name']; ?></option>
+                            <?php
             }
             ?>
-                    </select>
-                    <label for="uploads" class="form-label ">Fee structure</label>
-                    <input type="file" name="uploads" class="form-control">
+                        </select>
+                        <label for="uploads" class="form-label ">Fee structure</label>
+                        <input type="file" name="uploads" class="form-control">
 
-                    <label for="total" class="form-label ">Fee structure</label>
-                    <input type="number" placeholder="enter a number" name="total" class="form-control">
+                        <label for="total" class="form-label ">Fee structure</label>
+                        <input type="number" placeholder="enter a number" name="total" class="form-control">
 
-                    <input type="submit" value="set fee" name="set" class="btn btn-outline-primary mt-3 ">
-                    <input type="submit" value="update fee" name="update" class="btn btn-outline-info mt-3 ">
-                </form>
-            </div>
+                        <input type="submit" value="set fee" name="set" class="btn btn-outline-primary mb-3 mt-3 ">
+                        <input type="submit" value="update fee" name="update" class="btn mb-3 btn-outline-info mt-3 ">
+                    </form>
+                </div>
 
-            <!-- view fee summary -->
-            <div class="col-md">
+                <!-- view fee summary -->
+                <div class="col-md">
 
-                <p class="lead mt-2 text-center">View Fee summary</p>
-                <?php
+                    <p class="lead mt-2 text-center">View Fee summary</p>
+                    <?php
                 $select=mysqli_query($conn,"select *from academic_year");
 ?>
-                <form action="" method="post" enctype="multipart/form-data">
+                    <form action="" method="post">
                     <label for="year" class="form-label">Academic year</label>
-                    <select name="year" class="form-select" id="session-list">
-                        <option value="">select academic year</option>
-                        <?php
+                        <select name="year" class="form-select" id="session-lists">
+                            <option value="">select academic year</option>
+                            <?php
         while($rs=mysqli_fetch_assoc($select)){
             ?>
-                        <option value="<?php echo $rs['id']; ?>"><?php echo $rs['sname']; ?></option>
-                        <?php
+                            <option value="<?php echo $rs['id']; ?>"><?php echo $rs['sname']; ?></option>
+                            <?php
         }
         ?>
-                    </select>
-                    <label for="class" class="form-label">Class</label>
-                    <select name="class" id="class-list" class="form-select">
-                        <option value="">select class</option>
-                        
-                        <?php
+                        </select>
+
+                        <label for="term" class="form-label">Term</label>
+                        <select name="term" id="term-lists" class="form-select">
+                            <option value="">select Term</option>
+                        </select>
+
+                        <label for="class" class="form-label">Class</label>
+                        <select name="class" id="class-list" class="form-select">
+                            <option value="">select class</option>
+
+                            <?php
             $query=mysqli_query($conn,"select *from class ");
             while($r=mysqli_fetch_assoc($query)){
                 
                 ?>
-                        <option value="<?php echo $r['class_id']; ?>"><?php echo $r['class_name']; ?></option>
-                        <?php
+                            <option value="<?php echo $r['class_id']; ?>"><?php echo $r['class_name']; ?></option>
+                            <?php
             }
             ?>
-                    </select>
+                        </select>
 
-                    <input type="submit" name="view" class="btn mt-2 btn-primary" value="view fees">
-                </form>
-                <?php
+                        <input type="submit" name="view" class="btn mt-2 btn-primary" value="view fees">
+                    </form>
+                    <?php
                 if(isset($_REQUEST['view'])){
                     $year=$_REQUEST['year'];
                     $class=$_REQUEST['class'];
-                $selectst=mysqli_query($conn,"select *from termfees where year=$year and class=$class");
+                    $term=$_REQUEST['term'];
+                
+                $selectst=mysqli_query($conn,"select *from termfees where year=$year and term=$term and class=$class ");
 
                 ?>
-                
-                <table class="table mt-2 table-striped">
 
-                    <tr>
+                    <table class="table mt-2 table-striped">
 
-                        <th>
-                            s/N
-                        </th>
-                        <th>
-                            Term Name
-                        </th>
-                        <th>
-                            Fee amount
-                        </th>
-                    </tr>
-                    <?php 
+                        <tr>
+
+                            <th>
+                                s/N
+                            </th>
+                            <th>
+                                Term Name
+                            </th>
+                            <th>
+                                Fee amount
+                            </th>
+                        </tr>
+                        <?php 
               
                 $x=1;
                 while($rt=mysqli_fetch_assoc($selectst)){
                     ?>
-                    <tr>
-                        <td>
-                            <?php echo $x++;
+                        <tr>
+                            <td>
+                                <?php echo $x++;
                             ?>
-                        </td>
-                        <td>
-                            <?php 
+                            </td>
+                            <td>
+                                <?php 
                             $gettermname=mysqli_query($conn,"select *from term where term_id='$rt[term]'");
                             $res=mysqli_fetch_assoc($gettermname);
                             echo $res['term_name']?>
-                        </td>
-                        <td>
-                            <?php echo $rt['amount'] ?>
-                        </td>
-                    </tr>
-                    <?php
+                            </td>
+                            <td>
+                                <?php echo $rt['amount'] ?>
+                            </td>
+                        </tr>
+                        <?php
                 }}
                 ?>
-                </table>
+                    </table>
+                </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 </body>
 
 <script src="../jquery.js"></script>
@@ -273,15 +302,37 @@ $('#session-list').on('change', function() {
         }
     });
 });
-
-$('.bb').on('click', function() {
-    $('#collapseExample').addClass('active');
-
+$('#session-lists').on('change', function() {
+    var session_id = this.value;
+    $.ajax({
+        type: "POST",
+        url: "getterms.php",
+        data: 'session_id=' + session_id,
+        success: function(result) {
+            $("#term-lists").html(result);
+        }
+    });
 });
-$('.closebtn').on('click', function() {
-    $('#collapseExample').removeClass('active');
+const sideBar = document.querySelector('.sidebar');
+const toggler = document.querySelector('.toggler');
+const mrow= document.querySelector('.mrow');
+const container= document.querySelector('.container');
+  
+  toggler.addEventListener('click', function() {
+   
+    if (sideBar.style.marginLeft== '-250px')
+    {
+        sideBar.style.marginLeft= '0';
+        mrow.style.paddingLeft= '10rem';
+    }
+    else 
+    {
+        
+        sideBar.style.marginLeft= '-250px';
+        mrow.style.paddingLeft= '2rem';
+    }
+  });
 
-});
 </script>
 
 

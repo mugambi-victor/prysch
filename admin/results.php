@@ -21,23 +21,22 @@ if(!isset($_SESSION["email"]))
             background-color: slateblue;
         }
         .mm{
-        margin-top:11rem;
+        padding-top:11rem;
     }
     .mrow{
-        padding-left:10rem;
+       padding-left:10rem;   
+       transition: 1s;
     }
     </style>
     
 </head>
 <body>
-<?php include('header.php');?>
-<div class="container-fluid col-sm  d-flex">
-<?php 
+<?php include('header.php');
 
   include('sidebar.php');
 
    ?>
-
+   <div class="container-fluid col-sm  d-flex">
     <div class="container mm " >
      <div class="row mrow">
 <?php
@@ -203,6 +202,6 @@ elseif(isset($_REQUEST['results'])){
 ?>
 </div>
 </div>
-
+<script src="sidebar.js"></script>
 </body>
 </html>

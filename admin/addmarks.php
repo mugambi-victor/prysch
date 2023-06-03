@@ -28,24 +28,22 @@ if (!isset($_SESSION["email"])) {
             background:whitesmoke;
         }
         .mm{
-        margin-top:11rem;
+        padding-top:10rem;
     }
     .mrow{
-        padding-left:10rem;
+       padding-left:10rem;   
+       transition: 1s;
     }
     </style>
 </head>
 
 <body>
 
-<?php include('header.php');?>
-<div class="container-fluid col-sm  d-flex">
 <?php 
-
+include('header.php');
   include('sidebar.php');
-
    ?>
-
+<div class="container-fluid col-sm  d-flex">
     <div class="container mm col-md  ">
         <div class="mrow col-md">
             <?php
@@ -342,5 +340,6 @@ if (isset($_REQUEST["submit2"])) {
 ?>
 </div>
 </div>
+<script src="sidebar.js"></script>
 </body>
 </html>

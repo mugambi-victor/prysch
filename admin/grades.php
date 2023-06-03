@@ -28,24 +28,25 @@ $options1="";
             background-color:slateblue;
         }
         .mm{
-        margin-top:11rem;
+        padding-top:10rem;
     }
     .mrow{
-        padding-left:10rem;
+       padding-left:12rem;   
+       transition: 1s;
     }
     </style>
     
 </head>
 
 <body>
-<?php include('header.php');?>
-<div class="container-fluid col-sm  d-flex">
-<?php 
+<?php include('header.php');
+
 
   include('sidebar.php');
+  ?>
 
-   ?>
-
+   
+<div class="container-fluid col-sm  d-flex">
 
     <div class="container mm mx-3">
      
@@ -185,8 +186,35 @@ $options1="";
         ?>
 
 </body>
+
 <script src="jquery.js"></script>
 <script>
+    
+    const sideBar = document.querySelector('.sidebar');
+const toggler = document.querySelector('.toggler');
+const mrow= document.querySelector('.mrow');
+const container= document.querySelector('.container');
+  
+  toggler.addEventListener('click', function() {
+   
+    if (sideBar.style.marginLeft== '-250px')
+    {
+        sideBar.style.marginLeft= '0';
+        mrow.style.paddingLeft= '12rem';
+    }
+    else 
+    {
+        
+        sideBar.style.marginLeft= '-250px';
+        mrow.style.paddingLeft= '2rem';
+    }
+   
+
+  });
+
+ 
+
+  
     $('#session-list').on('change', function() {
         var session_id = this.value;
         $.ajax({

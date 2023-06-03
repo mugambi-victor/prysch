@@ -25,15 +25,10 @@ if (!isset($_SESSION["email"])) {
 
 
     <style>
-        .nav a:hover {
-            background-color:slateblue;
-
-        }
-
-        .nav a:active {
-            background-color: slateblue;
-        }
-
+       
+        a:hover {
+        opacity:.7;
+    }
         .student1 {
             height: 100px;
             background-image: url("image/studentsicon.jpg");
@@ -41,28 +36,27 @@ if (!isset($_SESSION["email"])) {
 
         }
         .mm{
-            margin-top:10rem;
-        }
-        .mrow{
-            padding-left:10rem;
-        }
+        padding-top:10rem;
+    }
+    .mrow{
+       padding-left:10rem;   
+       transition: 1s;
+    }
 
         /* style="background:#051094;;" */
     </style>
 </head>
 
-<body><?php include('header2.php');?>
+<body><?php include('header2.php');
+ include('sidebar.php');?>
+
 <div class="container-fluid col-sm  d-flex">
-<?php 
 
-  include('sidebar.php');
-
-   ?>
-
-        <div class="container ms-1 mm col-md">
+        <div class="container mm col-md">
        
-            <p class="display-6 mrow"><i class="bi-house-fill"></i>Dashboard</p>
+            
             <div class="row mrow">
+            <p class="display-6"><i class="bi-house-fill"></i>AdminDashboard</p>
                 <div class="col-md students">
                     <?php
                     $query = mysqli_query($conn, "select *from student");
@@ -110,7 +104,7 @@ if (!isset($_SESSION["email"])) {
                 
 
     </div>
-
+    <script src="sidebar.js"></script>
 </body>
 
 </html>

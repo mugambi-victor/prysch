@@ -35,27 +35,30 @@ $option = "";
         background: slateblue;
     }
     .mm{
-        margin-top:10rem;
+        padding-top:10rem;
     }
     .mrow{
-        padding-left:10rem;
+       padding-left:10rem;   
+       transition: 1s;
     }
     </style>
 
 </head>
 
 <body>
-    <?php include('header.php');?>
-    <div class="container-fluid  col-sm  d-flex">
+    <?php include('header.php');
+    include('sidebar.php');?>
+    
+    <div class="container-fluid  col-sm mm d-flex">
         <?php 
 
-  include('sidebar.php');
+  
 
    ?>
 
 
-        <div class="container mm">
-            <div class="row mrow">
+        <div class="container ">
+            <div class="row mrow ">
 
                 <?php
  if (isset($_POST['year'])) {
@@ -350,6 +353,7 @@ elseif (isset($_REQUEST['submit1'])) {
                 </div>
 
                 <script src="jquery.js"></script>
+                <script src="sidebar.js"></script>
                 <script>
                 $('#session-list').on('change', function() {
                     var session_id = this.value;

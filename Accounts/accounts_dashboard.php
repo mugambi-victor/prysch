@@ -23,9 +23,23 @@ if (!isset($a)) {
 
     <title>AccountsDashboard</title>
     <style>
-    .container {
+    
+
+   body{
         background-color: whitesmoke;
     }
+    .mm{
+        padding-top:10rem;
+    }
+    .mrow{
+       padding-left:10rem;   
+       transition: 1s;
+    }
+       /* @media(max-width:767px){
+        .mrow{
+       padding-left:0;    }
+       } */
+       
     </style>
 </head>
 
@@ -37,16 +51,19 @@ if (!isset($a)) {
 
     include('sidebar.php');
     ?>
-    <div class="container">
+    <div class="container mm">
+    
+        <div class="row mrow">
+       
         <p class="display-6"><i class="bi-house-fill"></i>AccountsDashboard</p>
-        <div class="row">
-            <div class="col-md col-sm students">
+        <div class="col-md col-sm  mrow students">
+       
                 <?php
                         $query = mysqli_query($conn, "select *from student");
                         $result = mysqli_num_rows($query);
 
                         ?>
-                <div class="m-1 row d-flex text-center p-0 bg-secondary">
+                <div class=" row d-flex text-center p-0 bg-secondary">
                     <div class="col-sm col-md p">
                         <p class="text fw-bold display-3">
                             <?php echo $result; ?>
@@ -55,7 +72,7 @@ if (!isset($a)) {
 
                     </div>
                     <div class=" col-sm col-md a">
-                        <img src="../image/student-icon1.jpg" class="card-img" alt="...">
+                        <img src="../image/student-icon1.jpg" class="card-img" alt="..." >
                     </div>
 
 
@@ -63,8 +80,8 @@ if (!isset($a)) {
 
                 </div>
             </div>
-            <div class="col-md col-sm">
-                <div class="div ">
+            
+                <div class="col-md ">
                     <?php 
     //invoices
     $getstudents=mysqli_query($conn,"select max(term_id) as t from student");
@@ -105,9 +122,8 @@ if (!isset($a)) {
     $y=mysqli_fetch_assoc($getyr);
     $currentyr= $y['sname'];
     ?>
-                    </p>
-
-                    <div class="col-md">
+                    
+                    <div class="col-md col-sm-12">
                         <canvas id="myChart" style="width:100%;"></canvas>
 
                         <script>
@@ -138,8 +154,10 @@ if (!isset($a)) {
                         <?php }} ?>
                     </div>
                 </div>
-            </div>
 
+        </div>
+    </div>
+    <script src='sidebar.js'></script>
 
 
 

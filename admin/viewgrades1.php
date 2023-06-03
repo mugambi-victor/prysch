@@ -26,25 +26,23 @@ if (!isset($_SESSION["email"])) {
         }
 
         .mm{
-        margin-top:11rem;
+        padding-top:10rem;
     }
     .mrow{
-        padding-left:10rem;
+       padding-left:14rem;   
+       transition: 1s;
     }
     </style>
 </head>
 <body>
-<?php include('header.php');?>
-<div class="container-fluid col-sm  d-flex">
-<?php 
-
+<?php include('header.php');
   include('sidebar.php');
 
    ?>
-
-<div class="col-md col-sm mm mrow" >
+<div class="container-fluid col-sm  d-flex">
+<div class="col-md col-sm mm " >
           
-
+<div class="mrow">
                 <?php 
       if(isset($_REQUEST['submit'])){
         $year=$_REQUEST['session'];
@@ -123,7 +121,7 @@ if (!isset($_SESSION["email"])) {
     
 else{
     echo("<div class='alert alert-info alert-dismissible fade show'>
-    <strong>Sorry!</strong>No exam found for that semester.
+    <strong>Sorry!</strong>No exam found for that term.
     <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
 </div>");
 }
@@ -131,5 +129,29 @@ else{
 }     
       
     ?> 
+    <script >
+const sideBar = document.querySelector('.sidebar');
+const toggler = document.querySelector('.toggler');
+const mrow= document.querySelector('.mrow');
+const container= document.querySelector('.container');
+  
+  toggler.addEventListener('click', function() {
+   
+    if (sideBar.style.marginLeft== '-250px')
+    {
+        sideBar.style.marginLeft= '0';
+        mrow.style.paddingLeft= '14rem';
+    }
+    else 
+    {
+        
+        sideBar.style.marginLeft= '-250px';
+        mrow.style.paddingLeft= '2rem';
+    }
+   
+
+  });
+
+    </script>
     </body>
 </html>

@@ -25,6 +25,15 @@ if(!isset($a)){
      a:hover{
             background-color: #8432DF;
         }
+        
+    .mm {
+        padding-top: 10rem;
+    }
+
+    .mrow {
+        padding-left: 10rem;
+        transition: 1s;
+    }
 </style>
    
 </head>
@@ -33,7 +42,9 @@ if(!isset($a)){
 <?php include("header.php"); 
 include('sidebar.php');?>
 
-   <div class="container col-md ">
+   <div class="container col-md mm ">
+    <div class="mrow">
+   
    <?php 
 if(isset($_REQUEST["add"]))
 	{	
@@ -76,13 +87,33 @@ else{
      <label for="uploadfile" class="form-label">Image</label> 
   <input type="file" aria-label="uploadfile" class="form-control"  name="uploadfile" 
                    value="" />
-			<center><input type="submit" class="btn  mt-2 fs-5 col-md-2 btn-secondary" value="Post" name="add" /></center>
+			<center><input type="submit" class="btn  mt-2 mb-3 btn-secondary" value="Post" name="add" /></center>
 		
 
 </form>
     </div>
 
 </div>
-    
+    <script>
+         const sideBar = document.querySelector('.sidebar');
+const toggler = document.querySelector('.toggler');
+const mrow= document.querySelector('.mrow');
+const container= document.querySelector('.container');
+  
+  toggler.addEventListener('click', function() {
+   
+    if (sideBar.style.marginLeft== '-250px')
+    {
+        sideBar.style.marginLeft= '0';
+        mrow.style.paddingLeft= '10rem';
+    }
+    else 
+    {
+        
+        sideBar.style.marginLeft= '-250px';
+        mrow.style.paddingLeft= '2rem';
+    }
+  });
+    </script>
 </body>
 </html>

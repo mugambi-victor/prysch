@@ -8,7 +8,10 @@
         margin-left:-250px;
         position:fixed;
         min-height: 100vh;
-        z-index:1;
+    
+    }
+    .toggler{
+        visibility:visible;
     }
     #collapseExample.active{
         margin-left: -17px;
@@ -22,6 +25,11 @@
     .m{
         margin: 0;
     }
+    .container{
+    margin:0;
+    }
+   
+    
 }
 .m{
     margin-left:10rem;

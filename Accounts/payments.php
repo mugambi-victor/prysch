@@ -15,23 +15,51 @@ if(!isset($a)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../admin/ol.png" >
     <title>ClassPayments</title>
+    <style>
+        
+    .mm {
+        padding-top: 10rem;
+    }
+
+    .mrow {
+        padding-left: 10rem;
+        transition: 1s;
+    }
+    </style>
 </head>
 <body>
     <?php include('header.php');
     include('sidebar.php'); ?>
-    <div class="container col-md">
+    <div class="container mm col-md">
 
+   <div class="mrow">
    
     <?php
     if(isset($_REQUEST['submit'])){
         $year=$_REQUEST['year'];
         $term=$_REQUEST['term_name'];
         $class=$_REQUEST['class'];
+
+        $getyearname=mysqli_query($conn,"select *from academic_year where id=$year");
+        $res=mysqli_fetch_assoc($getyearname);
+        $yearname=$res['sname'];
+
+        $gettermname=mysqli_query($conn,"select *from term where term_id=$term");
+        $res1=mysqli_fetch_assoc($gettermname);
+        $termname=$res1['term_name'];
+
+        $getclassname=mysqli_query($conn,"select *from class where class_id=$class");
+        $res3=mysqli_fetch_assoc($getclassname);
+        $classname=$res3['class_name'];
+
 $x=1;
         $getstudents=mysqli_query($conn,"select *from payments where term=$term and class=$class");
         
             ?>
-            <table class="table table-striped table-bordered  text-capitalize">
+            <table class="table table-striped table-bordered  text-capitalize caption-top">
+                <caption>
+                    List of payments in <br> year: <?php echo $yearname."<br> term: ".$termname."<br> class: ".$classname;?>
+                </caption>
                 <tr>
                     <th>
                         s/N
@@ -171,5 +199,26 @@ while($res=mysqli_fetch_assoc($getstudents)){
     ?>
            </table>
 </div>
+<script>
+     const sideBar = document.querySelector('.sidebar');
+const toggler = document.querySelector('.toggler');
+const mrow= document.querySelector('.mrow');
+const container= document.querySelector('.container');
+  
+  toggler.addEventListener('click', function() {
+   
+    if (sideBar.style.marginLeft== '-250px')
+    {
+        sideBar.style.marginLeft= '0';
+        mrow.style.paddingLeft= '10rem';
+    }
+    else 
+    {
+        
+        sideBar.style.marginLeft= '-250px';
+        mrow.style.paddingLeft= '2rem';
+    }
+  });
+</script>
 </body>
 </html>

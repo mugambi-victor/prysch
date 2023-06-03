@@ -13,10 +13,20 @@
         width:4rem;
         font-family:monospace;
     }
+    .navbar{
+        position:fixed;
+        width:100%;
+        height:auto;
+    }
 </style>
 <nav class="navbar navbar-expand-md navbar-light " id="myHeader">
         <div class="container-fluid">
-        <img src="../images/rh.jfif" class="pe-2" height="80" alt="CoolBrand"/>
+            <div class="mmm">
+            <img src="../images/rh.jfif" class="pe-2" height="80" alt="CoolBrand"/> <br>
+            <button class="toggler btn mt-2 btn-danger" ><i class="bi-list"></i></button>
+            </div>
+        
+        
                
                <p class="schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p>
            
@@ -24,6 +34,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <p class="text-white lead fs-6 ms-5"><i>Welcome: <?php echo "<span class=''>$a</span>" ?></i> </p>
+            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
           
                 <ul class="navbar-nav ms-auto">
@@ -50,3 +61,4 @@
    
   
         <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        
