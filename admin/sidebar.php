@@ -16,7 +16,19 @@ li{
     position: fixed;
     transition: 1s;
 }
+a:hover {
+  animation: bounce 1s infinite;
+}
 
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+    
+  }
+}
 </style>
 
 
@@ -25,11 +37,11 @@ li{
             <ul class="nav navbar-light vh-100 flex-column " id="" >
 
             <li class="  nav-item ">
-                    <a href="admin_dashboard" class="text-uppercase text-white nav-link"><i class="bi-house-fill"></i>
-                        DASHBOARD</a>
+                    <a href="admin_dashboard" class="text-capitalize text-white nav-link"><i class="bi-house-fill"></i>
+                        dashboard</a>
                 </li>
                 <hr class="text-white m-0">
-                <li class="nav-item text-uppercase  dropdown">
+                <li class="nav-item text-capitalize  dropdown">
                     <a href="" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown"> create</a>
                     <div class="dropdown-menu">
                     <a href="classs.php" class="dropdown-item">Academic Year & Classes </a>
@@ -40,13 +52,13 @@ li{
                 </li>
                 <hr class="text-white m-0">
                 <li class="  nav-item ">
-                    <a href="add_student" class="text-uppercase text-white nav-link"> <i class="bi-person-plus"></i>
-                        ADMISSION</a>
+                    <a href="add_student" class="text-capitalize text-white nav-link"> <i class="bi-person-plus"></i>
+                        Admission</a>
                 </li>
                 <hr class="text-white m-0">
                 <li class="nav-item">
-                    <a href="view-students" class="text-uppercase text-white nav-link"><i class="bi-eye"></i>
-                        VIEW STUDENT</a>
+                    <a href="view-students" class="text-capitalize text-white nav-link"><i class="bi-eye"></i>
+                        view student</a>
                 </li>
 
 
@@ -55,7 +67,7 @@ li{
               
                 <li>
                     
-                    <div class="nav-item text-uppercase  dropdown">
+                    <div class="nav-item text-capitalize  dropdown">
                         <a href="" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-eye"></i> view</a>
                         <div class="dropdown-menu ">
                             <a href="viewcourses" class="dropdown-item">courses</a>
@@ -67,32 +79,32 @@ li{
                 </li> -->
                 <!-- <hr class="text-white m-0">
                 <li class="nav-item">
-                    <a href="../Accounts/accounts_login" class="text-white text-uppercase nav-link"> <i class="bi-cash"></i>
+                    <a href="../Accounts/accounts_login" class="text-white text-capitalize nav-link"> <i class="bi-cash"></i>
                         FEES</a>
                 </li> -->
                 <!-- <hr class="text-white m-0">
                 <li class="nav-item">
-                    <a href="exams" class="text-white text-uppercase nav-link"> <i class="bi-journal-check"></i>
+                    <a href="exams" class="text-white text-capitalize nav-link"> <i class="bi-journal-check"></i>
                         EXAMS</a>
                 </li> -->
                 <hr class="text-white m-0">
                 <li class="nav-item">
-                    <a href="grades" class="text-white text-uppercase nav-link"> <i class="bi-bar-chart-line"></i>
-                        GRADING</a>
+                    <a href="grades" class="text-white text-capitalize nav-link"> <i class="bi-bar-chart-line"></i>
+                        grading</a>
                 </li>
                 <hr class="text-white m-0">
                 <li class="nav-item">
-                    <a href="viewgrades" class="text-white text-uppercase nav-link"> <i
-                            class="bi-bar-chart-fill"></i> VIEW GRADES</a>
+                    <a href="viewgrades" class="text-white text-capitalize nav-link"> <i
+                            class="bi-bar-chart-fill"></i> view grades</a>
                 </li>
                 <hr class="text-white m-0">
                 <li class="nav-item">
-                    <a href="post" class="text-white text-uppercase nav-link"><i
+                    <a href="post" class="text-white text-capitalize nav-link"><i
                             class="bi-file-earmark-post"></i>Create post</a>
                 </li>
                 <hr class="text-white m-0">
                 <li class="nav-item">
-                    <a href="../news.php" class="text-white text-uppercase nav-link">blog</a>
+                    <a href="../news.php" class="text-white text-capitalize nav-link">blog</a>
                 </li>
                 <hr class="text-white m-0">
             </ul>

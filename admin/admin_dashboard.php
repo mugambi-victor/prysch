@@ -26,9 +26,7 @@ if (!isset($_SESSION["email"])) {
 
     <style>
        
-        a:hover {
-        opacity:.7;
-    }
+       
         .student1 {
             height: 100px;
             background-image: url("image/studentsicon.jpg");
@@ -41,6 +39,9 @@ if (!isset($_SESSION["email"])) {
     .mrow{
        padding-left:10rem;   
        transition: 1s;
+    }
+    body{
+        font-family: 'Nunito', sans-serif;
     }
 
         /* style="background:#051094;;" */

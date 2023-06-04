@@ -20,10 +20,7 @@ $options=""; ?>
 
     <title>ViewStudents</title>
     <style>
-    a:hover {
-        background-color: #8432DF;
-    }
-
+    
     .mm {
         padding-top: 10rem;
     }

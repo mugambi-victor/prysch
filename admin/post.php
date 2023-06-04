@@ -20,9 +20,6 @@ if(!isset($_SESSION["account_login"]))
      <link rel="shortcut icon" href="ol.png" >
     <title>CreatePost</title>
 <style>
-     a:hover{
-            background-color: slateblue;
-        }
         .mm{
         padding-top:11rem;
     }

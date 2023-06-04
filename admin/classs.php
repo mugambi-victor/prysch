@@ -30,10 +30,6 @@ $option = "";
     .form-label {
         font-weight: bold;
     }
-
-    a:hover {
-        background: slateblue;
-    }
     .mm{
         padding-top:10rem;
     }

@@ -66,10 +66,7 @@ $optionr = "";
 
     }
 
-    a:hover {
-        background-color: #8432DF;
-
-    }
+    
 
     a:active {
         background-color: #8432DF;

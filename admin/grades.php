@@ -24,9 +24,7 @@ $options1="";
   
   
     <style>
-         .nav a:hover{
-            background-color:slateblue;
-        }
+            
         .mm{
         padding-top:10rem;
     }
