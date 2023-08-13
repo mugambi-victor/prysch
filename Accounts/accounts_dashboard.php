@@ -23,23 +23,23 @@ if (!isset($a)) {
 
     <title>AccountsDashboard</title>
     <style>
-    
-
-   body{
+    body {
         background-color: whitesmoke;
     }
-    .mm{
-        padding-top:10rem;
+
+    .mm {
+        padding-top: 12rem;
+
     }
+
     .mrow{
        padding-left:10rem;   
        transition: 1s;
     }
-       /* @media(max-width:767px){
+    /* @media(max-width:767px){
         .mrow{
        padding-left:0;    }
        } */
-       
     </style>
 </head>
 
@@ -52,12 +52,13 @@ if (!isset($a)) {
     include('sidebar.php');
     ?>
     <div class="container mm">
-    
+
         <div class="row mrow">
-       
-        <p class="display-6"><i class="bi-house-fill"></i>AccountsDashboard</p>
-        <div class="col-md col-sm  mrow students">
-       
+
+            <p class="display-6"><i class="bi-house-fill"></i>AccountsDashboard</p>
+            <div class="row d-flex">
+            <div class="col-md col-sm  mrow students">
+
                 <?php
                         $query = mysqli_query($conn, "select *from student");
                         $result = mysqli_num_rows($query);
@@ -72,7 +73,7 @@ if (!isset($a)) {
 
                     </div>
                     <div class=" col-sm col-md a">
-                        <img src="../image/student-icon1.jpg" class="card-img" alt="..." >
+                        <img src="../image/student-icon1.jpg" class="card-img" alt="...">
                     </div>
 
 
@@ -80,11 +81,16 @@ if (!isset($a)) {
 
                 </div>
             </div>
-            
-                <div class="col-md ">
-                    <?php 
+
+           
+                <?php 
     //invoices
+    $ss=mysqli_query($conn,"select * from student");
+    if(mysqli_num_rows($ss)>0){
     $getstudents=mysqli_query($conn,"select max(term_id) as t from student");
+    
+
+    
     $sum=0;
     while( $m=mysqli_fetch_assoc($getstudents)){
         $mterm1= $m['t'];
@@ -122,38 +128,38 @@ if (!isset($a)) {
     $y=mysqli_fetch_assoc($getyr);
     $currentyr= $y['sname'];
     ?>
-                    
-                    <div class="col-md col-sm-12">
-                        <canvas id="myChart" style="width:100%;"></canvas>
 
-                        <script>
-                        var xValues = ["Invoices", "Payments"];
-                        var yValues = ['<?php echo $sum ?>', '<?php echo $sum1 ?>', 5000];
-                        var barColors = ["red", "green", "blue"];
+                <div class="col-md col-sm-12">
+                    <canvas id="myChart" style="width:100%;"></canvas>
 
-                        new Chart("myChart", {
-                            type: "bar",
-                            data: {
-                                labels: xValues,
-                                datasets: [{
-                                    backgroundColor: barColors,
-                                    data: yValues
-                                }]
+                    <script>
+                    var xValues = ["Invoices", "Payments"];
+                    var yValues = ['<?php echo $sum ?>', '<?php echo $sum1 ?>', 5000];
+                    var barColors = ["red", "green", "blue"];
+
+                    new Chart("myChart", {
+                        type: "bar",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
                             },
-                            options: {
-                                legend: {
-                                    display: false
-                                },
-                                title: {
-                                    display: true,
-                                    text: "Invoices vs Payments summary for <?php echo $currentyr ?> ( <?php echo $currentterm ?>  )"
-                                }
+                            title: {
+                                display: true,
+                                text: "Invoices vs Payments summary for <?php echo $currentyr ?> ( <?php echo $currentterm ?>  )"
                             }
-                        });
-                        </script>
-                        <?php }} ?>
-                    </div>
+                        }
+                    });
+                    </script>
+                    <?php }}} ?>
                 </div>
+            </div>
 
         </div>
     </div>

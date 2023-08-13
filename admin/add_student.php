@@ -84,6 +84,7 @@ $optionr = "";
        padding-left:10rem;
         transition: 1s;
     }
+    
     </style>
 </head>
 
@@ -93,7 +94,7 @@ include('sidebar.php');?>
   
 
         
-
+  <div class="container-fluid col-sm  d-flex">
 
 
 <div class="container mm">
@@ -259,6 +260,7 @@ include('sidebar.php');?>
                     </div>
                 </form>
             </div>
+        </div>
         </div>
         <script src="jquery.js"></script>
         <script src="sidebar.js"></script>

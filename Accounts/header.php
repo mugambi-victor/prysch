@@ -7,46 +7,68 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
 
-<!-- <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-<script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script> -->
+<link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
+<script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script>
 <style>
-    .navbar{
-        background:#051094; 
-    }
+  
     .schoolname{
         width:4rem;
         font-family:monospace;
     }
-    body{
-        background-color:whitesmoke;
-    }
     .navbar{
         position:fixed;
         width:100%;
+        z-index:10;
+        background:#051094; 
     }
     body{
         font-family: 'Nunito', sans-serif;
+        background-color:whitesmoke;
     }
-    
+    .mrow {
+       padding-left:10rem;
+        transition: 1s;
+    }
+    @media(min-width:997px){
+         .toggler{
+        visibility:hidden;
+    }
+        
+        
+    }
+   @media(max-width:997px){
+        
+        body{
+            font-size:.8em;
+        }
+        .btn{
+            padding:.3em;
+        }
+        .mrow{
+        padding-left:0;
+        padding:0;
+       transition: 1s;
+    }}
 </style>
 <nav class="navbar navbar-expand-md navbar-light " id="myHeader">
         <div class="container-fluid">
         <div class="mmm">
             <img src="../images/rh.jfif" class="pe-2" height="80" alt="CoolBrand"/> <br>
-            <button class="toggler btn mt-2 btn-danger" ><i class="bi-list"></i></button>
+            <button class="toggler btn mt-2 btn-danger" id="show-sidebar" ><i class="bi-list"></i></button>
             </div>
                
                <p class="schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <p class="text-white lead fs-6 ms-5"><i>Welcome: <?php echo "<span >$a</span>" ?></i> </p>
+           
            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
+            <p class="text-white lead fs-6 ms-5"><i>Welcome: <?php echo "<span >$a</span>" ?></i> </p>
                 <ul class="navbar-nav ms-auto">
+                   
                 <li class="nav-item dropdown">
-                    <a href="admin_dashboard.php" class="nav-link text-white text-decoration-none">Home</a>
+                    <a href="accounts_dashboard" class="nav-link text-white text-decoration-none">Home</a>
 </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>

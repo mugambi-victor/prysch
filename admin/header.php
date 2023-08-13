@@ -6,9 +6,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
-  <!-- <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-  <script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script> -->
+  <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
+  <script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script>
   <style>
+    
     .navbar{
         background:#051094; 
     }
@@ -22,6 +23,28 @@
     }
     body{
         font-family: 'Nunito', sans-serif;
+    }
+    @media(min-width:997px){
+         .toggler{
+        visibility:hidden;
+    }
+        
+        
+    }
+   @media(max-width:997px){
+        
+        body{
+            font-size:.8em;
+        }
+        .btn{
+            padding:.3em;
+        }
+        .mrow{
+        padding-left:0;
+        padding:0;
+       transition: 1s;
+    }
+       
     }
 </style>
 <nav class="navbar navbar-expand-md m navbar-light " id="myHeader">

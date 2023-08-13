@@ -20,17 +20,13 @@ $options=""; ?>
     <link rel="shortcut icon" href="../admin/ol.png">
     <title>ViewInvoices</title>
     <style>
-    a:hover {
-        opacity:.9;
-    }
-
     .mm {
         padding-top: 10rem;
-        
+
     }
 
     .mrow {
-        padding-left: 10rem;
+       
         transition: 1s;
     }
     </style>
@@ -42,7 +38,7 @@ include('sidebar.php')?>
 
     <div class="container mm col-sm col-md">
         <div class="row mrow">
-       
+
             <?php
                  
                  if(isset($_REQUEST['record'])){
@@ -52,7 +48,7 @@ include('sidebar.php')?>
                     
                     $transid=$_REQUEST['transid'];
                     $paid=$_REQUEST['paid'];
-                    echo $regno."-".$term."-".$class."-".$transid."-".$paid;
+                  
 
 
                     
@@ -69,7 +65,11 @@ include('sidebar.php')?>
                         if($insertquery){
                         $getstudent=mysqli_query($conn, "select *from student where regno='$regno'");
                         $rets=mysqli_fetch_assoc($getstudent);
-                        $newtotal=$rets['total']-$paid;
+                        $getpaidfromdb=mysqli_query($conn,"select * from payments where trans_id='$transid'");
+                        
+                            $paidt=mysqli_fetch_assoc($getpaidfromdb);
+                            $newpaid=$paidt['amount_paid'];
+                        $newtotal=$rets['total']-$newpaid;
                         // if($newbalance<0){
                         //     $overpaid=-1*$newbalance;
                         //     $updatequery=mysqli_query($conn, "update student set balance= 0, overpaid=$overpaid, fee_status=0 where regno='$regno'");
@@ -99,28 +99,54 @@ include('sidebar.php')?>
                         if($newtotal<=0){
                             $updatequery=mysqli_query($conn,"update student set total=$newtotal, fee_status=0 where regno='$regno'");
                             if(!$updatequery){
-                                echo "sorry";
+                                ?>
+            <div class='alert mt-3 alert-warning alert-dismissible fade show'>
+                <strong>Warning!</strong>A problem occurred while recording payment!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
                             }
-                            else{
-                                echo "success";
+                            else{?>
+            <div class='alert mt-3 alert-success alert-dismissible fade show'>
+                <strong>Success!</strong>Payment recorded successfully!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
                             }
                         }
                         else{
                             $updatequery=mysqli_query($conn,"update student set total=$newtotal where regno='$regno'");
                             if(!$updatequery){
-                                echo "sorry";
+                                ?>
+            <div class='alert mt-3 alert-warning alert-dismissible fade show'>
+                <strong>Warning!</strong>A problem occurred while recording payment!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
                             }
-                            else{
-                                echo "success";
+                            else{?>
+            <div class='alert mt-3 alert-success alert-dismissible fade show'>
+                <strong>Success!</strong>Payment recorded successfully!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
                             }
                         }
                        
-                    }
-                    else{
-                        echo "an error occurred while recording payment";
-                    }}
                     
                 }
+                    else{
+                        ?>
+            <div class='alert mt-3 alert-warning alert-dismissible fade show'>
+                <strong>Warning!</strong>A problem occurred while recording payment!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
+                    }
+                
+                }}
+                    
+                
                  ?>
             <div class="row">
 
@@ -132,10 +158,10 @@ include('sidebar.php')?>
                                     No</label>
                                 <input type="text" name="searchbox" placeholder="registration no..."
                                     class="p-2 form-control" required>
+
+
+                                <input type="submit" name="search" class="btn mt-3 btn-primary" value="Search">
                             </div>
-
-                            <input type="submit" name="search" class="btn btn-sm mt-3 btn-primary" value="Search">
-
 
 
 
@@ -300,37 +326,41 @@ include('sidebar.php')?>
 
 
             </div>
-            <div class="col-md">
+        </div>
+        <div class="col-md">
 
-                <p class="fw-bold p-0 mt-5 fs-4 lead">Search by class</p>
+            <p class="fw-bold p-0 mt-5 fs-3">Search by class</p>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <form action="class.php" method="post">
-                            <label for="class" class="form-label">Academic Year</label>
-                            <select name="year" id="year-list" class="form-select">
-                                <option value="">select Year</option>
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="class.php" method="post">
+                        <label for="class" class="form-label">Academic Year</label>
+                        <select name="year" id="year-list" class="form-select">
+                            <option value="">select Year</option>
 
-                                <?php
+                            <?php
             $query=mysqli_query($conn,"select *from academic_year ");
             while($r=mysqli_fetch_assoc($query)){
                 
                 ?>
-                                <option value="<?php echo $r['id']; ?>"><?php echo $r['sname']; ?></option>
-                                <?php
+                            <option value="<?php echo $r['id']; ?>"><?php echo $r['sname']; ?></option>
+                            <?php
             }
             ?>
-                            </select>
-
-                    </div>
-                    <div class="col-md">
-                        <label for="term_name" class="form-label">Term</label>
-                        <select class="form-select" aria-label="term_name" name="term_name" id="term-list" required>
-                            <option value=''>Select term</option>
                         </select>
-                    </div>
+
+                </div>
+                <div class="col-md">
+                    <label for="term_name" class="form-label">Term</label>
+                    <select class="form-select" aria-label="term_name" name="term_name" id="term-list" required>
+                        <option value=''>Select term</option>
+                    </select>
+                </div>
 
 
+
+        </div>
+                <div class="col-md">
                     <label for="class" class="form-label">Class</label>
                     <select name="class" id="class-list" class="form-select">
                         <option value="">select class</option>
@@ -345,7 +375,6 @@ include('sidebar.php')?>
             }
             ?>
                     </select>
-
                 </div>
 
 
@@ -387,8 +416,7 @@ include('sidebar.php')?>
             });
         });
 
-
-        const sideBar = document.querySelector('.sidebar');
+const sideBar = document.querySelector('.sidebar');
 const toggler = document.querySelector('.toggler');
 const mrow= document.querySelector('.mrow');
 const container= document.querySelector('.container');
@@ -398,16 +426,15 @@ const container= document.querySelector('.container');
     if (sideBar.style.marginLeft== '-250px')
     {
         sideBar.style.marginLeft= '0';
-        mrow.style.paddingLeft= '10rem';
+        mrow.style.marginLeft= '10rem';
     }
     else 
     {
         
         sideBar.style.marginLeft= '-250px';
-        mrow.style.paddingLeft= '2rem';
+        mrow.style.marginLeft= '-1rem';
     }
   });
-
 
         </script>
 

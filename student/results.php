@@ -16,7 +16,15 @@ if (!isset($_SESSION["s_login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../admin/ol.png" >
     <title>RESULTS</title>
-
+<style>
+    .mm{
+        margin-top:11rem
+    }
+    @media(min-width:997px){
+         .mrow{
+        padding-left:10rem
+    }}
+</style>
 </head>
 
 <body>
@@ -28,8 +36,8 @@ if (!isset($_SESSION["s_login"])) {
   include('sidebar.php');
 
    ?>
-    <div class="container col-sm m-4">
-        <div class="row">
+    <div class="container mm col-sm">
+        <div class="row mrow">
             <div class="col-sm">
             <form action="transcript.php" method="POST">
             <!-- dropdown for session/academic year -->
@@ -211,7 +219,21 @@ if (!isset($_SESSION["s_login"])) {
 </body>
 
 <script src="../jquery.js"></script>
+
 <script>
+    $('.bb').on('click', function() {
+    function hasClass(element, clsName) {
+return(' ' + element.className + ' ').indexOf(' ' + clsName + ' ') > -1;
+}
+let val1 = document.getElementById('collapseExample');
+
+    if(hasClass(val1, 'active')){
+        $('#collapseExample').removeClass('active');
+    }else{
+        $('#collapseExample').addClass('active');
+    }
+
+});
     function PrintPage() {
         window.print();
     }
@@ -237,14 +259,7 @@ if (!isset($_SESSION["s_login"])) {
             }
         });
     });
-    $('.bb').on('click', function(){
-    $('#collapseExample').addClass('active');
-
-});
-$('.closebtn').on('click', function(){
-    $('#collapseExample').removeClass('active');
-
-});
+    
 
 </script>
 

@@ -18,16 +18,14 @@ $options=""; ?>
     <link rel="shortcut icon" href="../admin/ol.png" >
     <title>ViewPayments</title>
     <style>
-        a:hover{
-            background-color: #8432DF;
-        }
+       
         
     .mm {
         padding-top: 10rem;
     }
 
     .mrow {
-        padding-left: 10rem;
+      
         transition: 1s;
     }
        
@@ -92,6 +90,7 @@ include('sidebar.php')?>
                 }
                 
                  ?>
+                 <div class="container">
     <form action="" method="post" class="mt-2">
     <div class="row">
     <div class="col-sm">
@@ -257,7 +256,7 @@ while($rts=mysqli_fetch_assoc($getpayments)){
                     
                
 
-    
+    </div>
 <div class="container col-sm mt-3">
 <div class="row">
 <form action="payments.php" method="post">
@@ -340,15 +339,16 @@ const container= document.querySelector('.container');
     if (sideBar.style.marginLeft== '-250px')
     {
         sideBar.style.marginLeft= '0';
-        mrow.style.paddingLeft= '10rem';
+        mrow.style.marginLeft= '10rem';
     }
     else 
     {
         
         sideBar.style.marginLeft= '-250px';
-        mrow.style.paddingLeft= '2rem';
+        mrow.style.marginLeft= '-1rem';
     }
   });
+
     </script>
 
 </body>

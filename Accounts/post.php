@@ -22,9 +22,7 @@ if(!isset($a)){
     <link rel="shortcut icon" href="../admin/ol.png" >
     <title>CreatePost</title>
 <style>
-     a:hover{
-            background-color: #8432DF;
-        }
+    
         
     .mm {
         padding-top: 10rem;
@@ -79,7 +77,7 @@ else{
 
     <form method="post" enctype="multipart/form-data">
     <center> <h2>Create Post</h2></center>
-<div class="col-md-10 ms-5">
+<div class="col-md">
 <label for="title" class="form-label">Post Title</label>
 <input type="text" name="title"  class="form-control text-capitalize" placeholder="Title goes here..."/>
 		<label for="" class="form-label">Post Body</label>

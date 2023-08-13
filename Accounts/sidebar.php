@@ -12,17 +12,30 @@ li{
 
 .col-md-2 {
     margin-top:9rem;
-
-    position: fixed;
+  
+    
+    position:absolute;
     transition: 1s;
 }
+a:hover {
+  animation: bounce 1s infinite;
+}
 
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+    
+  }
+}
 
-   
+  
 </style>
 
 
-<div class="col-md-2 sidebar" id="collapseExample">
+<div class="col-md-2 sidebar" id="collapseExample" >
 
     <ul class="nav navbar-light vh-100 flex-column " id="">
         

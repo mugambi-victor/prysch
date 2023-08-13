@@ -12,8 +12,8 @@ li{
 
 .col-md-2 {
     margin-top:9rem;
-
-    position: fixed;
+    
+    position: absolute;
     transition: 1s;
 }
 a:hover {
@@ -62,31 +62,7 @@ a:hover {
                 </li>
 
 
-                <!-- <hr class="text-white m-0">
-
-              
-                <li>
-                    
-                    <div class="nav-item text-capitalize  dropdown">
-                        <a href="" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-eye"></i> view</a>
-                        <div class="dropdown-menu ">
-                            <a href="viewcourses" class="dropdown-item">courses</a>
-                            <a href="viewdepartments" class="dropdown-item"> departments </a>
-                            <a href="viewunits" class="dropdown-item">units</a>
-                            <a href="viewposts" class="dropdown-item">posts</a>
-                        </div>
-                    </div>
-                </li> -->
-                <!-- <hr class="text-white m-0">
-                <li class="nav-item">
-                    <a href="../Accounts/accounts_login" class="text-white text-capitalize nav-link"> <i class="bi-cash"></i>
-                        FEES</a>
-                </li> -->
-                <!-- <hr class="text-white m-0">
-                <li class="nav-item">
-                    <a href="exams" class="text-white text-capitalize nav-link"> <i class="bi-journal-check"></i>
-                        EXAMS</a>
-                </li> -->
+               
                 <hr class="text-white m-0">
                 <li class="nav-item">
                     <a href="grades" class="text-white text-capitalize nav-link"> <i class="bi-bar-chart-line"></i>

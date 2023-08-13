@@ -22,9 +22,7 @@ if (!isset($_SESSION["email"])) {
         background-color: inherit;
     }
 
-    .nav a:hover {
-        background-color: slateblue;
-    }
+    
     .mm{
         padding-top:10rem;
     }
@@ -119,9 +117,12 @@ if (isset($_POST["submit"])) {
 
             <?php }
            }else
-           {
-            echo"soryy! no students here";
-           }}
+           {?>
+            <div class='alert alert-warning alert-dismissible fade show'>
+            <strong>Sorry!</strong> No students here
+            <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+           <?php }}
           ?>
         </div>
         </div>

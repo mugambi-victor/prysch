@@ -21,10 +21,7 @@ if(!isset($a)){
         padding-top:10rem;
     }
 
-    .mrow {
-        padding-left: 10rem;
-        transition: 1s;
-    }
+    
     </style>
 </head>
 
@@ -137,11 +134,17 @@ elseif(isset($_REQUEST['update'])){
           }
 }
 else{
-    echo "cant read data, please set fees first";
+    ?>
+            <!-- Error Alert -->
+            <div class="alert alert-danger alert-dismissible fade show">
+                <strong>Error!</strong> cant read data, please set fees first
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <?php
 }}
 
 ?>
-            <div class="row">
+            
                 <div class="col-md">
                     <p class="lead mt-2 text-center">Set Term Fees</p>
                     <?php
@@ -237,13 +240,19 @@ $select=mysqli_query($conn,"select *from academic_year");
                     $year=$_REQUEST['year'];
                     $class=$_REQUEST['class'];
                     $term=$_REQUEST['term'];
-                
+
+                    //get term name
+                    $gettermname=mysqli_query($conn,"select *from term where term_id='$term");
+
+                    
                 $selectst=mysqli_query($conn,"select *from termfees where year=$year and term=$term and class=$class ");
 
                 ?>
 
-                    <table class="table mt-2 table-striped">
-
+                    <table class="table mt-2 table-striped caption-top">
+                        <caption>
+                            Year: <?php echo $year." <b> Term: ".$term." <br> Class: ".$class;?>
+                        </caption>
                         <tr>
 
                             <th>
@@ -323,13 +332,13 @@ const container= document.querySelector('.container');
     if (sideBar.style.marginLeft== '-250px')
     {
         sideBar.style.marginLeft= '0';
-        mrow.style.paddingLeft= '10rem';
+        mrow.style.marginLeft= '10rem';
     }
     else 
     {
         
         sideBar.style.marginLeft= '-250px';
-        mrow.style.paddingLeft= '2rem';
+        mrow.style.marginLeft= '-1rem';
     }
   });
 

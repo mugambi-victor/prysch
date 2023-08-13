@@ -3,7 +3,7 @@
    
 }
 
-@media(max-width:767px){
+@media(max-width:997px){
     #collapseExample{
         margin-left:-250px;
         position:fixed;
@@ -14,8 +14,8 @@
         visibility:visible;
     }
     #collapseExample.active{
-        margin-left: -17px;
-        transition: all 0.3s;
+        margin-left: 0;
+        transition: all 1s;
         background:#051094;
     }
     .bb{

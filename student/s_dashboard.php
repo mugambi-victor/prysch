@@ -44,6 +44,15 @@ if(mysqli_num_rows($getstudent)>0){
     body {
         background-color: whitesmoke;
     }
+    .mm{
+        margin-top:12rem
+    }
+     
+     @media(min-width:997px){
+         .mrow{
+        padding-left:10rem
+    }}
+    
     </style>
 </head>
 
@@ -58,43 +67,19 @@ if(mysqli_num_rows($getstudent)>0){
 
    ?>
 
-        <div class="container col-sm m-1">
+    <div class="container mm col-sm " >
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <center> <span>
-                            <h2>SUBJECTS</h2>
-                        </span></center>
-                    <?php
-                $sql = mysqli_query($conn, "select *from student where regno='$s'  ");
-                $result = mysqli_fetch_assoc($sql);
-                    $a = $result['id'];
-                    $b=$result['class'];
-                    $sql2 = mysqli_query($conn, "select distinct id,subject_name from subject where class=$b");
-
-                    if ($sql2) {
-                       
-                        $i = 0;
-                        foreach ($sql2 as $row) { ?>
+            <div class="row mrow">
+            <div class="col-sm-6">
 
 
-                    <ul class="list-group  text-center">
-                        <li class="list-group-item"> <?php echo $row['subject_name'] . "<br>"; ?></li>
-                    </ul>
-                    <br>
-
-
-                    <?php }
-                        $i++;
-                    }?>
-                </div>
-                <div class="col-sm-6">
-
-
-<div class="mx-1 row d-flex text-white text-center p-0 bg-primary">
+<div class="row d-flex text-white text-center p-0 bg-primary">
     <p class="display-6 text-center modtitle  p-2 " >Fee Summary Info</p>
     <div class="col-sm p-2 ">
         <?php
+       
+         $sql = mysqli_query($conn, "select *from student where regno='$s'  ");
+         $result = mysqli_fetch_assoc($sql);
     $term=$result['term_id'];
     $getterm = mysqli_query($conn, "select *from term where term_id =$term ");
     if(mysqli_num_rows($getterm)>0){}
@@ -125,6 +110,35 @@ $year=$restt['year'];
 
 
 </div>
+</div>
+                <div class="col-sm-6 mt-2">
+                    <center> <span>
+                            <h2>SUBJECTS</h2>
+                        </span></center>
+                    <?php
+                $sql = mysqli_query($conn, "select *from student where regno='$s'  ");
+                $result = mysqli_fetch_assoc($sql);
+                    $a = $result['id'];
+                    $b=$result['class'];
+                    $sql2 = mysqli_query($conn, "select distinct id,subject_name from subject where class=$b");
+
+                    if ($sql2) {
+                       
+                        $i = 0;
+                        foreach ($sql2 as $row) { ?>
+
+
+                    <ul class="list-group  text-center">
+                        <li class="list-group-item"> <?php echo $row['subject_name'] . "<br>"; ?></li>
+                    </ul>
+                    <br>
+
+
+                    <?php }
+                        $i++;
+                    }?>
+                </div>
+                
 <div class="row">
     <div class="col-sm">
 
@@ -202,13 +216,22 @@ $year=$restt['year'];
     });
 
                 $('.bb').on('click', function() {
-                    $('#collapseExample').addClass('active');
+                    function hasClass(element, clsName) {
+        return(' ' + element.className + ' ').indexOf(' ' + clsName + ' ') > -1;
+      }
+      let val1 = document.getElementById('collapseExample');
+      
+                    if(hasClass(val1, 'active')){
+                        $('#collapseExample').removeClass('active');
+                    }else{
+                        $('#collapseExample').addClass('active');
+                    }
 
                 });
-                $('.closebtn').on('click', function() {
-                    $('#collapseExample').removeClass('active');
+                // $('.closebtn').on('click', function() {
+                //     $('#collapseExample').removeClass('active');
 
-                });
+                // });
                 </script>
 </body>
 

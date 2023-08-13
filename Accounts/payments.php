@@ -22,7 +22,7 @@ if(!isset($a)){
     }
 
     .mrow {
-        padding-left: 10rem;
+       
         transition: 1s;
     }
     </style>
@@ -200,7 +200,7 @@ while($res=mysqli_fetch_assoc($getstudents)){
            </table>
 </div>
 <script>
-     const sideBar = document.querySelector('.sidebar');
+const sideBar = document.querySelector('.sidebar');
 const toggler = document.querySelector('.toggler');
 const mrow= document.querySelector('.mrow');
 const container= document.querySelector('.container');
@@ -210,15 +210,16 @@ const container= document.querySelector('.container');
     if (sideBar.style.marginLeft== '-250px')
     {
         sideBar.style.marginLeft= '0';
-        mrow.style.paddingLeft= '10rem';
+        mrow.style.marginLeft= '7rem';
     }
     else 
     {
         
         sideBar.style.marginLeft= '-250px';
-        mrow.style.paddingLeft= '2rem';
+        mrow.style.marginLeft= '-1rem';
     }
   });
+
 </script>
 </body>
 </html>

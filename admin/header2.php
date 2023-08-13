@@ -6,13 +6,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
-  <!-- <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-  <script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script> -->
+  <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
+  <script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script>
   <style>
     
-    .navbar{
-        background:#051094; 
-    }
+   
     .schoolname{
         width:4rem;
         font-family:monospace;
@@ -20,11 +18,33 @@
     .navbar{
         position:fixed;
         width:100%;
+        background:#051094; 
     }
     body{
         font-family: 'Nunito', sans-serif;
     }
-    
+    @media(min-width:997px){
+         .toggler{
+        visibility:hidden;
+    }
+        
+        
+    }
+   @media(max-width:997px){
+        
+        body{
+            font-size:.8em;
+        }
+        .btn{
+            padding:.3em;
+        }
+        .mrow{
+        padding-left:0;
+        padding:0;
+       transition: 1s;
+    }
+       
+    }
 </style>
 <nav class="navbar navbar-expand-md m navbar-light " >
         <div class="container-fluid">
@@ -48,7 +68,7 @@
                         <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li> <a class="dropdown-item"  href="viewprofile.php">Profile</a></li>
-                            <li> <a class="dropdown-item"  href="logout.php">Logout</a></li>
+                            <li> <a class="dropdown-item"  href="../logout.php">Logout</a></li>
         
                         </ul>
                     </li>

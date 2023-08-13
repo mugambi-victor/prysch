@@ -22,7 +22,15 @@ $rest = mysqli_fetch_assoc($get_studentdata);
     <link rel="shortcut icon" href="../admin/ol.png" >
     <title>SIMS | FeeInfo</title>
 </head>
-
+<style>
+    .mm{
+        margin-top:10rem
+    }
+    @media(min-width:997px){
+    .mrow{
+        padding-left:10rem
+    }}
+</style>
 <body>
    
 <?php include('header.php');?>
@@ -37,8 +45,8 @@ $rest = mysqli_fetch_assoc($get_studentdata);
         $a = $result['id'];
         $b=$result['term_id'];
         ?>
-    <div class="container col-sm">
-        <div class="row">
+    <div class="container mm col-sm">
+        <div class="row mrow">
             <div class="col-sm">
 
                 <div class="mt-4 ms-1 row d-flex text-white text-center p-0 bg-primary">
@@ -217,12 +225,17 @@ $rest = mysqli_fetch_assoc($get_studentdata);
             });
         });
 
-        $('.bb').on('click', function(){
-    $('#collapseExample').addClass('active');
-        });
+        $('.bb').on('click', function() {
+    function hasClass(element, clsName) {
+return(' ' + element.className + ' ').indexOf(' ' + clsName + ' ') > -1;
+}
+let val1 = document.getElementById('collapseExample');
 
-        $('.closebtn').on('click', function(){
-    $('#collapseExample').removeClass('active');
+    if(hasClass(val1, 'active')){
+        $('#collapseExample').removeClass('active');
+    }else{
+        $('#collapseExample').addClass('active');
+    }
 
 });
 

@@ -4,19 +4,45 @@
     
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
+<link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
+<script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script>
 <style>
 .navbar{
-    background:#081094;
+    background:#051094;
+    position:fixed;
+    width:100%;
+    height:auto;
+    z-index:10;
+    
 }
 .schoolname{
     width:4rem; 
     font-family:monospace;
 }
+ @media(min-width:997px){
+         .bb{
+        visibility:hidden;
+    }}
+     body{
+        font-family: 'Nunito', sans-serif;
+        background-color:whitesmoke;
+    }
  </style>
 <nav class="navbar navbar-expand-md navbar-light " >
         <div class="container-fluid">
-            <a class="navbar-brand" href="s_dashboard">
-                <img src="../images/rh.jfif" height="80" alt="Brand"/>
+        <div class="d-block">
+                <a class="navbar-brand" href="s_dashboard">
+                    <img src="../images/rh.jfif" height="80" alt="Brand"/> 
+                   <div class="div">
+                   <a class="btn btn-primary bb mt-1" title="toggle"  data-bs-toggle="collapse" href="#" >
+    <i class="bi-toggles"></i>
+    </a>
+                   </div>
+            </div>
+           
                
             </a><p class="schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

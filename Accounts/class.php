@@ -20,7 +20,7 @@ if(!isset($a)){
     }
 
     .mrow {
-        padding-left: 10rem;
+       
         transition: 1s;
     }
     </style>
@@ -89,19 +89,37 @@ if(!isset($a)){
                         if($newtotal<=0){
                             $updatequery=mysqli_query($conn,"update student set total=$newtotal, fee_status=0 where regno='$regno'");
                             if(!$updatequery){
-                                echo "sorry";
+                                ?>
+            <div class='alert mt-3 alert-warning alert-dismissible fade show'>
+                <strong>Warning!</strong>A problem occurred while recording payment!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
                             }
-                            else{
-                                echo "success";
+                            else{?>
+            <div class='alert mt-3 alert-success alert-dismissible fade show'>
+                <strong>Success!</strong>Payment recorded successfully!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
                             }
                         }
                         else{
                             $updatequery=mysqli_query($conn,"update student set total=$newtotal where regno='$regno'");
                             if(!$updatequery){
-                                echo "sorry";
+                                ?>
+            <div class='alert mt-3 alert-warning alert-dismissible fade show'>
+                <strong>Warning!</strong>A problem occurred while recording payment!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
                             }
-                            else{
-                                echo "success";
+                            else{?>
+            <div class='alert mt-3 alert-success alert-dismissible fade show'>
+                <strong>Success!</strong>Payment recorded successfully!
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+            <?php
                             }
                         }
                        
@@ -257,7 +275,7 @@ if(!isset($a)){
 </div>
 <?php } ?>
 <script>
-         const sideBar = document.querySelector('.sidebar');
+  const sideBar = document.querySelector('.sidebar');
 const toggler = document.querySelector('.toggler');
 const mrow= document.querySelector('.mrow');
 const container= document.querySelector('.container');
@@ -267,15 +285,16 @@ const container= document.querySelector('.container');
     if (sideBar.style.marginLeft== '-250px')
     {
         sideBar.style.marginLeft= '0';
-        mrow.style.paddingLeft= '10rem';
+        mrow.style.marginLeft= '10rem';
     }
     else 
     {
         
         sideBar.style.marginLeft= '-250px';
-        mrow.style.paddingLeft= '2rem';
+        mrow.style.marginLeft= '-1rem';
     }
   });
+
 </script>
 </body>
 </html>

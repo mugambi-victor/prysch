@@ -43,6 +43,15 @@ if (!isset($_SESSION["email"])) {
     body{
         font-family: 'Nunito', sans-serif;
     }
+    @media(max-width:997px){
+        .mrow{
+       padding-left:0rem;   
+       transition: 1s;
+
+    }
+    
+
+    }
 
         /* style="background:#051094;;" */
     </style>
