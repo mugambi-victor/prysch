@@ -167,6 +167,9 @@ include('sidebar.php');?>
         } ?>
             <div class="row ">
                 <form class="row g-3" enctype="multipart/form-data" method="post">
+                    <h3 class="fw-bold d-flex justify-content-center ">Student Information</h3>
+                    <hr class="my-2">
+
                     <div class="col-md-6">
                         <label for="s_name" class="form-label">Student Name</label>
                         <input type="text" placeholder="name" name="s_name" class="form-control" id="s_name" required>
@@ -225,7 +228,7 @@ include('sidebar.php');?>
                     </div>
                     <div class="col-md-6">
                         <label for="dob" class="form-label">DOB</label>
-                        <input type="text" class="form-control" id="dob" placeholder="date og birth" name="dob"
+                        <input type="date" class="form-control" id="dob" placeholder="date og birth" name="dob"
                             required>
                     </div>
                     <div class="col-md-6">
@@ -237,7 +240,8 @@ include('sidebar.php');?>
                         <label for="uploads" class="form-label">Upload Photo</label>
                         <input type="file" class="form-control" id="uploads" name="uploads" required>
                     </div>
-                    <h4>Parent/Guardian Details</h4>
+                    <hr class="my-2">
+                    <h3 class="fw-bold d-flex justify-content-center">Parent/Guardian Information</h3>
                     <div class="col-md-6">
                         <label for="s_name" class="form-label">Parent/Guardian Name</label>
                         <input type="text" placeholder="parents name" name="p_name" class="form-control" id="p_name"
@@ -245,18 +249,18 @@ include('sidebar.php');?>
                     </div>
                     <div class="col-md-6">
                         <label for="pno" class="form-label">Phone Number</label>
-                        <input type="text" placeholder="Phone Number" class="form-control" name="pno" required>
+                        <input type="number" placeholder="Phone Number" class="form-control" name="pno" required>
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" placeholder="Email" name="email" class="form-control" id="email" required>
+                        <input type="email" placeholder="Email" name="email" class="form-control" id="email" required>
                     </div>
                     <div class="col-md-6">
                         <label for="p_pass" class="form-label">password</label>
                         <input type="text" placeholder="Password" class="form-control" name="p_pass" required>
                     </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary" name="submit">Add Student</button>
                     </div>
                 </form>
             </div>

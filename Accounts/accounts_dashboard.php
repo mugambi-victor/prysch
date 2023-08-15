@@ -1,7 +1,7 @@
 <?php include('../connection.php');
 session_start();
-$a = $_SESSION['accounts_email'];
-if (!isset($a)) {
+$b = $_SESSION['accounts_email'];
+if (!isset($b)) {
     header('location:accounts_login.php');
 
 }

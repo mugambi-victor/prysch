@@ -58,7 +58,10 @@ $options=""; ?>
     if(isset($_REQUEST['search'])){
         $regno=$_REQUEST['searchbox'];
 
-?>
+
+        $sql1=mysqli_query($conn, "select * from student where regno='$regno'");
+        if(mysqli_num_rows($sql1)>0){
+            ?>
     <table class=" col-sm-12 table table-bordered table-striped">
         <tr>
             <th>Student Name</th>
@@ -69,8 +72,6 @@ $options=""; ?>
         </tr>
         <?php
 
-        $sql1=mysqli_query($conn, "select * from student where regno='$regno'");
-        if(mysqli_num_rows($sql1)>0){
             while($row=mysqli_fetch_assoc($sql1)){
       
                 echo "<tr><td><form method='post' action='viewstudentprofile.php'><label class='text-capitalize'>" . $row['s_name'] . "</label></td><td><input class='text-uppercase' style='border:0;' name='rno' type='text' readonly value=" . $row['regno'] . "></td><td>" . $row['email'] . "</td><td>" . $row['pno'] . "</td><td><input type='submit' class='btn btn-info' value='view profile' name='profile'></form></a><a  href='promote.php?id=$row[id]' class='btn btn-primary mt-2'>Promotestudent</a></td></tr>  </table>"; 

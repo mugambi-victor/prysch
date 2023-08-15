@@ -146,7 +146,7 @@ else{
 ?>
             
                 <div class="col-md">
-                    <p class="lead mt-2 text-center">Set Term Fees</p>
+                    <h3 class="fw-bold mt-2 text-center">Set Term Fees</h3>
                     <?php
 $select=mysqli_query($conn,"select *from academic_year");
 ?>
@@ -196,7 +196,7 @@ $select=mysqli_query($conn,"select *from academic_year");
                 <!-- view fee summary -->
                 <div class="col-md">
 
-                    <p class="lead mt-2 text-center">View Fee summary</p>
+                    <h3 class="mt-2 fw-bold text-center">View Fee</h3>
                     <?php
                 $select=mysqli_query($conn,"select *from academic_year");
 ?>

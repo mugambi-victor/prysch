@@ -11,11 +11,10 @@ li{
 }
 
 .col-md-2 {
-    margin-top:9rem;
-  
-    
-    position:absolute;
+    margin-top:9rem; 
+    position:fixed;
     transition: 1s;
+    height:100%;
 }
 a:hover {
   animation: bounce 1s infinite;
@@ -37,7 +36,7 @@ a:hover {
 
 <div class="col-md-2 sidebar" id="collapseExample" >
 
-    <ul class="nav navbar-light vh-100 flex-column " id="">
+    <ul class="nav navbar-light flex-column " id="">
         
         <li class="  nav-item ">
             <a href="accounts_dashboard" class="text-uppercase text-white nav-link"><i class="bi-house-fill"></i>
@@ -52,6 +51,13 @@ a:hover {
         <li class="nav-item">
             <a href="viewInvoices" class="text-uppercase text-white nav-link"><i class="bi-receipt"></i>
                 Invoices</a>
+        </li>
+
+
+        <hr class="text-white m-0">
+        <li class="nav-item">
+            <a href="record_payment" class="text-uppercase text-white nav-link"><i class="bi-receipt"></i>
+                Record Payment</a>
         </li>
 
 

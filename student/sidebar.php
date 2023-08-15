@@ -8,18 +8,20 @@
 }
 #collapseExample{
   background:#051094;
-  margin-top:9.6rem;
+  margin-top:8.5rem;
   transition:1s;
-  position:absolute;
+  position:fixed;
+  height: 100%;
+  
 }
 
 
    </style>
 
-<div class="col-sm-2 sidebar " id="collapseExample" >
+<div class="col-sm-2 sidebar" id="collapseExample" >
 
 
-<ul class ="nav navbar-light   vh-100 flex-column " id=""  >
+<ul class ="nav navbar-light flex-column " id=""  >
 
 <hr class="text-white m-0">    
 <li class ="  nav-item ">
@@ -45,14 +47,11 @@
     </li>
     <hr class="text-white m-0">
     <li class ="nav-item">
-    <a href="fee_info" class="nav-link text-capitalized text-white">fees</a>
+    <a href="fee_info" class="nav-link text-capitalize text-white">fees</a>
     </li>
     <hr class="text-white m-0">
    
 
-<a href="generate_examcard" class="nav-link text-capitalize text-white">Generate exam card</a>
-    </li>
-    <hr class="text-white m-0">
     <a href="feestructure" class="nav-link text-capitalize">fee structure</a>
     </li>
     <hr class="text-white m-0">

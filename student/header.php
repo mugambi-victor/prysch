@@ -34,7 +34,7 @@
         <div class="container-fluid">
         <div class="d-block">
                 <a class="navbar-brand" href="s_dashboard">
-                    <img src="../images/rh.jfif" height="80" alt="Brand"/> 
+                    <img src="../images/shyne.png" height="80" alt="Brand"/> 
                    <div class="div ">
                    <a class="btn btn-primary bb mt-1 mb-3 " title="toggle"  data-bs-toggle="collapse" href="#" >
     <i class="bi-toggles"></i>
@@ -42,7 +42,7 @@
                    </div>
                 </div> 
                 <div class="justify-content-start">
-                    <p class=" schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p>
+                    <p class=" schoolname text-wrap text-white fw-bold" >SHYNE STUDENT MANAGEMENT SYSTEM</p>
                 </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

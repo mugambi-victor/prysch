@@ -94,7 +94,8 @@ include('sidebar.php')?>
     <form action="" method="post" class="mt-2">
     <div class="row">
     <div class="col-sm">
-        <label for="" class="form-label">Search registration Number</label>
+    <h3 class="fw-bold d-flex justify-content-center">View Payments</h3>
+        <label for="" class="form-label fw-bold">Search registration Number</label>
                 <input type="text" name="searchbox" placeholder="search registration no..." class="form-control" required> 
                 
                 <input type="submit" name="search" class="btn btn-primary mt-2" value="Search">

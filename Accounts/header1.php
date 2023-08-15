@@ -50,13 +50,13 @@
 <nav class="navbar navbar-expand-md navbar-light " id="myHeader">
         <div class="container-fluid">
             <div class="mmm">
-            <img src="../images/rh.jfif" class="pe-2" height="80" alt="CoolBrand"/> <br>
+            <img src="../images/shyne.png" class="pe-2" height="80" alt="CoolBrand"/> <br>
             <button class="toggler btn mt-2 mb-3 btn-danger" ><i class="bi-list"></i></button>
             </div>
         
         
                
-               <p class="schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p>
+               <p class="schoolname text-wrap text-white fw-bold" >SHYNE STUDENT MANAGEMENT SYSTEM</p>
            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -64,7 +64,7 @@
             
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <p class="text-white lead fs-6 ms-5"><i>Welcome: <?php echo "<span class=''>$a</span>" ?></i> </p>
+            <p class="text-white lead fs-6 ms-5"><i>Welcome: <?php echo "<span class=''>$b</span>" ?></i> </p>
                 <ul class="navbar-nav ms-auto">
                      
                 <li class="nav-item dropdown">

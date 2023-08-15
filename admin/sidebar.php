@@ -11,9 +11,9 @@ li{
 }
 
 .col-md-2 {
-    margin-top:9rem;
-    
-    position: absolute;
+    margin-top:8.5rem;
+    position: fixed;
+    height: 100%;
     transition: 1s;
 }
 a:hover {
@@ -34,7 +34,7 @@ a:hover {
 
         <div class="col-md-2 sidebar " id="collapseExample">
 
-            <ul class="nav navbar-light vh-100 flex-column " id="" >
+            <ul class="nav navbar-light flex-column " id="" >
 
             <li class="  nav-item ">
                     <a href="admin_dashboard" class="text-capitalize text-white nav-link"><i class="bi-house-fill"></i>

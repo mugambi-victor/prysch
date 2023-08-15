@@ -19,6 +19,7 @@
         position:fixed;
         width:100%;
         background:#051094; 
+        z-index: 9;
     }
     body{
         font-family: 'Nunito', sans-serif;
@@ -49,11 +50,11 @@
 <nav class="navbar navbar-expand-md m navbar-light " >
         <div class="container-fluid">
         <div class="mmm">
-            <img src="../images/rh.jfif" class="pe-2" height="80" alt="CoolBrand"/> <br>
+            <img src="../images/shyne.png" class="pe-2 " height="80" alt="CoolBrand"/> <br>
             <button class="toggler btn mt-2 btn-danger" ><i class="bi-list"></i></button>
             </div>
                
-            </a><p class="schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p>
+            </a><p class="schoolname text-wrap text-white fw-bold" >SHYNE STUDENT MANAGEMENT SYSTEM</p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
