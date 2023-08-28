@@ -31,7 +31,7 @@ $option = "";
         font-weight: bold;
     }
     .mm{
-        padding-top:10rem;
+        padding-top:6rem;
     }
     .mrow{
        padding-left:10rem;   
@@ -265,12 +265,12 @@ elseif (isset($_REQUEST['submit1'])) {
               }
             }
 }?>
-                <div class="container ">
-                    <div class="row ">
+                <div class="container " style="background:white;   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .6), 0 3px 10px 0 rgba(0, 0, 0, 0.60);">
+                    <div class="row p-3" >
                         <form class="needs-validation" style=" margin:auto; " action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
             ?>" method="post">
 
-                            <h2>Create Academic Year</h2>
+                            <h2 class="text-center">Academic Year</h2>
                             </center>
 
                             <div class="mb-3">
@@ -290,7 +290,7 @@ elseif (isset($_REQUEST['submit1'])) {
                             <!-- form for creating class -->
                             <form class="needs-validation" style=" margin:auto; " action="" method="post">
 
-                                <h2>Create a Class</h2>
+                                <h2 class="text-center">Class</h2>
                                 </center>
 
                                 <div class="col-md col-sm mb-3">
@@ -308,7 +308,7 @@ elseif (isset($_REQUEST['submit1'])) {
                             <form class="needs-validation" style=" margin:auto;"
                                 action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 
-                                <h2>Create a Subject</h2>
+                                <h2 class="text-center">Subject</h2>
                                 </center>
                                 <div class="row ">
                                     <div class="col-md col-sm">

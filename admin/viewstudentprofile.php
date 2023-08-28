@@ -22,17 +22,10 @@ if(!isset($_SESSION["email"]))
         z-index: 10;
       }
         .gradient-custom {
-/* fallback for old browsers */
-background: #f6d365;
-
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
-
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+          background:#948905;  
 }
 .mm{
-        padding-top:10rem;
+        padding-top:5rem;
     }
     .mrow{
        padding-left:10rem;   
@@ -75,7 +68,7 @@ include('sidebar.php');?>
           </div>
           <div class="col-md-8">
             <div class="card-body p-4">
-              <h6>Information</h6>
+              <h6>Student Information</h6>
               <hr class="mt-0 mb-4">
               <div class="row pt-1">
                 <div class="col-6 mb-3">

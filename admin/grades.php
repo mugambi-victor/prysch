@@ -26,11 +26,13 @@ $options1="";
     <style>
             
         .mm{
-        padding-top:10rem;
+        padding-top:5rem;
     }
     .mrow{
        padding-left:12rem;   
+       padding-right:4rem; 
        transition: 1s;
+       background-color:white
     }
     </style>
     
@@ -46,12 +48,12 @@ $options1="";
    
 <div class="container-fluid col-sm  d-flex">
 
-    <div class="container mm mx-3">
+    <div class="container mm mx-3"  >
      
 
-        <div class="mrow ">
-            <div class="col-md mt-5">
-                <h3 class="text-center fw-bold">
+        <div class="mrow " >
+            <div class="col-md mt-5 ">
+                <h3 class="text-center pt-3 fw-bold">
                     Select a Class to Grade</h3>
                <form action="class_grades.php" method="post">
                 <label for="session" class="form-label">Academic Year</label>
@@ -103,7 +105,7 @@ $options1="";
             ?>
         </select>
   </div>
-  <center><input type="submit" class="btn btn-primary mt-5" name="submit" value="Grade students"></center>
+  <center><input type="submit" class="btn btn-primary mb-2 mt-5" name="submit" value="Grade students"></center>
   </form>
 </div>
   </div>

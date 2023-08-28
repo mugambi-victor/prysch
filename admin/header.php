@@ -6,12 +6,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
-  <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-  <script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script>
+  <!-- <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
+  <script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script> -->
   <style>
     
     .navbar{
-        background:#051094; 
+        background:#948905;  
 
     }
     .schoolname{
@@ -53,23 +53,23 @@
 <nav class="navbar navbar-expand-md m navbar-light " id="myHeader">
         <div class="container-fluid">
         <div class="mmm">
-            <img src="../images/shyne.png" class="pe-2" height="80" alt="CoolBrand"/> <br>
+          
             <button class="toggler btn mt-2 btn-danger" ><i class="bi-list"></i></button>
             </div>
                
-            </a><p class="schoolname text-wrap text-white fw-bold" >SHYNE STUDENT MANAGEMENT SYSTEM</p>
+       
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <p class="lead ps-5 text-white fs-6"><i>welcome <?php echo $_SESSION['email']; ?></i></p>
+              
                 <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                    <a href="admin_dashboard.php" class="nav-link text-white text-decoration-none">Home</a>
+                  
 </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                    <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="ms-5"></span> <br> <?php echo $_SESSION['email']; ?></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li> <a class="dropdown-item"  href="viewprofile.php">Profile</a></li>
                             <!--<li> <a class="dropdown-item"  href="logout.php">Logout</a></li>-->

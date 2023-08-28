@@ -16,131 +16,73 @@ include('connection.php'); ?>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <style>
-        .m {
-    background: url("images/board.png") ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position:fixed;
-    width:100%;
-    
-}
-.container{
-    padding-top: 6em;
-}
-
+        .headerr{
+            border-radius: .3rem;
+            color: white;
+            position: fixed;
+        }
+        .container{
+            padding-top: 10rem;
+        }
+        .cardd{
+            display: flex;
+        }
+        p,i,h2{
+            margin-left: 1rem;
+        }
+        @media(max-width:997px)
+        {
+            .cardd{
+                display: inline-block;
+                padding: 0;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+                height: 350px;
+                
+            }
+            .cardd p{
+                visibility:hidden;
+            }
+            .a{
+                visibility:hidden;
+            }
+            .cardd img{
+                height:80%;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
-<body  style="background-color: whitesmoke;">
-<!-- <nav class="navbar navbar-expand-md navbar-light " style="background:#8432DF;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <img src="image/Kiirua-Technical-Training-Institute.webp" height="80" alt="CoolBrand"/>
-               
-            </a><p class=" text-wrap text-white fw-bold" style="width:4rem; font-family:monospace">KIIRUA TECHNICAL TRAINING INSTITUTE</p>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-                <ul class="navbar-nav ms-auto">
-                    
-        
-                        </ul>
-                    </li>
-                </ul>
+<body  style="">
+<div class="container-fluid headerr bg-info">
+    <h3 class="text-center p-5">School Blog</h3>
+</div>
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-sm cardd col-md ">
+            <img src="./images/school_exams.jpg" height="200" width="280" alt="">
+            <div>
+            <h2>Title here</h2>
+            <i>Readmore..</i>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde doloremque, dolores quod id porro cum consequatur minus expedita non autem quaerat. Perspiciatis neque blanditiis doloribus omnis odio quam ipsam explicabo!</p>
+            <i class="a">Author</i>
             </div>
         </div>
-    </nav> -->
-    
-    <div class="text-center col-sm m-0 m" > 
-       <h1 class="display-3 text-primary fw-bold p-5" >NEWS AND ANNOUNCEMENTS</h1> 
-       <p class="lead pb-4"></p>
-       <p><a href="#" class="btn btn-primary btn-lg" role="button"></a></p>
-    </div>
-
-    
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 mt-2">
-            
-                <div class="container" >
-          
-                <?php 
-                $sql=mysqli_query($conn,"select *from post order by id desc");
         
-                while($r_res=mysqli_fetch_assoc($sql))
-                {
-                   if($r_res['id']%2==0){
-
-                    echo'<div class="col-sm-12 mt-2  content container" >';
-                    echo'<div class="row">';
-                echo'<div class="col-sm images" >';
-                    
-                     echo "<img class='img-fluid' style='height:28em;' src=' image/".$r_res['img']. " ' >"; 
-                   echo'  </div>';
-                    echo '<div class="col-sm details align-items-center">';
-                    echo'<center><h2 class="text-capitalize" style="color:blue;">'.substr($r_res['title'],0,100).'</h2><hr style="color:blue;"></center><br>';
-                         echo'<p class="text-justify-center ">'.substr($r_res['details'],0,100).'</p><br>';
-                         
-                         $getadmin=mysqli_query($conn,"select *from admin where email='$r_res[created_by]'");
-                         $res=mysqli_fetch_assoc($getadmin);
-                         if($res['user_type']==0){
-                            $user="School Admin";
-                         }
-                         else{
-                            $user="School Accountant";
-                         }
-                         ?>
-                         <i>created by: <?php echo $r_res['created_by']."-".$user;
-                         ?></i>
-                       <center>  <a href="post_details.php?id=<?php echo $r_res['id']; ?>"  class="btn btn-danger text-center">Read more</a><br><br></center>
-                         <?php
-                        echo'</div>';
-                        echo'</div>';
-                        echo'</div>';
-                 } 
-                 if($r_res['id']%2==1){
-                    echo'<div class="col-sm-12 mt-2 content container" >';
-                    echo'<div class="row">';
-                   echo '<div class="col-sm details">';
-                   echo'<center><h2 class="text-capitalize" style="color:blue;">'.substr($r_res['title'],0,100).'</h2><hr style="color:blue;"></center><br>';
-
-                        echo'<p class="text-justify-center">'.substr($r_res['details'],0,100).'</p>';
-                        $getadmin=mysqli_query($conn,"select *from admin where email='$r_res[created_by]'");
-                         $res=mysqli_fetch_assoc($getadmin);
-                         if($res['user_type']==0){
-                            $user="School Admin";
-                         }
-                         else{
-                            $user="Accountant";
-                         }
-                        ?>
-                        <i>created by: <?php echo $r_res['created_by']."-".$user;?></i>
-<center>  <a href="post_details.php?id=<?php echo $r_res['id']; ?>"  class="btn btn-danger text-center">Read more</a><br><br></center>
-  <?php
-                       echo'</div>';
-                       
-                       echo'<div class="col-sm images" >';
-                       echo "<img class='img-fluid'  style='height:28em;'   src=' image/".$r_res['img']. " ' >"; 
-                     echo'  </div>';
-                     echo'</div>';
-                     echo'</div>';
-       
-                 }} ?>
-
-               </div>
-       
- 
-
-       
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm cardd col-md ">
+            <img src="./images/pupils-parents-school-29216578.jpg" height="200" width="280" alt="">
+            <div>
+            <h2>Title here</h2>
+            <i>Readmore..</i>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde doloremque, dolores quod id porro cum consequatur minus expedita non autem quaerat. Perspiciatis neque blanditiis doloribus omnis odio quam ipsam explicabo!</p>
+            <i class="a">Author</i>
+            </div>
+        </div>
+        
     </div>
 </div>
-
-
-
-
 </body>
 
 </html>

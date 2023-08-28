@@ -66,23 +66,33 @@ $optionr = "";
 
     }
 
-    
-
-    a:active {
-        background-color: #8432DF;
+    .form_add_student{
+         
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 1), 0 2px 5px 0 rgba(0, 0, 0, 0.80);
+        background:white;
+        margin: 2rem;
+        
     }
+
+   
 
     #myHeader {
         color: blue;
     }
 
     .mm {
-        padding-top: 10rem;
+        padding-top: 5rem;
     }
 
     .mrow {
        padding-left:10rem;
         transition: 1s;
+    }
+    @media(max-width:997px){
+        .form_add_student{
+            margin: 0;
+            padding: 0;
+        }
     }
     
     </style>
@@ -165,8 +175,8 @@ include('sidebar.php');?>
            
           
         } ?>
-            <div class="row ">
-                <form class="row g-3" enctype="multipart/form-data" method="post">
+            <div class="row " style="">
+                <form class="row form_add_student g-3 "  enctype="multipart/form-data" method="post">
                     <h3 class="fw-bold d-flex justify-content-center ">Student Information</h3>
                     <hr class="my-2">
 
@@ -260,7 +270,7 @@ include('sidebar.php');?>
                         <input type="text" placeholder="Password" class="form-control" name="p_pass" required>
                     </div>
                     <div class="col-12 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary" name="submit">Add Student</button>
+                        <button type="submit" class="btn mb-2 btn-primary" name="submit">Add Student</button>
                     </div>
                 </form>
             </div>

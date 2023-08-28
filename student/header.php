@@ -16,9 +16,11 @@
     width:100%;
     height:auto;
     z-index:10;
+   
 }
 .schoolname{
     width:4rem; 
+    margin-top:-2rem;
     font-family:monospace;
 }
  body{
@@ -29,16 +31,27 @@
          .bb{
         visibility:hidden;
     }}
+    @media(max-width:997px){
+         .schoolname{
+        margin-left:-6rem;
+        margin-top:-2rem;
+    }
+    .navbar{
+    border-radius:.4rem;
+}
+    .bt{
+    margin-left:-1rem;
+}}
  </style>
 <nav class="navbar navbar-expand-md navbar-light " >
         <div class="container-fluid">
         <div class="d-block">
                 <a class="navbar-brand" href="s_dashboard">
-                    <img src="../images/shyne.png" height="80" alt="Brand"/> 
-                   <div class="div ">
-                   <a class="btn btn-primary bb mt-1 mb-3 " title="toggle"  data-bs-toggle="collapse" href="#" >
-    <i class="bi-toggles"></i>
-    </a>
+                    <img src="../images/shyne.png" height="100" alt="Brand"/> 
+                   <div class="div bt">
+                   <a class="btn btn-danger bb mt-1 mb-3" title="toggle" data-bs-toggle="collapse" href="#">
+                    <i class="bi-list"></i>
+                    </a>
                    </div>
                 </div> 
                 <div class="justify-content-start">

@@ -18,7 +18,11 @@ if (!isset($_SESSION["s_login"])) {
     <title>RESULTS</title>
 <style>
     .mm{
-        margin-top:11rem
+        margin-top:11rem;
+        padding:1rem;
+    }
+    .mm:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
     }
     @media(min-width:997px){
          .mrow{

@@ -129,6 +129,7 @@ $getstudent=mysqli_query($conn,"select *from student where regno='$regno'");
 if(mysqli_num_rows($getstudent)>0){
 $res=mysqli_fetch_assoc($getstudent);
 $name=$res['s_name'];
+
 $getpayments=mysqli_query($conn,"select *from payments where regno='$regno'");
 while($rts=mysqli_fetch_assoc($getpayments)){
     ?>
@@ -143,13 +144,15 @@ while($rts=mysqli_fetch_assoc($getpayments)){
         $termname=$term['term_name'];
         $tid=$term['term_id'];
         $yrid=$term['year'];
+        $classs=$rts['class'];
         $getyear=mysqli_query($conn,"select *from academic_year where id=$yrid");
         $year=mysqli_fetch_assoc($getyear);
         $yrname=$year['sname'];
         echo $yrname." - ".$termname; ?></td>
       
         <td> <a href="#myModal<?php echo $rts['trans_id'] ?>" class="btn btn-sm btn-primary"
-                            data-bs-toggle="modal">Payment Info</a>
+                            data-bs-toggle="modal">Payment Info</a> <a href="" class="btn mt-1 btn-sm btn-primary"
+                            data-bs-toggle="modal">Invoices associated with payment</a>
 
                         <!-- Modal HTML -->
                         <div id="myModal<?php echo $rts['trans_id']  ?>" class="modal fade">
@@ -189,53 +192,23 @@ while($rts=mysqli_fetch_assoc($getpayments)){
                                             $result=mysqli_fetch_assoc($getterm);
                                              echo $result['term_name']; ?>" readonly
                                                 class="form-control">
-                                                <label for="total_fee" class="form-label">Fee Amount</label>
-                                            <input type="text" name="total_fee" aria-label="total_fee" value="<?php
-                                            $getfee=mysqli_query($conn,"select *from termfees where term=$t");
-                                            $rest=mysqli_fetch_assoc($getfee);
-                                            echo $rest['amount']; ?>" readonly
+                                                <label for="student_grade" class="form-label">Student Grade</label>
+                                            <input type="student_grade" aria-label="student_grade" value="<?php
+                                            $getclass=mysqli_query($conn,"select *from class where class_id=$classs");
+                                            $result=mysqli_fetch_assoc($getclass);
+                                             echo $result['class_name']; ?>" readonly
                                                 class="form-control">
-                                                <label for="invoice" class="form-label">Payments</label> <br>
-                                            <?php
-                                            $check = mysqli_query($conn, "select *from payments where regno='$res[regno]' and term='$rts[term]'");
-                                            
-                                                $sum=0;
-                                            while($rs=mysqli_fetch_assoc($check)){
-                                                $sum=$sum+$rs['amount_paid'];
-                                            ?>
-                                            <input type="text" aria-label="invoice" name="invoice" value="<?php echo $rs['amount_paid']; ?>" readonly
-                                                class="form-control ">
-                                          <?php } 
-                                          if($sum>=$rest['amount']){
-                                           ?>
-                                           <p class="lead fs-1 fw-bold text-center">Paid</p>
-                                           <i>With overpay of(<?php echo $sum-$rest['amount']; ?>) <br>Overpay will be acknowledged in the next term</i>
-                                           <?php
-                                          }else{
-                                            
-
-                                            $b=$rest['amount']-$sum;
-                                            
-                                            ?>
-                                             <label for="b" class="form-label">Balance</label>
-                                            <input type="text" aria-label="b" readonly class="form-control" name="b" value="<?php echo $b ?>">
-                                            <?php
-                                          }
-                                          ?>
-                                            
-                                            
-                                              <!-- <label for="" class="form-label">Transaction Id</label>
-                                            <input type="text" name="transid" class="form-control" required>
-
-
-                                            <label for="" class="form-label">Enter Total Amount paid</label>
-                                            <input type="number" name="paid" class="form-control" required> -->
-
-                                            <!-- <center> <input type="submit" name="record" class="btn btn-secondary m-3"
-                                                    value="save data"></center> -->
-                                        </form>
-
-                                    </div>
+                                                <label for="transaction_id" class="form-label">TransactionID</label>
+                                            <input type="term" aria-label="transaction_id" value="<?php
+                                           
+                                             echo $rts['trans_id']; ?>" readonly
+                                                class="form-control">
+                                                <label for="term" class="form-label">Transaction Amount</label>
+                                            <input type="amt" aria-label="transaction_amount" value="<?php
+                                           
+                                             echo $rts['amount_paid']; ?>" readonly
+                                                class="form-control">
+                                            </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
@@ -340,13 +313,13 @@ const container= document.querySelector('.container');
     if (sideBar.style.marginLeft== '-250px')
     {
         sideBar.style.marginLeft= '0';
-        mrow.style.marginLeft= '10rem';
+      
     }
     else 
     {
         
         sideBar.style.marginLeft= '-250px';
-        mrow.style.marginLeft= '-1rem';
+       
     }
   });
 

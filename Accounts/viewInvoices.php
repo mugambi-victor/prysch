@@ -29,6 +29,7 @@ $options = ""; ?>
 
             transition: 1s;
         }
+        
     </style>
 </head>
 
@@ -41,80 +42,75 @@ $options = ""; ?>
 
             <?php
 
-            if (isset($_REQUEST['record'])) {
+            if (isset($_REQUEST['ack_current'])) {
                 $regno = $_REQUEST['regno'];
                 $term = $_REQUEST['term_name'];
                 $class = $_REQUEST['class'];
-
-                $transid = $_REQUEST['transid'];
+                $year = $_REQUEST['year_name'];
+                $invoice_amt = $_REQUEST['total_fee'];
+                $transid = $_REQUEST['transaction_id'];
+                //getpayment
+                $querypayment = mysqli_query($conn, "select trans_id from payments where id=$transid");
+                $rr = mysqli_fetch_assoc($querypayment);
+                $trans_id = $rr['trans_id'];
+                $trans_amt = $_REQUEST['transaction_amt'];
                 $paid = $_REQUEST['paid'];
+                $invoice_balance = $invoice_amt - $paid;
+                $invoice_details = "Current Term Fees";
 
-
-
-
-                $check = mysqli_query($conn, "select *from payments where trans_id='$transid'");
-                if (mysqli_num_rows($check) > 0) {
-                    echo ("<div class='alert mt-3 alert-warning alert-dismissible fade show'>
-                        <strong>Sorry!</strong>A payment with that Transaction Id has already been Recorded.
+                if ($paid > $trans_amt) {
+                    ?>
+                    <div class='alert mt-3 alert-warning alert-dismissible fade show'>
+                        <strong>Warning!</strong>Paid amount cannot be greater than Payment Amount.
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-                    </div>");
-
+                    </div>
+                    <?php
                 } else {
-                    $insertquery = mysqli_query($conn, "insert into payments values(0,'$regno',$term,$class,'$transid',$paid)");
 
-                    if ($insertquery) {
-                        $getstudent = mysqli_query($conn, "select *from student where regno='$regno'");
-                        $rets = mysqli_fetch_assoc($getstudent);
-                        $getpaidfromdb = mysqli_query($conn, "select * from payments where trans_id='$transid'");
 
-                        $paidt = mysqli_fetch_assoc($getpaidfromdb);
-                        $newpaid = $paidt['amount_paid'];
-                        $newtotal = $rets['total'] - $newpaid;
-                       
-                        if ($newtotal <= 0) {
-                            $updatequery = mysqli_query($conn, "update student set total=$newtotal, fee_status=0 where regno='$regno'");
-                            if (!$updatequery) {
+
+                    $distributable_balance = $trans_amt - $paid;
+                    $check = mysqli_query($conn, "select *from payments where id='$transid'");
+                    if (mysqli_num_rows($check) > 0) {
+                        //update distributable amount
+                        $update_query = mysqli_query($conn, "update payments set Distributable_amt=$distributable_balance where trans_id='$trans_id'");
+                        //update student current term invoice
+                        $update_query_student = mysqli_query($conn, "update student set total=$invoice_balance where regno='$regno'");
+                        if ($update_query && $update_query_student) {
+                            //insert Into acknowledged invoices
+                            $checksimilar_transaction = mysqli_query($conn, "select *from acknowledged_invoices where regno='$regno' and transaction_id='$trans_id' and invoice_amt=$invoice_amt");
+                            if (mysqli_num_rows($checksimilar_transaction) > 0) {
                                 ?>
                                 <div class='alert mt-3 alert-warning alert-dismissible fade show'>
-                                    <strong>Warning!</strong>A problem occurred while recording payment!
+                                    <strong>Warning!</strong>Invoice already acknowledged.
                                     <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                                 </div>
                                 <?php
-                            } else { ?>
-                                <div class='alert mt-3 alert-success alert-dismissible fade show'>
-                                    <strong>Success!</strong>Payment recorded successfully!
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-                                </div>
-                                <?php
-                            }
-                        } else {
-                            $updatequery = mysqli_query($conn, "update student set total=$newtotal where regno='$regno'");
-                            if (!$updatequery) {
-                                ?>
-                                <div class='alert mt-3 alert-warning alert-dismissible fade show'>
-                                    <strong>Warning!</strong>A problem occurred while recording payment!
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-                                </div>
-                                <?php
-                            } else { ?>
-                                <div class='alert mt-3 alert-success alert-dismissible fade show'>
-                                    <strong>Success!</strong>Payment recorded successfully!
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-                                </div>
-                                <?php
+
+                            } else {
+                                $insert_query = mysqli_query($conn, "insert into acknowledged_invoices values(0,'$regno',$year,$term,$class,'$trans_id','$invoice_details',$invoice_amt,$paid,$invoice_balance)");
+                                if ($insert_query) {
+                                    echo "Success";
+                                } else {
+                                    ?>
+                                    <div class='alert mt-3 alert-danger alert-dismissible fade show'>
+                                        <strong>Sorry!</strong>An error occurred
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                                    </div>
+                                    <?php
+
+                                }
                             }
                         }
 
-
                     } else {
                         ?>
-                        <div class='alert mt-3 alert-warning alert-dismissible fade show'>
-                            <strong>Warning!</strong>A problem occurred while recording payment!
+                        <div class='alert mt-3 alert-danger alert-dismissible fade show'>
+                            <strong>Sorry!</strong>That payment does not exist
                             <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         </div>
                         <?php
                     }
-
                 }
             }
 
@@ -123,13 +119,14 @@ $options = ""; ?>
             <div class="row">
 
                 <div class="col-md">
+                    <h3 class="text-center fw-bold pt-4">Invoices</h3>
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-sm">
-                                <label for="searchbox" class="form-label lead fw-bold mt-5">Search By Registration
+                                <label for="searchbox" class="form-label  lead fw-bold mt-5">Search Invoice By Registration
                                     No</label>
                                 <input type="text" name="searchbox" placeholder="registration no..."
-                                    class="p-2 form-control" required>
+                                    class="p-2 searcherr form-control" required>
 
 
                                 <input type="submit" name="search" class="btn mt-3 btn-primary" value="Search">
@@ -212,7 +209,7 @@ $options = ""; ?>
 
                                             </form>
                                             <a href="#myModal<?php echo $row['id'] ?>" class="btn btn-sm btn-primary"
-                                                data-bs-toggle="modal">Record Payment</a>
+                                                data-bs-toggle="modal">Acknowledge Invoice</a>
 
                                             <!-- Modal HTML -->
                                             <div id="myModal<?php echo $row['id'] ?>" class="modal fade">
@@ -220,7 +217,7 @@ $options = ""; ?>
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title">
-                                                                <?php echo $row['total']; ?>
+                                                                <?php echo "Invoice Amount: ". $row['total']; ?>
                                                             </h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal"></button>
@@ -235,12 +232,16 @@ $options = ""; ?>
                                                                 <label for="" class="form-label">Registration Number</label>
                                                                 <input type="text" name="regno" value="<?php echo $row['regno']; ?>"
                                                                     readonly class="form-control">
+                                                                    <!-- term -->
                                                                 <input type="text" name="term_name"
                                                                     value="<?php echo $row['term_id']; ?>" readonly hidden
                                                                     class="form-control">
-
+                                                                    <!-- Academic year -->
+                                                                    <input type="text" name="year_name"
+                                                                    value="<?php echo $row['session_id']; ?>" readonly hidden
+                                                                    class="form-control">
                                                                 <label for="" class="form-label">Academic Year</label>
-                                                                <input type="text" value="<?php
+                                                                <input type="text"  value="<?php
                                                                 $getyr = mysqli_query($conn, "select *from academic_year where id='$row[session_id]'");
                                                                 $result = mysqli_fetch_assoc($getyr);
                                                                 echo $result['sname']; ?>" readonly class="form-control">
@@ -290,7 +291,7 @@ $options = ""; ?>
                                                                             <label for="" class="form-label">Amount You Wnat to Pay</label>
                                                                             <input type="number" name="paid" class="form-control" required>
 
-                                                                            <center> <input type="submit" name="record"
+                                                                            <center> <input type="submit" name="ack_current"
                                                                                     class="btn btn-secondary m-3" value="save data"></center>
                                                                         </form>
 
@@ -377,7 +378,7 @@ $options = ""; ?>
 
                                             </form>
                                             <a href="#myModal<?php echo $row['id'] ?>" class="btn btn-sm btn-primary"
-                                                data-bs-toggle="modal">Record Payment</a>
+                                                data-bs-toggle="modal">Acknowledge Invoice</a>
 
                                             <!-- Modal HTML -->
                                             <div id="myModal<?php echo $row['id'] ?>" class="modal fade">
@@ -592,19 +593,19 @@ $options = ""; ?>
 
         const sideBar = document.querySelector('.sidebar');
         const toggler = document.querySelector('.toggler');
-        const mrow = document.querySelector('.mrow');
+     
         const container = document.querySelector('.container');
 
         toggler.addEventListener('click', function () {
 
             if (sideBar.style.marginLeft == '-250px') {
                 sideBar.style.marginLeft = '0';
-                mrow.style.marginLeft = '10rem';
+                
             }
             else {
 
                 sideBar.style.marginLeft = '-250px';
-                mrow.style.marginLeft = '-1rem';
+                
             }
         });
 

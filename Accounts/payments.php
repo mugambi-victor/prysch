@@ -210,13 +210,13 @@ const container= document.querySelector('.container');
     if (sideBar.style.marginLeft== '-250px')
     {
         sideBar.style.marginLeft= '0';
-        mrow.style.marginLeft= '7rem';
+       
     }
     else 
     {
         
         sideBar.style.marginLeft= '-250px';
-        mrow.style.marginLeft= '-1rem';
+       
     }
   });
 

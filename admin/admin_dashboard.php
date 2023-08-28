@@ -34,7 +34,7 @@ if (!isset($_SESSION["email"])) {
 
         }
         .mm{
-        padding-top:10rem;
+        padding-top:5rem;
     }
     .mrow{
        padding-left:10rem;   

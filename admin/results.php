@@ -21,7 +21,7 @@ if(!isset($_SESSION["email"]))
             background-color: slateblue;
         }
         .mm{
-        padding-top:11rem;
+        padding-top:6rem;
     }
     .mrow{
        padding-left:10rem;   

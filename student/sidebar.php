@@ -8,8 +8,8 @@
 }
 #collapseExample{
   background:#051094;
-  margin-top:8.5rem;
-  transition:1s;
+  margin-top:10rem;
+  transition:all 1s;
   position:fixed;
   height: 100%;
   

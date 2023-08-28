@@ -22,12 +22,17 @@ $options=""; ?>
     <style>
     
     .mm {
-        padding-top: 10rem;
+        padding-top: 6rem;
     }
 
     .mrow {
     padding-left:10rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    padding-right: 1rem;
+    margin-right: 0;
         transition: 1s;
+        background-color: white;
     }
     </style>
 </head>
@@ -62,8 +67,8 @@ $options=""; ?>
         $sql1=mysqli_query($conn, "select * from student where regno='$regno'");
         if(mysqli_num_rows($sql1)>0){
             ?>
-    <table class=" col-sm-12 table table-bordered table-striped">
-        <tr>
+    <table class=" col-sm-12  table table-bordered ">
+        <tr style="background:#948905; color:white;">
             <th>Student Name</th>
             <th>Registration Number</th>
             <th>Parent's email</th>
@@ -74,7 +79,7 @@ $options=""; ?>
 
             while($row=mysqli_fetch_assoc($sql1)){
       
-                echo "<tr><td><form method='post' action='viewstudentprofile.php'><label class='text-capitalize'>" . $row['s_name'] . "</label></td><td><input class='text-uppercase' style='border:0;' name='rno' type='text' readonly value=" . $row['regno'] . "></td><td>" . $row['email'] . "</td><td>" . $row['pno'] . "</td><td><input type='submit' class='btn btn-info' value='view profile' name='profile'></form></a><a  href='promote.php?id=$row[id]' class='btn btn-primary mt-2'>Promotestudent</a></td></tr>  </table>"; 
+                echo "<tr><td><form method='post' action='viewstudentprofile.php'><label class='text-capitalize'>" . $row['s_name'] . "</label></td><td><input class='text-uppercase' style='border:0;' name='rno' type='text' readonly value=" . $row['regno'] . "></td><td>" . $row['email'] . "</td><td>" . $row['pno'] . "</td><td><input type='submit' class='btn btn-info' value='profile' name='profile'></form></a><a  href='promote.php?id=$row[id]' class='btn btn-primary ms-1'>Promote</a></td></tr>  </table>"; 
                 }
                 
         }

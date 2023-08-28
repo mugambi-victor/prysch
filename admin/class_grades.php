@@ -24,7 +24,7 @@ if (!isset($_SESSION["email"])) {
 
     
     .mm{
-        padding-top:10rem;
+        padding-top:6rem;
     }
     .mrow{
        padding-left:10rem;   
@@ -57,19 +57,10 @@ if (isset($_POST["submit"])) {
 
             $sql = mysqli_query($conn, "select * from student where class='$student_classname' and term_id=$term");
             if(mysqli_num_rows($sql)>0){
-            while($res=mysqli_fetch_assoc($sql)){
-                
-                
                 ?>
-            
-                <div class="col">
-                    <form action="addmarks.php" method="post">
-                        <input type="text" hidden value="<?php echo $res['id']; ?>" name="student">
-                        <input type="text" hidden value="<?php echo $res['class']; ?>" name="class">
-                        <input type="text" hidden value="<?php echo $term; ?>" name="term">
-                        <input type="text" hidden value="<?php echo $exam; ?>" name="exam">
-                        <table class="table table-responsive-sm table-bordered table-striped">
-                            <tr>
+                <table class="table table-responsive-sm table-bordered table-striped">
+                    
+                <tr>
                                 <th>
                                     Name
                                 </th>
@@ -80,6 +71,19 @@ if (isset($_POST["submit"])) {
                                     Action
                                 </th>
                             </tr>
+                <?php
+            while($res=mysqli_fetch_assoc($sql)){
+                
+                
+                ?>
+            
+                <div class="col-sm col-md">
+                    <form action="addmarks.php" method="post">
+                        <input type="text" hidden value="<?php echo $res['id']; ?>" name="student">
+                        <input type="text" hidden value="<?php echo $res['class']; ?>" name="class">
+                        <input type="text" hidden value="<?php echo $term; ?>" name="term">
+                        <input type="text" hidden value="<?php echo $exam; ?>" name="exam">
+                        
                             <tr>
 
                                 <td><input type="text" class="form-control text-capitalize" style="borders:0;" name="s_name" readonly
@@ -106,16 +110,21 @@ if (isset($_POST["submit"])) {
                                     <?php } ?>
                                     </td>
                             </tr>
-                        </table>
+                        
                     </form>
+
+                 
                 </div>
             
-
+                
 
 
 
 
             <?php }
+            ?>
+            </table>
+            <?php
            }else
            {?>
             <div class='alert alert-warning alert-dismissible fade show'>

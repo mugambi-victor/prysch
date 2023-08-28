@@ -21,7 +21,7 @@ if(!isset($_SESSION["account_login"]))
     <title>CreatePost</title>
 <style>
         .mm{
-        padding-top:11rem;
+        padding-top:6rem;
     }
     .mrow{
        padding-left:10rem;   

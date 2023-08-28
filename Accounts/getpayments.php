@@ -5,7 +5,7 @@ if($transaction_id!='')
 {
     $class_result =mysqli_query($conn,"select * from payments where id=$transaction_id");
    while($row = mysqli_fetch_assoc($class_result)) {
-    $amount=$row['amount_paid'];
+    $amount=$row['Distributable_amt'];
     
     }
  

@@ -21,16 +21,14 @@ if (!isset($_SESSION["email"])) {
     <link rel="shortcut icon" href="ol.png">
     <title>AddMarks</title>
     <style>
-    .nav a:hover {
-        background-color: slateblue;
-    }
+    
 
     body {
         background: whitesmoke;
     }
 
     .mm {
-        padding-top: 10rem;
+        padding-top:5rem;
     }
 
     .mrow {

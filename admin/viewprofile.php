@@ -21,7 +21,7 @@ if(!isset($_SESSION["email"]))
     <title>ViewProfile</title>
     <style>
        .mm{
-        padding-top:11rem;
+        padding-top:5rem;
     }
     .mrow{
        padding-left:10rem;   

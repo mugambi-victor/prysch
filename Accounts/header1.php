@@ -7,12 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
-<link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-<script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script>
+<!-- <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
+<script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script> -->
 <style>
    
     .schoolname{
         width:4rem;
+        margin-top: -2.3rem;
         font-family:monospace;
     }
    
@@ -49,9 +50,9 @@
 </style>
 <nav class="navbar navbar-expand-md navbar-light " id="myHeader">
         <div class="container-fluid">
-            <div class="mmm">
-            <img src="../images/shyne.png" class="pe-2" height="80" alt="CoolBrand"/> <br>
-            <button class="toggler btn mt-2 mb-3 btn-danger" ><i class="bi-list"></i></button>
+            <div class="mmm m-0">
+            <img src="../images/shyne.png" class="pe-2" height="100" alt="CoolBrand"/> <br>
+            <button class="toggler btn mt-2  btn-danger" ><i class="bi-list"></i></button>
             </div>
         
         

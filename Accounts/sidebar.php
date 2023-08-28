@@ -11,7 +11,7 @@ li{
 }
 
 .col-md-2 {
-    margin-top:9rem; 
+    margin-top:10rem; 
     position:fixed;
     transition: 1s;
     height:100%;

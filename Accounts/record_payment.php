@@ -41,7 +41,7 @@ $options = ""; ?>
 
             <?php
 
-            if (isset($_REQUEST['record'])) {
+            if (isset($_REQUEST['record_payment'])) {
                 $regno = $_REQUEST['regno'];
                 $year = $_REQUEST['academic_year'];
                 $term = $_REQUEST['term_name'];
@@ -82,8 +82,8 @@ $options = ""; ?>
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-sm">
-                                <h3 class="fw-bold d-flex justify-content-center">Record Payments</h3>
-                                <label for="searchbox" class="form-label lead fw-bold mt-5">Search By Registration
+                                <h3 class="fw-bold pt-4 d-flex justify-content-center">Record Payments</h3>
+                                <label for="searchbox" class="form-label lead fw-bold mt-5">Search Student By Registration
                                     No</label>
                                 <input type="text" name="searchbox" placeholder="registration no..."
                                     class="p-2 form-control" required>
@@ -118,7 +118,7 @@ $options = ""; ?>
                             </tr>
                             <?php
 
-                            $sql1 = mysqli_query($conn, "select * from student where regno='$regno' and fee_status=1");
+                            $sql1 = mysqli_query($conn, "select * from student where regno='$regno'");
                             if (mysqli_num_rows($sql1) > 0) {
                                 while ($row = mysqli_fetch_assoc($sql1)) {
 
@@ -222,10 +222,10 @@ $options = ""; ?>
                                                                 <input type="text" name="transid" class="form-control" required>
 
 
-                                                                <label for="" class="form-label">Enter Total Amount paid</label>
+                                                                <label for="" class="form-label">Payment Amount</label>
                                                                 <input type="number" name="paid" class="form-control" required>
 
-                                                                <center> <input type="submit" name="record"
+                                                                <center> <input type="submit" name="record_payment"
                                                                         class="btn btn-secondary m-3" value="Record Payment">
                                                                 </center>
                                                             </form>
@@ -258,76 +258,7 @@ $options = ""; ?>
 
             </div>
         </div>
-        <div class="col-md">
-
-            <p class="fw-bold p-0 mt-5 fs-3">Search by class</p>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <form action="class.php" method="post">
-                        <label for="class" class="form-label">Academic Year</label>
-                        <select name="year" id="year-list" class="form-select">
-                            <option value="">select Year</option>
-
-                            <?php
-                            $query = mysqli_query($conn, "select *from academic_year ");
-                            while ($r = mysqli_fetch_assoc($query)) {
-
-                                ?>
-                                <option value="<?php echo $r['id']; ?>"><?php echo $r['sname']; ?></option>
-                                <?php
-                            }
-                            ?>
-                        </select>
-
-                </div>
-                <div class="col-md">
-                    <label for="term_name" class="form-label">Term</label>
-                    <select class="form-select" aria-label="term_name" name="term_name" id="term-list" required>
-                        <option value=''>Select term</option>
-                    </select>
-                </div>
-
-
-
-            </div>
-            <div class="col-md">
-                <label for="class" class="form-label">Class</label>
-                <select name="class" id="class-list" class="form-select">
-                    <option value="">select class</option>
-
-                    <?php
-                    $query = mysqli_query($conn, "select *from class ");
-                    while ($r = mysqli_fetch_assoc($query)) {
-
-                        ?>
-                        <option value="<?php echo $r['class_id']; ?>"><?php echo $r['class_name']; ?></option>
-                        <?php
-                    }
-                    ?>
-                </select>
-            </div>
-
-
-
-
-            <div class="col-md">
-                <center><input type="submit" value="GO" name="submit" id="formsubmit" class="btn btn-primary mt-3">
-                </center>
-            </div>
-        </div>
-
-
-        </form>
-
-    </div>
-
-
-
-
-
-
-
+     
 
     <?php
     ?>
@@ -356,12 +287,12 @@ $options = ""; ?>
 
             if (sideBar.style.marginLeft == '-250px') {
                 sideBar.style.marginLeft = '0';
-                mrow.style.marginLeft = '10rem';
+             
             }
             else {
 
                 sideBar.style.marginLeft = '-250px';
-                mrow.style.marginLeft = '-1rem';
+              
             }
         });
 

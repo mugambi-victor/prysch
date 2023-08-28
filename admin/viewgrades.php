@@ -26,11 +26,12 @@ $sstudent_name = "";
     <style>
     
     .mm{
-        padding-top:10rem;
+        padding-top:5rem;
     }
     .mrow{
        padding-left:10rem;   
        transition: 1s;
+       background-color:white
     }
     </style>
 
@@ -49,7 +50,7 @@ $sstudent_name = "";
             <div class="row mrow d-block">
                 <div class="col-md">
                     <form action="viewgrades1" method="post">
-                    <h3 class="text-center mt-3 fw-bold">
+                    <h3 class="text-center pt-3 fw-bold">
                     Select a Class to View Grades</h3>
                         <label for="session" class="form-label">Academic Year</label>
                         <select class="form-select" name="session" id="session-list" required>
@@ -98,7 +99,7 @@ $sstudent_name = "";
             ?>
                     </select>
                 </div>
-                <center><input type="submit" class="btn btn-primary mt-3" name="submit" value="View Grades"></center>
+                <center><input type="submit" class="btn btn-primary mb-3 mt-3" name="submit" value="View Grades"></center>
                 </form>
            
     

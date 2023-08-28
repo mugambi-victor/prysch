@@ -39,9 +39,10 @@ session_start();?>
 <body >
 <nav class="navbar navbar-expand-md navbar-light " >
         <div class="container-fluid">
-        <img src="../images/rh.jfif" class="pe-2" height="80" alt="CoolBrand"/>
+        <img src="../images/shyne.png" class="pe-2" height="100" alt="CoolBrand"/> <br>
+            
                
-               <p class="schoolname text-wrap text-white fw-bold" >KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p> 
+               <p class="schoolname text-wrap text-white fw-bold" >SHYNE STUDENT MANAGEMENT SYSTEM</p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

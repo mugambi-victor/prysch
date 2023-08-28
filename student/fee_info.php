@@ -29,6 +29,20 @@ $rest = mysqli_fetch_assoc($get_studentdata);
     @media(min-width:997px){
     .mrow{
         padding-left:10rem
+    }
+    
+}
+
+    @media(max-width:997px) {
+        
+    .card-containerr {
+        border-radius: .3rem;
+        height:200px;
+       
+    }
+    
+    .card-img{
+        visibility: hidden;
     }}
 </style>
 <body>
@@ -49,7 +63,7 @@ $rest = mysqli_fetch_assoc($get_studentdata);
         <div class="row mrow">
             <div class="col-sm">
 
-                <div class="mt-4 ms-1 row d-flex text-white text-center p-0 bg-primary">
+                <div class="mt-4 ms-1 row card-containerr d-flex text-white text-center p-0 bg-primary">
                     <p class="display-6 text-center  p-2 " style="margin-top: -0.56%;">Fee Summary Info</p>
                     <div class="col-sm p-2 ">
                     <?php
@@ -65,7 +79,7 @@ $rest = mysqli_fetch_assoc($get_studentdata);
                    
                     ?> 
                         <p class="lead text-capitalize">Current Term: <?php echo $yrname . "<br/> " . $termname?></p>
-                            <p class="text mt-5 fw-bold display-3"></p>
+                        
                             <p class=" fs-5 ">Term Fee: Kshs <?php echo number_format($result['total']); ?></p>
                             
                         
