@@ -34,7 +34,7 @@ if (!isset($_SESSION["email"])) {
 
         }
         .mm{
-        padding-top:5rem;
+        padding-top:1rem;
     }
     .mrow{
        padding-left:10rem;   
@@ -49,25 +49,41 @@ if (!isset($_SESSION["email"])) {
        transition: 1s;
 
     }
-    
-
+    .skulname{
+       
+       padding-left: 0;
+       margin-left: 0;
     }
+.the-skul{
+    padding-left: 0;
+   
+   display: flex;
+   justify-content: center;
 
-        /* style="background:#051094;;" */
+   padding-bottom:2rem ;
+}
+    }
+    .skulname{
+       
+        padding-top: 6rem;
+        padding-bottom: 1rem;
+        display: flex;
+   justify-content: center;
+        background-color: whitesmoke;
+        color:#0036AB;
+    }
     </style>
 </head>
 
 <body><?php include('header2.php');
  include('sidebar.php');?>
-
-<div class="container-fluid col-sm  d-flex">
-
-        <div class="container mm col-md">
-       
-            
-            <div class="row mrow">
-            <p class="display-6"><i class="bi-house-fill"></i>AdminDashboard</p>
-                <div class="col-md students">
+ <h6 class="the-skul skulname" >School Name Here</h6>
+<div class="container-fluid">
+        <div class="container mm col-md ">
+            <div class="row mrow d-flex">
+        <div class="col-md">
+            <div class="row">
+        <div class="col-md students">
                     <?php
                     $query = mysqli_query($conn, "select *from student");
                     $result = mysqli_num_rows($query);
@@ -111,7 +127,13 @@ if (!isset($_SESSION["email"])) {
 
                     </div>
                 </div>
+        </div>
+    </div>
                 
+                <div class="col-md">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, aperiam expedita. Tenetur laboriosam odio, nisi recusandae inventore, voluptatem illo excepturi nemo amet labore, accusamus tempore autem rem officia odit et.</p>
+                </div>
+            </div>
 
     </div>
     <script src="sidebar.js"></script>

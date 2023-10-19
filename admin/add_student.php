@@ -68,9 +68,9 @@ $optionr = "";
 
     .form_add_student{
          
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 1), 0 2px 5px 0 rgba(0, 0, 0, 0.80);
+     
         background:white;
-        margin: 2rem;
+        margin-left: 3rem;
         
     }
 
@@ -85,7 +85,7 @@ $optionr = "";
     }
 
     .mrow {
-       padding-left:10rem;
+       padding-left:11rem;
         transition: 1s;
     }
     @media(max-width:997px){
@@ -94,6 +94,7 @@ $optionr = "";
             padding: 0;
         }
     }
+    
     
     </style>
 </head>
@@ -177,21 +178,21 @@ include('sidebar.php');?>
         } ?>
             <div class="row " style="">
                 <form class="row form_add_student g-3 "  enctype="multipart/form-data" method="post">
-                    <h3 class="fw-bold d-flex justify-content-center ">Student Information</h3>
+                    <h3 class="fw-bold d-flex justify-content-center " style="color:#0036AB;">Student Information</h3>
                     <hr class="my-2">
 
                     <div class="col-md-6">
                         <label for="s_name" class="form-label">Student Name</label>
-                        <input type="text" placeholder="name" name="s_name" class="form-control" id="s_name" required>
+                        <input type="text" placeholder="name" name="s_name" class="form-control" id="s_name" style="border:0; background:whitesmoke" required>
                     </div>
                     <div class="col-md-6">
                         <label for="rno" class="form-label">Registration Number</label>
-                        <input type="text" placeholder="Registration Number" class="form-control" name="rno" required>
+                        <input type="text" placeholder="Registration Number" class="form-control" name="rno" style="border:0; background:whitesmoke" required>
                     </div>
                     <div class="col-md-6">
                         <label for="year" class="form-label">Academic Year</label>
                         <select class="form-select" aria-label="Default select example" name="academic_year"
-                            id="year-list" required>
+                            id="year-list"  required>
                             <option selected>Open this select menu</option>
                             <?php
   $session_result = mysqli_query($conn, "select distinct id,sname from academic_year");
@@ -209,14 +210,14 @@ include('sidebar.php');?>
                     </div>
                     <div class="col-md">
                         <label for="term" class="fomr-label">Term</label>
-                        <select name="term" class="form-select" id="termlist">
+                        <select name="term" class="form-select " id="termlist" required>
                             <option value="">select term</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="class" class="form-label">Class </label> <br>
-                        <select class="form-select" name="class" id="classlist">
-                            <option value="">Select class</option>
+                        <select class="form-select" name="class" id="classlist" >
+                            <option value="" >Select class</option>
                             <?php
             $class_result = mysqli_query($conn, 'select distinct class_id,class_name from class');
             if (mysqli_num_rows($class_result) > 0) {
@@ -233,44 +234,45 @@ include('sidebar.php');?>
 
                     <div class="col-md-6">
                         <label for="s_pass" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="s_pass" placeholder="password" name="s_pass"
-                            required>
+                        <input type="text" class="form-control" id="s_pass" placeholder="password" name="s_pass" 
+                        style="border:0; background:whitesmoke" required>
                     </div>
                     <div class="col-md-6">
                         <label for="dob" class="form-label">DOB</label>
                         <input type="date" class="form-control" id="dob" placeholder="date og birth" name="dob"
-                            required>
+                        style="border:0; background:whitesmoke" required>
                     </div>
                     <div class="col-md-6">
                         <label for="yoj" class="form-label">YEAR OF JOINING</label>
                         <input type="text" class="form-control" id="yoj" placeholder="year of joining eg, 2020"
-                            name="yoj" required>
+                            name="yoj" style="border:0; background:whitesmoke" required>
                     </div>
                     <div class="col-md-6">
                         <label for="uploads" class="form-label">Upload Photo</label>
-                        <input type="file" class="form-control" id="uploads" name="uploads" required>
+                        <input type="file" class="form-control" id="uploads" name="uploads" style="border:0; background:whitesmoke" required>
                     </div>
+                   
+                    <h3 class="fw-bold d-flex justify-content-center"  style="color:#0036AB;">Parent/Guardian Information</h3>
                     <hr class="my-2">
-                    <h3 class="fw-bold d-flex justify-content-center">Parent/Guardian Information</h3>
                     <div class="col-md-6">
                         <label for="s_name" class="form-label">Parent/Guardian Name</label>
-                        <input type="text" placeholder="parents name" name="p_name" class="form-control" id="p_name"
+                        <input type="text" placeholder="parents name" name="p_name" class="form-control " id="p_name" style="border:0; background:whitesmoke"
                             required>
                     </div>
                     <div class="col-md-6">
                         <label for="pno" class="form-label">Phone Number</label>
-                        <input type="number" placeholder="Phone Number" class="form-control" name="pno" required>
+                        <input type="number" placeholder="Phone Number" class="form-control" name="pno" style="border:0; background:whitesmoke" required>
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" placeholder="Email" name="email" class="form-control" id="email" required>
+                        <input type="email" placeholder="Email" name="email" class="form-control" id="email" style="border:0; background:whitesmoke" required>
                     </div>
                     <div class="col-md-6">
                         <label for="p_pass" class="form-label">password</label>
-                        <input type="text" placeholder="Password" class="form-control" name="p_pass" required>
+                        <input type="text" placeholder="Password" class="form-control" name="p_pass" style="border:0; background:whitesmoke" required>
                     </div>
                     <div class="col-12 d-flex justify-content-center">
-                        <button type="submit" class="btn mb-2 btn-primary" name="submit">Add Student</button>
+                        <button type="submit" class="bt mb-2" name="submit"><i class="fa fa-plus" aria-hidden="true"></i> Add Student </button>
                     </div>
                 </form>
             </div>

@@ -38,7 +38,7 @@ if(!isset($_SESSION["account_login"]))
 
    ?>
 <div class="container-fluid col-sm  d-flex">
-  <div class="container mm col-md">
+  <div class="container mm col-md" style="background:white;">
     <div class="row mrow">
   <?php 
 if(isset($_REQUEST["add"]))
@@ -81,7 +81,7 @@ else{
      <label for="uploadfile" class="form-label">Image</label> 
   <input type="file" class="form-control"  name="uploadfile" 
                    value="" />
-			<center><input type="submit" class="btn  mt-1 btn-secondary" value="Post" name="add" style="font-size:large;"/></center>
+			<center><input type="submit" class="btn  mt-1 mb-2 btn-secondary" value="Post" name="add" style="font-size:large;"/></center>
 		
 
 </form>

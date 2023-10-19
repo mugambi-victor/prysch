@@ -11,7 +11,7 @@
   <style>
     
     .navbar{
-        background:#948905;  
+        background:#051094; 
 
     }
     .schoolname{
@@ -25,7 +25,7 @@
     }
     body{
         font-family: 'Nunito', sans-serif;
-        background-color: whitesmoke;
+       
     }
     @media(min-width:997px){
          .toggler{
@@ -47,6 +47,19 @@
         padding:0;
        transition: 1s;
     }
+       
+    }
+    /* buttons */
+    .bt{
+        padding:.3rem .9rem;
+        border: 1px solid;
+        border-radius: 10px;
+        background-color:#0036AB;
+        color:white;
+    }
+    .bt:hover{
+        background-color: #948905;
+        color:black;
        
     }
 </style>

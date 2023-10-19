@@ -22,7 +22,7 @@
     .navbar{
         position:fixed;
         width:100%;
-        background:#948905; 
+        background:#051094; 
         z-index: 9;
     }
     body{

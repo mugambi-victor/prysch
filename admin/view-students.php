@@ -46,16 +46,12 @@ $options=""; ?>
 
         <div class="row mrow col-md-12 ">
             <form action="" method="post">
-            <p class="lead fw-bold">Search student by Registration Number</p>
-                        <input type="text" name="searchbox" placeholder="search registration no..." class="form-control"
+            <p class="lead fw-bold"  style="color:#0036AB;">Search student by Registration Number</p>
+                        <input type="text" name="searchbox" placeholder="search registration no..." class="form-control" style="border:0; background:whitesmoke"
                             required>
                     
-                  
-                        <input type="submit" name="search" class="btn m-2 btn-primary" value="Search">
-               
-
-
-
+                            <button type="submit" name="search" class="bt mt-2 mb-2" >Search  <i class="fa fa-search"></i></button>
+                   
             </form>
         
 
@@ -67,6 +63,7 @@ $options=""; ?>
         $sql1=mysqli_query($conn, "select * from student where regno='$regno'");
         if(mysqli_num_rows($sql1)>0){
             ?>
+            <div class="table-responsive">
     <table class=" col-sm-12  table table-bordered ">
         <tr style="background:#948905; color:white;">
             <th>Student Name</th>
@@ -79,10 +76,34 @@ $options=""; ?>
 
             while($row=mysqli_fetch_assoc($sql1)){
       
-                echo "<tr><td><form method='post' action='viewstudentprofile.php'><label class='text-capitalize'>" . $row['s_name'] . "</label></td><td><input class='text-uppercase' style='border:0;' name='rno' type='text' readonly value=" . $row['regno'] . "></td><td>" . $row['email'] . "</td><td>" . $row['pno'] . "</td><td><input type='submit' class='btn btn-info' value='profile' name='profile'></form></a><a  href='promote.php?id=$row[id]' class='btn btn-primary ms-1'>Promote</a></td></tr>  </table>"; 
-                }
+                ?>
+                <tr>
+                    <td>
+                        <form method='post' action='viewstudentprofile.php'>
+                            <label class='text-capitalize'><?php echo $row['s_name'];?></label>
+                        </td>
+                        <td>
+                            <input class='text-uppercase' style='border:0;' name='rno' type='text' readonly value=<?php echo $row['regno']; ?>>
+                        </td>
+                        <td>
+                            <?php echo $row['email'] ?>
+                        </td>
+                        <td>
+                            <?php $row['pno'];?>
+                        </td>
+                        <td>
+                            <button type='submit' name='profile' class='bt btn-info' ><i class="fa fa-eye"></i> View Profile</button>
+                           
+                        </form>
+                    </a>
+                   <button class="bt" ><a  href='promote.php?id=<?php echo $row['id']?>' class="text-decoration-none text-white"><i class='fa fa-angle-double-up'></i>  Promote Student</a></button> 
+                        </td>
+                    </tr>  
+                </table>
+               <?php }
                 
         }
+        
         else{
             echo "<div class='lead mt-2 text-dark'>No records found in the database</div>";
         }
@@ -91,8 +112,8 @@ $options=""; ?>
 
 
 <hr class="my-2">
-        <form action="" method="post" id="myform">
-            <p class="lead fw-bold">View Students by class</p>
+        <form action="students_byclass.php" method="post" id="myform">
+            <p class="lead fw-bold"  style="color:#0036AB;">View Students by class</p>
             <div class="row">
                 <div class="col-md">
                     <label for="" class="form-label">Academic year</label>
@@ -141,7 +162,8 @@ $options=""; ?>
                 </div>
             </div>
             <div class="col-md-6">
-                <input type="submit" value="View Students" name="submit" id="formsubmit" class="btn btn-primary mt-1">
+                <button type="submit" name="submit" id="formsubmit" class="bt mt-2 mb-2"><i class="fa fa-eye"></i> View Students</button>
+             
             </div>
             </div>
 
@@ -151,71 +173,7 @@ $options=""; ?>
         
             
 <div class="row  mrow">
-                <?php 
-              if(isset($_REQUEST["submit"])){
-            ?>
-
-                <?php
-                  $year=mysqli_real_escape_string($conn,$_REQUEST["session"]);
-                  $term=mysqli_real_escape_string($conn,$_REQUEST["term_name"]);
-                 
-                  $class=mysqli_real_escape_string($conn,$_REQUEST["class"]);
               
-                  ?>
-
-                <table class=" table table-striped table-bordered caption-top">
-                    <?php
-                    //get year names
-                    $yrname = mysqli_query($conn,"select *from academic_year where id=$year");
-                    $yr_res=mysqli_fetch_assoc($yrname);
-                    $year1=$yr_res['sname'];
-                    //get term
-                    $termname = mysqli_query($conn,"select *from term where term_id=$term");
-                    $term_res=mysqli_fetch_assoc($termname);
-                    $term1=$term_res['term_name'];
-                    //get class
-                    $classname = mysqli_query($conn,"select *from class where class_id=$class");
-                    $class_res=mysqli_fetch_assoc($classname);
-                    $class1=$class_res['class_name'];
-                    
-                  $sql=mysqli_query($conn,"select *from student where term_id=$term and class=$class");
-                  if(mysqli_num_rows($sql)>0){
-                    ?>
-                    <caption>List of students in Year:<?php echo $year1 ?> Term: <?php echo $term1 ?> Class: <?php echo $class1 ?></caption>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Registration Number</th>
-                        <th>Parent's email</th>
-                        <th>Parent's No.</th>
-                        <th>Actions</th>
-                    </tr>
-                    <?php
-                  while($row=mysqli_fetch_assoc($sql)){
-                
-                     echo "<tr><td><form method='post' action='viewstudentprofile.php'><label class='text-capitalize'>" . $row['s_name'] . "</label></td><td><input class='text-uppercase' style='border:0;' name='rno' type='text' readonly value=" . $row['regno'] . "></td><td>" . $row['email'] . "</td><td>" . $row['pno'] . "</td><td><input type='submit' class='btn btn-info' value='view profile' name='profile'></form></a></td></tr>"; }}
-                     else{
-                        
-                        ?>
-            <div class="alert mt-2 alert-danger alert-dismissible fade show" role="alert">
-                <strong>Sorry!!</strong> No Records found.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php
-                       
-                    }?>
-
-                </table>
-            </div>
-        </div>
-        </div>
-
-
-
-        </div>
-        </div>
-        <?php }
-   
-    ?>
         <script src="sidebar.js"></script>
         <script src="../jquery.js"></script>
         <script>

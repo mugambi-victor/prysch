@@ -2,7 +2,7 @@
 $host="localhost";
 $username="root";
 $pass="";
-$db="prysch";
+$db="pry";
 
 $conn=mysqli_connect($host, $username, $pass, $db);
 if(!$conn){

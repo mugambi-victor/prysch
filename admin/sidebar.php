@@ -101,19 +101,26 @@
             visibility: hidden;
         }
     }
-    @media(max-width:997px){
+    @media(max-width:997px)
+    {
         .imgg img{
             margin-left:1rem;
-
-    }
+        }
     .schoolname{
         margin-top: .6rem;
     }
     .toggler{
-        margin-left:8rem;
+        margin-left:11rem;
     }
-
+    a{
+        color:red;
     }
+    
+    .sidebar{
+        width:50%;
+    }
+    }
+    
 </style>
 
 
@@ -133,7 +140,7 @@
 
 
         <button type="button" class="collapsible nav-item"> Create</button>
-        <div class="content">
+        <div class="content ">
             <ul class="custom-dropdown" style="display:block; ">
                 <li><a href="classs" class="">Academic Years</a></li>
                 <li><a href="classs">Class</a></li>

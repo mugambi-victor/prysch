@@ -36,7 +36,9 @@ $option = "";
     .mrow{
        padding-left:10rem;   
        transition: 1s;
+       
     }
+    
     </style>
 
 </head>
@@ -265,50 +267,52 @@ elseif (isset($_REQUEST['submit1'])) {
               }
             }
 }?>
-                <div class="container " style="background:white;   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .6), 0 3px 10px 0 rgba(0, 0, 0, 0.60);">
+                <div class="container " >
                     <div class="row p-3" >
-                        <form class="needs-validation" style=" margin:auto; " action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
+                      <div class="col-md col-sm well">
+                      <form class="needs-validation" style=" margin:auto; " action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
             ?>" method="post">
 
-                            <h2 class="text-center">Academic Year</h2>
+                            <h2 class="text-center"  style="color:#0036AB;">Academic Year</h2>
                             </center>
 
                             <div class="mb-3">
                                 <label for="academic_year">Academic Year </label> <br>
                                 <input type="text" name="yname" class="form-control"
-                                    placeholder="Year Name eg '2020/2021' " required>
+                                    placeholder="Year Name eg '2020/2021' " style="border:0; background:whitesmoke" required>
                             </div>
 
-                            <center> <button type="submit" name="year" class="btn btn-primary">Submit</button></center>
+                            <center> <button type="submit" name="year" class="bt">Submit <i class="fa fa-paper-plane-o" style=""></i></button></center>
 
-                            <hr>
+                         
                         </form>
+                      </div>
                     </div>
-
+                    <hr   class="mt-3" style="color:#0036AB;">
                     <div class="row">
-                        <div class="col-sm col-md">
+                        <div class="col-sm col-md well">
                             <!-- form for creating class -->
                             <form class="needs-validation" style=" margin:auto; " action="" method="post">
 
-                                <h2 class="text-center">Class</h2>
+                                <h2 class="text-center"  style="color:#0036AB;">Class</h2>
                                 </center>
 
                                 <div class="col-md col-sm mb-3">
                                     <label for="cname">Class Name</label>
-                                    <input type="text" name="cname" class="form-control" placeholder="Class Name"
+                                    <input type="text" name="cname" class="form-control" placeholder="Class Name" style="border:0; background:whitesmoke"
                                         required>
                                 </div>
                                 <center> <button type="submit" name="create_class"
-                                        class="btn btn-primary">Submit</button></center>
+                                        class="bt">Submit <i class="fa fa-paper-plane-o" style=""></i> </button></center>
                             </form>
                         </div>
-
+                      
                         <!-- form for creating subject -->
                         <div class="col-sm col-md">
                             <form class="needs-validation" style=" margin:auto;"
                                 action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 
-                                <h2 class="text-center">Subject</h2>
+                                <h2 class="text-center"  style="color:#0036AB;">Subject</h2>
                                 </center>
                                 <div class="row ">
                                     <div class="col-md col-sm">
@@ -330,18 +334,20 @@ elseif (isset($_REQUEST['submit1'])) {
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <div class="col-sm col-md mb-3">
                                     <label for="subname">Subject Name</label>
-                                    <input type="text" name="subname" class="form-control" placeholder="subject Name"
+                                    <input type="text" name="subname" class="form-control" placeholder="subject Name" style="border:0; background:whitesmoke"
                                         required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="subname">Subject Code</label>
-                                    <input type="text" name="subcode" class="form-control" placeholder="subject Code"
+                                    <input type="text" name="subcode" class="form-control" placeholder="subject Code" style="border:0; background:whitesmoke"
                                         required>
                                 </div>
-                                <center> <input type="submit" name="submit1" class="btn btn-primary"> 
-                                </center>
+                                <center> <button type="submit" name="submit1"
+                                        class="bt">Submit <i class="fa fa-paper-plane-o" style=""></i> </button></center>
+                               
                             </form>
 
                         </div>
