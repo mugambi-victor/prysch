@@ -47,6 +47,9 @@
     }
        
     }
+    .mon{
+    font-family: monospace;
+   }
 </style>
 <nav class="navbar navbar-expand-md m navbar-light " >
         <div class="container-fluid">

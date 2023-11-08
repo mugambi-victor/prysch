@@ -53,13 +53,13 @@ if (!isset($_SESSION["email"])) {
        
        padding-left: 0;
        margin-left: 0;
+     
     }
 .the-skul{
     padding-left: 0;
    
    display: flex;
    justify-content: center;
-
    padding-bottom:2rem ;
 }
     }
@@ -77,7 +77,7 @@ if (!isset($_SESSION["email"])) {
 
 <body><?php include('header2.php');
  include('sidebar.php');?>
- <h6 class="the-skul skulname" >School Name Here</h6>
+ <h6 class="the-skul skulname mon" >SHYNE PREPARATORY SCHOOL</h6>
 <div class="container-fluid">
         <div class="container mm col-md ">
             <div class="row mrow d-flex">

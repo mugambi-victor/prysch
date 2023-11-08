@@ -116,8 +116,8 @@ $options=""; ?>
             <p class="lead fw-bold"  style="color:#0036AB;">View Students by class</p>
             <div class="row">
                 <div class="col-md">
-                    <label for="" class="form-label">Academic year</label>
-                    <select class="form-select" name="session" id="session-list" required>
+                  
+                    <select class="form-select mt-3" name="session" id="session-list" required>
                         <option selected>select academic year</option>
                         <?php
   $optionss="";
@@ -135,16 +135,16 @@ $options=""; ?>
                     </select>
                 </div>
                 <div class="col-md">
-                    <label for="term_name" class="form-label">Term</label>
-                    <select class="form-select" name="term_name" id="term-list" required>
+                
+                    <select class="form-select bg-light mt-3" name="term_name" id="term-list" required>
                         <option value=''>Select Term</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md">
-                    <label for="" class="form-label">Class</label>
-                    <select class="form-select" name="class" id="class-list" required>
+                    
+                    <select class="form-select mt-3 bg-light" name="class" id="class-list" required>
                         <option selected>select Class</option>
                         <?php
   $d_result = mysqli_query($conn, "select* from class");

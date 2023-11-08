@@ -32,6 +32,36 @@ session_start();?>
        body{
        background:whitesmoke;
        }
+        /* buttons */
+     .bt{
+        padding:.3rem .9rem;
+        border: 1px solid;
+        border-radius: 10px;
+        background-color:#0036AB;
+        color:white;
+       
+    }
+    .bt:hover{
+        background-color: #948905;
+        color:black;
+       
+    }
+    .bt-danger{
+        padding:.3rem .9rem;
+        border: 1px solid;
+        border-radius: 10px;
+        background-color:red;
+        color:white;
+        text-decoration: none;
+    }
+    .bt-danger:hover{
+        background-color: #948905;
+        color:black;
+       
+    }
+    .link{
+        text-decoration: none;
+    }
     </style>
 </head>
 
@@ -72,17 +102,20 @@ session_start();?>
    <div class="container mt-5">
    <div class="row">
         <div class="col-md">
-        <a class="nav-link text-white btn btn-primary" aria-current="page" href="admin/admin_login">Admin</a>
+            <button class="bt  mt-2 form-control"><a class=" text-white link "  aria-current="page" href="admin/admin_login">Admin</a></button>
+        
         </div>
         <div class="col-md">
-        <a class="nav-link  text-white btn btn-primary" aria-current="page" href="Accounts/accounts_login">Accounts</a>
+            <button class="bt  mt-2 form-control"> <a class=" text-white link" aria-current="page" href="Accounts/accounts_login">Accounts</a></button>
+       
         </div>
         <div class="col-md">
-
-        <a class="nav-link  text-white btn btn-primary" href="student/s_login" tabindex="-1" aria-disabled="true">student</a>
+            <button class="bt  mt-2 form-control"> <a class="  text-white link " href="student/s_login" tabindex="-1" aria-disabled="true">Parent</a></button>
+       
         </div>
         <div class="col-md">
-        <a class="nav-link  text-white btn btn-primary " href="parent/parent_login">Parent</a>
+            <button class="bt  mt-2 form-control"> <a class="  text-white link " href="parent/parent_login">Teacher</a></button>
+       
         </div>
     </div>
    </div>

@@ -62,6 +62,9 @@
         color:black;
        
     }
+    .mon{
+    font-family: monospace;
+   }
 </style>
 <nav class="navbar navbar-expand-md m navbar-light " id="myHeader">
         <div class="container-fluid">

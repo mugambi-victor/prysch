@@ -453,7 +453,7 @@ $options = ""; ?>
                                                                             <label for="" class="form-label">Transaction Amount</label>
                                                                             <input type="number" name="transaction_amt" id="transaction_amt" class="form-control" readonly required>
 
-                                                                            <label for="" class="form-label">Amount You Wnat to Pay</label>
+                                                                            <label for="" class="form-label">Amount You Want to Pay</label>
                                                                             <input type="number" name="paid" class="form-control" required>
 
 

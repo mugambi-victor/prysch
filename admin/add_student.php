@@ -158,7 +158,7 @@ include('sidebar.php');?>
                 if($res && move_uploaded_file($_FILES['uploads']['tmp_name'],$arget)){ ?>
                 <!-- Success Alert -->
                 <div class="alert alert-success alert-dismissible fade show">
-                    <strong>Success!</strong> Data inserted to the database.
+                    <strong>Success!</strong> Student data was inserted to the database.
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
                 <?php

@@ -18,36 +18,43 @@ if (!isset($_SESSION["s_login"])) {
     <title>RESULTS</title>
 <style>
     .mm{
-        margin-top:11rem;
+        margin-top:7rem;
         padding:1rem;
     }
-    .mm:hover{
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    a{
+        text-decoration: none;
     }
     @media(min-width:997px){
          .mrow{
         padding-left:10rem
-    }}
+    }
+   
+    }
+    @media (max-width:997px) {
+        .mm{
+        margin-top:5rem;
+       
+    }
+    }
 </style>
 </head>
 
 <body>
 
-<?php include('header.php');?>
+<?php include('header.php');
+ include('sidebar.php');?>
 <div class="container-fluid col-sm  d-flex">
-<?php 
-
-  include('sidebar.php');
-
-   ?>
     <div class="container mm col-sm">
         <div class="row mrow">
             <div class="col-sm">
+                <h2 class="fw-bold mon all-headers" >SELECT EXAM</h2>
             <form action="transcript.php" method="POST">
-            <!-- dropdown for session/academic year -->
-            <label for="class" class="form-label">Class</label>
-            <select name="class" id="c-list" class="form-select">
-            <option value="">select class</option>
+            <!-- dropdown for class -->
+            <div class="row">
+                <div class="col-sm">
+            <!-- <label for="class" class="form-label">Class</label> -->
+            <select name="class" id="c-list" class=" form-select mt-3 bg-light">
+            <option value="" class="dropdown-item" >select class</option>
             <?php
             $query=mysqli_query($conn,"select distinct student_class from results where regno='$s'");
             while($r=mysqli_fetch_assoc($query)){
@@ -65,26 +72,32 @@ if (!isset($_SESSION["s_login"])) {
             ?>
             </select>
 
-
+            </div>
+            <div class="col-sm">
            
 
-            <label for="t-list" class="form-label">Term</label>
-            <select name="term" id="t-list" class="form-select">
-                <option value="">select term</option>
+            <!-- <label for="t-list" class="form-label">Term</label> -->
+            <select name="term" id="t-list" class=" form-select mt-3 bg-light">
+                <option value="" >select term</option>
             </select>
-
-            <label for="exam" class="form-label">Exam</label>
-            <select name="exam" id="exam-list" class="form-select">
-                <option value="">select exam</option>
+            </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-sm">
+            <!-- <label for="exam" class="form-label">Exam</label> -->
+            <select name="exam" id="exam-list" class=" form-select  bg-light">
+                <option value="" >select exam</option>
             </select>
-            <center> <input type="submit" class="btn mt-2 btn-primary" name="submit" value="submit">
+            <center> <button type="submit" class="bt mt-2 btn-primary" name="submit">Submit <i class="fa fa-paper-plane-o" style=""></i></button> <button type="button" name="back" class="bt-danger p-2 mt-2 "><a href="s_dashboard.php"
+                    class="text-white"><i class="bi-arrow-left-circle-fill" ></i> GoBack</a></button>
+   
             </center>
         </form>
+        </div>
+            </div>
 </div>
 
-        <center><button type="button" name="back" class="btn p-2 mt-2 btn-danger"><a href="s_dashboard.php"
-                    class="text-white"><i class="bi-arrow-left-circle-fill"></i>GoBack</a></button></center>
-   
+       
     
 
 

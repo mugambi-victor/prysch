@@ -27,6 +27,9 @@ if(!isset($_SESSION["account_login"]))
        padding-left:10rem;   
        transition: 1s;
     }
+    .all-headers{
+        color:#0036AB;
+    }
 </style>
    
 </head>
@@ -72,16 +75,14 @@ else{
 
 ?>
     <form method="post" enctype="multipart/form-data">
-    <center> <h2>Create Post</h2></center>
-<div class="col-md-10 ms-5">
-<label for="title" class="form-label">Post Title</label>
-<input type="text" name="title"  class="form-control text-capitalize" placeholder="Title goes here..."/>
-		<label for="" class="form-label">Post Body</label>
-		<textarea name="details" rows="8" columns="10"  class="form-control"placeholder="Type here..."></textarea>
+    <center> <h2 class="mon all-headers">Create Post</h2></center>
+<div class="col-md-10 ">
+<input type="text" name="title"  class="form-control text-capitalize bg-light" placeholder="Post title goes here..."/>
+		<textarea name="details" rows="8" columns="10"  class="form-control bg-light mt-3" placeholder="Post body.Type here..."></textarea>
      <label for="uploadfile" class="form-label">Image</label> 
   <input type="file" class="form-control"  name="uploadfile" 
                    value="" />
-			<center><input type="submit" class="btn  mt-1 mb-2 btn-secondary" value="Post" name="add" style="font-size:large;"/></center>
+			<center><input type="submit" class="bt  mt-2 mb-2 b" value="Post" name="add" style="font-size:large;"/></center>
 		
 
 </form>

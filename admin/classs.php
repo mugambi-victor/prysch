@@ -276,8 +276,8 @@ elseif (isset($_REQUEST['submit1'])) {
                             <h2 class="text-center"  style="color:#0036AB;">Academic Year</h2>
                             </center>
 
-                            <div class="mb-3">
-                                <label for="academic_year">Academic Year </label> <br>
+                            <div class="mb-3 mt-3">
+                            
                                 <input type="text" name="yname" class="form-control"
                                     placeholder="Year Name eg '2020/2021' " style="border:0; background:whitesmoke" required>
                             </div>
@@ -297,8 +297,8 @@ elseif (isset($_REQUEST['submit1'])) {
                                 <h2 class="text-center"  style="color:#0036AB;">Class</h2>
                                 </center>
 
-                                <div class="col-md col-sm mb-3">
-                                    <label for="cname">Class Name</label>
+                                <div class="col-md col-sm mb-3 mt-3">
+                                   
                                     <input type="text" name="cname" class="form-control" placeholder="Class Name" style="border:0; background:whitesmoke"
                                         required>
                                 </div>
@@ -316,8 +316,8 @@ elseif (isset($_REQUEST['submit1'])) {
                                 </center>
                                 <div class="row ">
                                     <div class="col-md col-sm">
-                                        <label for="class" class="form-label">Class </label> <br>
-                                        <select class="form-select" name="class" id="classlist">
+                                       
+                                        <select class="form-select mt-3" name="class" id="classlist">
                                             <option value="">Select class</option>
                                             <?php
             $class_result = mysqli_query($conn, 'select distinct class_id,class_name from class');
@@ -336,13 +336,13 @@ elseif (isset($_REQUEST['submit1'])) {
                                 </div>
                                 
                                 <div class="col-sm col-md mb-3">
-                                    <label for="subname">Subject Name</label>
-                                    <input type="text" name="subname" class="form-control" placeholder="subject Name" style="border:0; background:whitesmoke"
+                                   
+                                    <input type="text" name="subname" class="form-control mt-3" placeholder="subject Name" style="border:0; background:whitesmoke"
                                         required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="subname">Subject Code</label>
-                                    <input type="text" name="subcode" class="form-control" placeholder="subject Code" style="border:0; background:whitesmoke"
+                                   
+                                    <input type="text" name="subcode" class="form-control mt-3" placeholder="subject Code" style="border:0; background:whitesmoke"
                                         required>
                                 </div>
                                 <center> <button type="submit" name="submit1"

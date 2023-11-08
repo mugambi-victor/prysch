@@ -24,7 +24,10 @@ $rest = mysqli_fetch_assoc($get_studentdata);
 </head>
 <style>
     .mm{
-        margin-top:10rem
+        margin-top:7rem
+    }
+    .card-containerr{
+        background-color:#0036AB;
     }
     @media(min-width:997px){
     .mrow{
@@ -38,20 +41,32 @@ $rest = mysqli_fetch_assoc($get_studentdata);
     .card-containerr {
         border-radius: .3rem;
         height:200px;
-       
+        background-color:#0036AB;
     }
-    
+    .mrow{
+        padding-left:0rem
+    }
+    .mm{
+        margin-top:5rem
+    }
     .card-img{
         visibility: hidden;
-    }}
+    }
+   
+    }
+    .term-select{
+    margin-top: 1rem;
+}
 </style>
 <body>
    
-<?php include('header.php');?>
+<?php include('header.php');
+include('sidebar.php');
+?>
 <div class="container-fluid col-sm  d-flex">
 <?php 
 
-  include('sidebar.php');
+  
 
    
     $sql = mysqli_query($conn, "select *from student where regno='$s' ");
@@ -63,9 +78,9 @@ $rest = mysqli_fetch_assoc($get_studentdata);
         <div class="row mrow">
             <div class="col-sm">
 
-                <div class="mt-4 ms-1 row card-containerr d-flex text-white text-center p-0 bg-primary">
-                    <p class="display-6 text-center  p-2 " style="margin-top: -0.56%;">Fee Summary Info</p>
-                    <div class="col-sm p-2 ">
+                <div class="mt-4 ms-1 row card-containerr d-flex text-white text-center p-0 ">
+                    <p class="text-center fs-2 mon pt-2 " style="margin-top: -0.56%;">Fee Summary Info</p>
+                    <div class="col-sm">
                     <?php
                         $term=$result['term_id'];
                         $getterm = mysqli_query($conn, "select *from term where term_id =$term");
@@ -78,9 +93,9 @@ $rest = mysqli_fetch_assoc($get_studentdata);
 
                    
                     ?> 
-                        <p class="lead text-capitalize">Current Term: <?php echo $yrname . "<br/> " . $termname?></p>
+                        <p class="lead text-capitalize"><span class="mon">Current Term: </span><?php echo $yrname . "<br/> " . $termname?></p>
                         
-                            <p class=" fs-5 ">Term Fee: Kshs <?php echo number_format($result['total']); ?></p>
+                            <p class=" fs-5"><span class="mon">Term Fee:</span><br> Kshs <?php echo number_format($result['total']); ?></p>
                             
                         
                         </div>
@@ -96,12 +111,12 @@ $rest = mysqli_fetch_assoc($get_studentdata);
         
             <div class="col-sm">
                 <!-- <p>Open a PDF file <a href="../admin/fees/fee_structures/curriculum_vitae1.pdf">example</a>.</p> -->
-                <p class="display-4">Fee Payment History</p>
+                <p class="fs-2 fw-bold mt-3 mon">Fee Payment History</p>
                 <div class="row">
                     <div class="col-sm">
                         <form action="" method="post">
-                            <label for="" class="form-label">Academic year</label>
-                            <select name="session" class="form-select" id="session-list" required>
+                         
+                            <select name="session" class="form-select bg-light" id="session-list" required>
                                 <option value="">Select academic year</option>
                                 <?php
 
@@ -123,13 +138,13 @@ $rest = mysqli_fetch_assoc($get_studentdata);
                                 }
                                 ?>
                             </select>
-                            <label for="" class="form-label">Term</label>
-                            <select name="term" class="form-select" id="term">
+                            
+                            <select name="term" class="form-select term-select bg-light" id="term">
                                 <option value="">select Term</option>
 
                             </select>
-                            <center> <input type="submit" value="See History" class="btn mt-2  btn-primary"
-                                    name="history" role=""></center>
+                            <center> <button type="submit"  class="bt mt-2 "
+                                    name="history" role=""><i class="fa fa-eye"></i> View History</button></center>
                         </form>
                     </div>
                 </div>
@@ -218,7 +233,7 @@ $rest = mysqli_fetch_assoc($get_studentdata);
             </div>
 
         </div>
-        <button type="button" name="back" class="btn mt-4 p-2 btn-danger"><a href="s_dashboard.php" class="text-white"><i class="bi-arrow-left-circle-fill"></i>GoBack</a></button>
+        <button type="button" name="back" class=" mt-4 p-2 bt-danger"><a href="s_dashboard.php" class="text-white"><i class="bi-arrow-left-circle-fill"></i>GoBack</a></button>
     </div>
     
             </div>

@@ -23,37 +23,33 @@ session_start();?>
        .navbar{
         background:#051094;
        }
+       .container{
+        margin-top: 4rem;
+       }
        .schoolname{
         width:4rem; 
         font-family:monospace
        }
+        /* buttons */
+    .bt{
+        padding:.3rem .9rem;
+        border: 1px solid;
+        border-radius: 10px;
+        background-color:#0036AB;
+        color:white;
+    }
+    .bt:hover{
+        background-color: #948905;
+        color:black;
+       
+    }
+    .mon{
+    font-family: monospace;
+   }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light " >
-        <div class="container-fluid">
-        <img src="../images/shyne.png" class="pe-2" height="100" alt="CoolBrand"/> <br>
-            
-               
-               <p class="schoolname text-wrap text-white fw-bold" >SHYNE STUDENT MANAGEMENT SYSTEM</p>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <!-- <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a> -->
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li> <a class="dropdown-item"  href="profile.php">Profile</a></li>
-                            <li> <a class="dropdown-item"  href="logout.php">Logout</a></li>
-        
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
    
        
     <div class="container" >
@@ -107,21 +103,26 @@ else
     ?>
     <div class="row justify-content-center">
         
-        <div class="col-md-6 ">
-        <form class="needs-validation form-container" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
-            ?>" method="post">
-          <center>  <div class="iccon p-5" ><img src="../images/OIP1.jfif" alt="" width="100" height="80"></div>
-        <h2>Accounts Portal Login</h2></center>
-
-    <div class="mb-3">
+        <div class="col-md-5  ">
+        <form class="needs-validation bg-light mt-4 mb-5 p-2 pb-4 form-container" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
+            ?>" method="post" style="border-radius:15px;">
+          <center>  <div class="iccon pt-4 pb-3" ><img src="../images/OIP1.jfif" alt="" width="100" height="80"></div>
+        <h2 class="mon">Accounts Portal Login</h2></center>
+<div class="row justify-content-center">
+<div class="mb-3 col-sm col-md-10">
         <label class="form-label" for="inputEmail">Email</label>
-        <input type="email" class="form-control p-3" name='email' id="inputEmail" placeholder="Accountant's Email ..." required>
+        <input type="email" class="form-control p-2" name='email' id="inputEmail" placeholder="Accountant's Email ..." required>
     </div>
-    <div class="mb-3">
+</div>
+   
+    <div class="row justify-content-center">
+    <div class="mb-3 col-sm col-md-10">
         <label class="form-label" for="inputPassword">Password</label>
-        <input type="password" class="form-control p-3" name="pass" id="inputPassword" placeholder="Password" required>
+        <input type="password" class="form-control p-2" name="pass" id="inputPassword" placeholder="Password" required>
     </div>
-   <center> <a href="../index" title="back" class="btn  p-2 btn-danger"><i class="bi-arrow-left-circle-fill"></i></a>  <button type="submit" name="login" class="btn btn-primary p-2" >Sign in</button></center>
+    </div>
+    
+   <center> <a href="../index.php" title="back" class="btn  p-2 btn-danger"><i class="bi-arrow-left-circle-fill"></i></a>  <button type="submit" name="login" class="bt p-2" >Sign in <i class="fa fa-arrow-circle-right"></i></button></center>
 </form>
         </div>
    

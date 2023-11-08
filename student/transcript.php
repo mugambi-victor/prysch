@@ -32,7 +32,43 @@ if (!isset($_SESSION["s_login"])) {
 <link href="../bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet" >
 <script src="../bootstrap_5.1.3/js/bootstrap.min.js"></script>
 </head>
-<body class="bg-white">
+<style>
+ /* buttons */
+ .bt{
+        padding:.3rem .9rem;
+        border: 1px solid;
+        border-radius: 10px;
+        background-color:#0036AB;
+        color:white;
+    }
+    .bt:hover{
+        background-color: #948905;
+        color:black;
+       
+    }
+    .bt-danger{
+        padding:.3rem .9rem;
+        border: 1px solid;
+        border-radius: 10px;
+        background-color:red;
+        color:white;
+        text-decoration: none;
+    }
+    .bt-danger:hover{
+        background-color: #948905;
+        color:black;
+       
+    }
+.mon{
+    font-family:monospace;
+}
+@media(max-width:997px){
+    .block{
+        display: block;
+    }
+}
+</style>
+<body class="bg-white; ">
                
 <?php
 
@@ -59,13 +95,13 @@ if (!isset($_SESSION["s_login"])) {
   
   <div class="row mt-3">
               <div class="justify-content-center col-md-12 " style="display:flex;">
-                  <img src="../images/rh.jfif" class="d-block" height="140" alt="Brand"/>
-                  <p class="lead text-wrap text-dark fw-bold mt-1" style="width:6rem; font-family:monospace ">KIFARU STUDENT INFORMATION MANAGEMENT SYSTEM</p>
+                  <img src="../images/shyne.png" class="d-block" height="100" alt="Brand"/>
+                  <p class=" text-wrap text-dark fw-bold mt-3" style="width:6rem; font-family:monospace ">SHYNE PREPARATORY SCHOOLS</p>
    </div>
 </div>
-                  <div class="row">
+                  <div class="row mon">
                       <div class="col-md-12 text-center">
-                      <h6>PO BOX 60200</h6>
+                      <h6 >PO BOX 60200</h6>
                       <h6>TEL: 0740843795</p>
                       <h4 class="text-uppercase">office of the registrar- academics</h4>
                       <p class="lead text-capitalize fw-bold">
@@ -113,7 +149,7 @@ if (!isset($_SESSION["s_login"])) {
 
         ?>
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mon">
                 <div class="col mx-3">
                 <p class="text-uppercase"><span class="fw-bold">Student Name:</span> <?php echo $studentname;?></p>
         <p class="text-uppercase"><span class="fw-bold">Reg No: </span><?php echo $reg; ?></p>
@@ -121,7 +157,7 @@ if (!isset($_SESSION["s_login"])) {
                 </div>
                 <div class="col align-content-end">
                 
-        <p class="text-uppercase"><span class="fw-bold">Year:</span> <?php echo $yrname; ?></p>
+        <p class="text-uppercase"><span class="fw-bold">Year:</span> <span><?php echo $yrname; ?></span></p>
         <p class="text-uppercase"><span class="fw-bold">Term:</span> <?php echo $termname;?> </p>
         <p class=" text-uppercase"><span class="fw-bold">Exam:</span> <?php echo $examname; ?></p>
                 </div>
@@ -129,7 +165,7 @@ if (!isset($_SESSION["s_login"])) {
         </div>
         
        
-        <table class="p-5 table table-primary caption-top">
+        <table class="p-5 table table-primary caption-top mon">
     <caption>List of Subjects and Scores</caption>
         <tr><th>Subject</th> <th>Score</th><th>Grade</th></tr>
         <?php
@@ -219,15 +255,15 @@ if (!isset($_SESSION["s_login"])) {
     }
     echo "</table> ";
     
-    echo "\nAverage Score: <b>".$mean."</b><br>GRADE:<b> ".$grade."</b> <br><br>"; 
+    echo "\n<p class='mon'>Average Score: <b>".$mean."</b><br>GRADE:<b> ".$grade."</b> <br><br></p>"; 
 }}
 
 
 ?>
  
 </div>
-<center><button onclick="f()" id="bt" class="btn btn-primary">Download</button></center>
-<button type="button" name="back" class="btn mt-4 p-2 btn-danger"><a href="s_dashboard.php" class="text-white"><i class="bi-arrow-left-circle-fill"></i>GoBack</a></button>
+<center><button onclick="f()" id="bt" class="bt"> <i class="fa fa-download"></i> Download Transcript</button></center>
+<button type="button" name="back" id="back" class="btn mt-4 p-2 btn-danger"><a href="s_dashboard.php" class="text-white"><i class="bi-arrow-left-circle-fill"></i>GoBack</a></button>
 <script src="../jquery.js"></script>
     <script>
         function f() {

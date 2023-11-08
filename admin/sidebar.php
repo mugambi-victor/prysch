@@ -120,7 +120,9 @@
         width:50%;
     }
     }
-    
+    .sidebar{
+        font-family: monospace;
+    }
 </style>
 
 
@@ -133,7 +135,7 @@
     </div>
     <hr class="text-white m-0">
         <li class="  nav-item ">
-            <a href="admin_dashboard" class="text-capitalize text-white nav-link"><i class="bi-house-fill"></i>
+            <a href="admin_dashboard" class="text-capitalize text-white nav-link fs-6">
                 dashboard</a>
         </li>
         <hr class="text-white m-0">
